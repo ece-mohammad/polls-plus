@@ -1,1385 +1,1526 @@
 [
-  {
-    "model": "admin.logentry",
-    "pk": 1,
-    "fields": {
-      "action_time": "2024-09-23T00:07:49.302Z",
-      "user": 1,
-      "content_type": 7,
-      "object_id": "1",
-      "object_repr": "What's your favorite color?",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 2,
-    "fields": {
-      "action_time": "2024-09-23T00:13:46.629Z",
-      "user": 1,
-      "content_type": 7,
-      "object_id": "2",
-      "object_repr": "What's your favorite food?",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 3,
-    "fields": {
-      "action_time": "2024-09-23T00:13:58.023Z",
-      "user": 1,
-      "content_type": 7,
-      "object_id": "3",
-      "object_repr": "What's your favorite movie?",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 4,
-    "fields": {
-      "action_time": "2024-09-23T00:14:07.102Z",
-      "user": 1,
-      "content_type": 7,
-      "object_id": "4",
-      "object_repr": "What's your favorite series?",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 5,
-    "fields": {
-      "action_time": "2024-09-23T00:14:19.075Z",
-      "user": 1,
-      "content_type": 7,
-      "object_id": "5",
-      "object_repr": "What's your favorite band?",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 6,
-    "fields": {
-      "action_time": "2024-09-23T00:15:07.121Z",
-      "user": 1,
-      "content_type": 7,
-      "object_id": "5",
-      "object_repr": "Which band do you like the most?",
-      "action_flag": 2,
-      "change_message": "[{\"changed\": {\"fields\": [\"Question text\"]}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 7,
-    "fields": {
-      "action_time": "2024-09-23T00:15:16.129Z",
-      "user": 1,
-      "content_type": 7,
-      "object_id": "4",
-      "object_repr": "Which series do you like the most?",
-      "action_flag": 2,
-      "change_message": "[{\"changed\": {\"fields\": [\"Question text\"]}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 8,
-    "fields": {
-      "action_time": "2024-09-23T00:15:25.573Z",
-      "user": 1,
-      "content_type": 7,
-      "object_id": "3",
-      "object_repr": "Which movie do you like the most?",
-      "action_flag": 2,
-      "change_message": "[{\"changed\": {\"fields\": [\"Question text\"]}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 9,
-    "fields": {
-      "action_time": "2024-09-23T00:15:33.415Z",
-      "user": 1,
-      "content_type": 7,
-      "object_id": "2",
-      "object_repr": "Which food do you like the most?",
-      "action_flag": 2,
-      "change_message": "[{\"changed\": {\"fields\": [\"Question text\"]}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 10,
-    "fields": {
-      "action_time": "2024-09-23T00:15:40.864Z",
-      "user": 1,
-      "content_type": 7,
-      "object_id": "1",
-      "object_repr": "Which color do you like the most?",
-      "action_flag": 2,
-      "change_message": "[{\"changed\": {\"fields\": [\"Question text\"]}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 11,
-    "fields": {
-      "action_time": "2024-09-23T00:16:47.392Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "1",
-      "object_repr": "Linkin Park",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 12,
-    "fields": {
-      "action_time": "2024-09-23T00:16:59.343Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "2",
-      "object_repr": "Evanescence",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 13,
-    "fields": {
-      "action_time": "2024-09-23T00:17:08.172Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "3",
-      "object_repr": "Disturbed",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 14,
-    "fields": {
-      "action_time": "2024-09-23T00:17:14.459Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "4",
-      "object_repr": "Nightwish",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 15,
-    "fields": {
-      "action_time": "2024-09-23T00:17:23.715Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "5",
-      "object_repr": "Supernatural",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 16,
-    "fields": {
-      "action_time": "2024-09-23T01:34:33.181Z",
-      "user": 1,
-      "content_type": 7,
-      "object_id": "6",
-      "object_repr": "Which programming language do you prefer?",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 17,
-    "fields": {
-      "action_time": "2024-09-23T01:35:00.640Z",
-      "user": 1,
-      "content_type": 7,
-      "object_id": "7",
-      "object_repr": "In python, which of the following data types is mutable?",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 18,
-    "fields": {
-      "action_time": "2024-09-23T02:01:14.796Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "6",
-      "object_repr": "string",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 19,
-    "fields": {
-      "action_time": "2024-09-23T02:01:19.782Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "7",
-      "object_repr": "int",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 20,
-    "fields": {
-      "action_time": "2024-09-23T02:01:24.367Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "8",
-      "object_repr": "float",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 21,
-    "fields": {
-      "action_time": "2024-09-23T02:01:28.551Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "9",
-      "object_repr": "list",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 22,
-    "fields": {
-      "action_time": "2024-09-23T02:01:34.539Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "10",
-      "object_repr": "tuple",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 23,
-    "fields": {
-      "action_time": "2024-09-23T02:01:40.654Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "11",
-      "object_repr": "C",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 24,
-    "fields": {
-      "action_time": "2024-09-23T02:01:46.099Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "12",
-      "object_repr": "C++",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 25,
-    "fields": {
-      "action_time": "2024-09-23T02:01:51.020Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "13",
-      "object_repr": "python",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 26,
-    "fields": {
-      "action_time": "2024-09-23T02:01:56.124Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "14",
-      "object_repr": "Rust",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 27,
-    "fields": {
-      "action_time": "2024-09-23T02:02:25.481Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "15",
-      "object_repr": "Suits",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 28,
-    "fields": {
-      "action_time": "2024-09-23T02:02:35.990Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "16",
-      "object_repr": "Hannibal",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 29,
-    "fields": {
-      "action_time": "2024-09-23T02:03:06.165Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "17",
-      "object_repr": "F.R.I.E.N.D.S",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 30,
-    "fields": {
-      "action_time": "2024-09-23T02:03:15.328Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "18",
-      "object_repr": "Green Mile",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 31,
-    "fields": {
-      "action_time": "2024-09-23T02:03:23.396Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "19",
-      "object_repr": "Forrest Gump",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 32,
-    "fields": {
-      "action_time": "2024-09-23T02:03:39.682Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "20",
-      "object_repr": "Sully",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 33,
-    "fields": {
-      "action_time": "2024-09-23T02:03:49.590Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "21",
-      "object_repr": "Django unchained",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 34,
-    "fields": {
-      "action_time": "2024-09-23T02:04:07.493Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "22",
-      "object_repr": "The Dark Knight",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 35,
-    "fields": {
-      "action_time": "2024-09-23T02:04:12.842Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "23",
-      "object_repr": "Pizza",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 36,
-    "fields": {
-      "action_time": "2024-09-23T02:04:17.883Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "24",
-      "object_repr": "Burger",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 37,
-    "fields": {
-      "action_time": "2024-09-23T02:05:01.060Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "25",
-      "object_repr": "Grilled Chicken",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 38,
-    "fields": {
-      "action_time": "2024-09-23T02:05:06.659Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "26",
-      "object_repr": "Black",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 39,
-    "fields": {
-      "action_time": "2024-09-23T02:05:22.419Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "19",
-      "object_repr": "Forrest Gump",
-      "action_flag": 2,
-      "change_message": "[{\"changed\": {\"fields\": [\"Question\"]}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 40,
-    "fields": {
-      "action_time": "2024-09-23T04:43:32.867Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "9",
-      "object_repr": "list",
-      "action_flag": 2,
-      "change_message": "[{\"changed\": {\"fields\": [\"Votes\"]}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 41,
-    "fields": {
-      "action_time": "2024-09-23T04:43:42.066Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "6",
-      "object_repr": "string",
-      "action_flag": 2,
-      "change_message": "[{\"changed\": {\"fields\": [\"Votes\"]}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 42,
-    "fields": {
-      "action_time": "2024-09-23T04:43:49.880Z",
-      "user": 1,
-      "content_type": 8,
-      "object_id": "1",
-      "object_repr": "Linkin Park",
-      "action_flag": 2,
-      "change_message": "[{\"changed\": {\"fields\": [\"Votes\"]}}]"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 1,
-    "fields": {
-      "name": "Can add log entry",
-      "content_type": 1,
-      "codename": "add_logentry"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 2,
-    "fields": {
-      "name": "Can change log entry",
-      "content_type": 1,
-      "codename": "change_logentry"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 3,
-    "fields": {
-      "name": "Can delete log entry",
-      "content_type": 1,
-      "codename": "delete_logentry"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 4,
-    "fields": {
-      "name": "Can view log entry",
-      "content_type": 1,
-      "codename": "view_logentry"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 5,
-    "fields": {
-      "name": "Can add permission",
-      "content_type": 2,
-      "codename": "add_permission"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 6,
-    "fields": {
-      "name": "Can change permission",
-      "content_type": 2,
-      "codename": "change_permission"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 7,
-    "fields": {
-      "name": "Can delete permission",
-      "content_type": 2,
-      "codename": "delete_permission"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 8,
-    "fields": {
-      "name": "Can view permission",
-      "content_type": 2,
-      "codename": "view_permission"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 9,
-    "fields": {
-      "name": "Can add group",
-      "content_type": 3,
-      "codename": "add_group"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 10,
-    "fields": {
-      "name": "Can change group",
-      "content_type": 3,
-      "codename": "change_group"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 11,
-    "fields": {
-      "name": "Can delete group",
-      "content_type": 3,
-      "codename": "delete_group"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 12,
-    "fields": {
-      "name": "Can view group",
-      "content_type": 3,
-      "codename": "view_group"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 13,
-    "fields": {
-      "name": "Can add user",
-      "content_type": 4,
-      "codename": "add_user"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 14,
-    "fields": {
-      "name": "Can change user",
-      "content_type": 4,
-      "codename": "change_user"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 15,
-    "fields": {
-      "name": "Can delete user",
-      "content_type": 4,
-      "codename": "delete_user"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 16,
-    "fields": {
-      "name": "Can view user",
-      "content_type": 4,
-      "codename": "view_user"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 17,
-    "fields": {
-      "name": "Can add content type",
-      "content_type": 5,
-      "codename": "add_contenttype"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 18,
-    "fields": {
-      "name": "Can change content type",
-      "content_type": 5,
-      "codename": "change_contenttype"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 19,
-    "fields": {
-      "name": "Can delete content type",
-      "content_type": 5,
-      "codename": "delete_contenttype"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 20,
-    "fields": {
-      "name": "Can view content type",
-      "content_type": 5,
-      "codename": "view_contenttype"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 21,
-    "fields": {
-      "name": "Can add session",
-      "content_type": 6,
-      "codename": "add_session"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 22,
-    "fields": {
-      "name": "Can change session",
-      "content_type": 6,
-      "codename": "change_session"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 23,
-    "fields": {
-      "name": "Can delete session",
-      "content_type": 6,
-      "codename": "delete_session"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 24,
-    "fields": {
-      "name": "Can view session",
-      "content_type": 6,
-      "codename": "view_session"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 25,
-    "fields": {
-      "name": "Can add question",
-      "content_type": 7,
-      "codename": "add_question"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 26,
-    "fields": {
-      "name": "Can change question",
-      "content_type": 7,
-      "codename": "change_question"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 27,
-    "fields": {
-      "name": "Can delete question",
-      "content_type": 7,
-      "codename": "delete_question"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 28,
-    "fields": {
-      "name": "Can view question",
-      "content_type": 7,
-      "codename": "view_question"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 29,
-    "fields": {
-      "name": "Can add choice",
-      "content_type": 8,
-      "codename": "add_choice"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 30,
-    "fields": {
-      "name": "Can change choice",
-      "content_type": 8,
-      "codename": "change_choice"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 31,
-    "fields": {
-      "name": "Can delete choice",
-      "content_type": 8,
-      "codename": "delete_choice"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 32,
-    "fields": {
-      "name": "Can view choice",
-      "content_type": 8,
-      "codename": "view_choice"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 33,
-    "fields": {
-      "name": "Can add user",
-      "content_type": 9,
-      "codename": "add_pollsuser"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 34,
-    "fields": {
-      "name": "Can change user",
-      "content_type": 9,
-      "codename": "change_pollsuser"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 35,
-    "fields": {
-      "name": "Can delete user",
-      "content_type": 9,
-      "codename": "delete_pollsuser"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 36,
-    "fields": {
-      "name": "Can view user",
-      "content_type": 9,
-      "codename": "view_pollsuser"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 37,
-    "fields": {
-      "name": "Can add polls moderator",
-      "content_type": 10,
-      "codename": "add_pollsmoderator"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 38,
-    "fields": {
-      "name": "Can change polls moderator",
-      "content_type": 10,
-      "codename": "change_pollsmoderator"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 39,
-    "fields": {
-      "name": "Can delete polls moderator",
-      "content_type": 10,
-      "codename": "delete_pollsmoderator"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 40,
-    "fields": {
-      "name": "Can view polls moderator",
-      "content_type": 10,
-      "codename": "view_pollsmoderator"
-    }
-  },
-  {
-    "model": "auth.user",
-    "pk": 1,
-    "fields": {
-      "password": "pbkdf2_sha256$870000$BXWbwQWUApcCJapA7aCe0w$17N51wVJz0zHWu20wdP3fLp8nuuCCfNcVBnNh2I6c8k=",
-      "last_login": "2024-09-23T00:07:25.035Z",
-      "is_superuser": true,
-      "username": "admin",
-      "first_name": "",
-      "last_name": "",
-      "email": "",
-      "is_staff": true,
-      "is_active": true,
-      "date_joined": "2024-09-18T00:26:59.051Z",
-      "groups": [],
-      "user_permissions": []
-    }
-  },
-  {
-    "model": "auth.user",
-    "pk": 2,
-    "fields": {
-      "password": "pbkdf2_sha256$870000$4EWlVdXBNpIcdkQEjRvXZj$8qPs6J6ZRE5FplzqAf0iXBcLmoJBvjuAvvZyUaNxjc0=",
-      "last_login": null,
-      "is_superuser": false,
-      "username": "FooBar",
-      "first_name": "Foo",
-      "last_name": "Bar",
-      "email": "foo@bar.com",
-      "is_staff": false,
-      "is_active": true,
-      "date_joined": "2024-09-22T23:37:41.130Z",
-      "groups": [],
-      "user_permissions": []
-    }
-  },
-  {
-    "model": "auth.user",
-    "pk": 3,
-    "fields": {
-      "password": "",
-      "last_login": null,
-      "is_superuser": false,
-      "username": "HamSpam",
-      "first_name": "Ham",
-      "last_name": "Spam",
-      "email": "ham@spam.com",
-      "is_staff": false,
-      "is_active": true,
-      "date_joined": "2024-09-23T00:08:17.966Z",
-      "groups": [],
-      "user_permissions": []
-    }
-  },
-  {
-    "model": "auth.user",
-    "pk": 4,
-    "fields": {
-      "password": "pbkdf2_sha256$870000$x592CDyKBzdkbh4Pl7w11T$014E8QJDPQgJJKYRwzsqSiEjNXr7aVKvYEbCG+FGogg=",
-      "last_login": null,
-      "is_superuser": false,
-      "username": "foobar",
-      "first_name": "foo",
-      "last_name": "bar",
-      "email": "foo.bar@gmail.com",
-      "is_staff": false,
-      "is_active": true,
-      "date_joined": "2024-09-23T16:56:02.850Z",
-      "groups": [],
-      "user_permissions": []
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 1,
-    "fields": {
-      "app_label": "admin",
-      "model": "logentry"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 2,
-    "fields": {
-      "app_label": "auth",
-      "model": "permission"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 3,
-    "fields": {
-      "app_label": "auth",
-      "model": "group"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 4,
-    "fields": {
-      "app_label": "auth",
-      "model": "user"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 5,
-    "fields": {
-      "app_label": "contenttypes",
-      "model": "contenttype"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 6,
-    "fields": {
-      "app_label": "sessions",
-      "model": "session"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 7,
-    "fields": {
-      "app_label": "polls",
-      "model": "question"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 8,
-    "fields": {
-      "app_label": "polls",
-      "model": "choice"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 9,
-    "fields": {
-      "app_label": "polls",
-      "model": "pollsuser"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 10,
-    "fields": {
-      "app_label": "polls",
-      "model": "pollsmoderator"
-    }
-  },
-  {
-    "model": "sessions.session",
-    "pk": "kux39y08blsjc8zi9vq8dut2ig2pmmpo",
-    "fields": {
-      "session_data": ".eJxVjEEOwiAQRe_C2hAGKFCX7j0DGYZBqoYmpV0Z765NutDtf-_9l4i4rTVunZc4ZXEWIE6_W0J6cNtBvmO7zZLmti5TkrsiD9rldc78vBzu30HFXr81AXBO1gfFrANwAfAFTBpGxKCLZ8SxuKAGTYacNUaRzlYhk0XnMor3B_AFOEw:1ssWbt:V-Wouz4KB6J6tCDy9xtOqYyGjp29vdIGEnxhWL9DmNc",
-      "expire_date": "2024-10-07T00:07:25.058Z"
-    }
-  },
-  {
-    "model": "polls.question",
-    "pk": 1,
-    "fields": {
-      "question_text": "Which color do you like the most?",
-      "pub_date": "2024-09-23T00:07:49.300Z"
-    }
-  },
-  {
-    "model": "polls.question",
-    "pk": 2,
-    "fields": {
-      "question_text": "Which food do you like the most?",
-      "pub_date": "2024-09-23T00:13:46.627Z"
-    }
-  },
-  {
-    "model": "polls.question",
-    "pk": 3,
-    "fields": {
-      "question_text": "Which movie do you like the most?",
-      "pub_date": "2024-09-23T00:13:58.021Z"
-    }
-  },
-  {
-    "model": "polls.question",
-    "pk": 4,
-    "fields": {
-      "question_text": "Which series do you like the most?",
-      "pub_date": "2024-09-23T00:14:07.100Z"
-    }
-  },
-  {
-    "model": "polls.question",
-    "pk": 5,
-    "fields": {
-      "question_text": "Which band do you like the most?",
-      "pub_date": "2024-09-23T00:14:19.074Z"
-    }
-  },
-  {
-    "model": "polls.question",
-    "pk": 6,
-    "fields": {
-      "question_text": "Which programming language do you prefer?",
-      "pub_date": "2024-09-23T01:34:33.179Z"
-    }
-  },
-  {
-    "model": "polls.question",
-    "pk": 7,
-    "fields": {
-      "question_text": "In python, which of the following data types is mutable?",
-      "pub_date": "2024-09-23T01:35:00.639Z"
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 1,
-    "fields": {
-      "question": 5,
-      "choice_text": "Linkin Park",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 2,
-    "fields": {
-      "question": 5,
-      "choice_text": "Evanescence",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 3,
-    "fields": {
-      "question": 5,
-      "choice_text": "Disturbed",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 4,
-    "fields": {
-      "question": 5,
-      "choice_text": "Nightwish",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 5,
-    "fields": {
-      "question": 4,
-      "choice_text": "Supernatural",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 6,
-    "fields": {
-      "question": 7,
-      "choice_text": "string",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 7,
-    "fields": {
-      "question": 7,
-      "choice_text": "int",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 8,
-    "fields": {
-      "question": 7,
-      "choice_text": "float",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 9,
-    "fields": {
-      "question": 7,
-      "choice_text": "list",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 10,
-    "fields": {
-      "question": 7,
-      "choice_text": "tuple",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 11,
-    "fields": {
-      "question": 6,
-      "choice_text": "C",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 12,
-    "fields": {
-      "question": 6,
-      "choice_text": "C++",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 13,
-    "fields": {
-      "question": 6,
-      "choice_text": "python",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 14,
-    "fields": {
-      "question": 6,
-      "choice_text": "Rust",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 15,
-    "fields": {
-      "question": 4,
-      "choice_text": "Suits",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 16,
-    "fields": {
-      "question": 4,
-      "choice_text": "Hannibal",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 17,
-    "fields": {
-      "question": 4,
-      "choice_text": "F.R.I.E.N.D.S",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 18,
-    "fields": {
-      "question": 3,
-      "choice_text": "Green Mile",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 19,
-    "fields": {
-      "question": 3,
-      "choice_text": "Forrest Gump",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 20,
-    "fields": {
-      "question": 3,
-      "choice_text": "Sully",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 21,
-    "fields": {
-      "question": 3,
-      "choice_text": "Django unchained",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 22,
-    "fields": {
-      "question": 3,
-      "choice_text": "The Dark Knight",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 23,
-    "fields": {
-      "question": 2,
-      "choice_text": "Pizza",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 24,
-    "fields": {
-      "question": 2,
-      "choice_text": "Burger",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 25,
-    "fields": {
-      "question": 2,
-      "choice_text": "Grilled Chicken",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 26,
-    "fields": {
-      "question": 1,
-      "choice_text": "Black",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 27,
-    "fields": {
-      "question": 1,
-      "choice_text": "Blue",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 28,
-    "fields": {
-      "question": 1,
-      "choice_text": "Green",
-      "votes": 0
-    }
-  },
-  {
-    "model": "polls.choice",
-    "pk": 29,
-    "fields": {
-      "question": 1,
-      "choice_text": "Blue",
-      "votes": 0
-    }
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2024-09-23T00:07:49.302Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "1",
+    "object_repr": "What's your favorite color?",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
   }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2024-09-23T00:13:46.629Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "2",
+    "object_repr": "What's your favorite food?",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2024-09-23T00:13:58.023Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "3",
+    "object_repr": "What's your favorite movie?",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2024-09-23T00:14:07.102Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "4",
+    "object_repr": "What's your favorite series?",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2024-09-23T00:14:19.075Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "5",
+    "object_repr": "What's your favorite band?",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2024-09-23T00:15:07.121Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "5",
+    "object_repr": "Which band do you like the most?",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Question text\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2024-09-23T00:15:16.129Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "4",
+    "object_repr": "Which series do you like the most?",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Question text\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2024-09-23T00:15:25.573Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "3",
+    "object_repr": "Which movie do you like the most?",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Question text\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2024-09-23T00:15:33.415Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "2",
+    "object_repr": "Which food do you like the most?",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Question text\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2024-09-23T00:15:40.864Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "1",
+    "object_repr": "Which color do you like the most?",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Question text\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2024-09-23T00:16:47.392Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "Linkin Park",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2024-09-23T00:16:59.343Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "2",
+    "object_repr": "Evanescence",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2024-09-23T00:17:08.172Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "3",
+    "object_repr": "Disturbed",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2024-09-23T00:17:14.459Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "4",
+    "object_repr": "Nightwish",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2024-09-23T00:17:23.715Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "5",
+    "object_repr": "Supernatural",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2024-09-23T01:34:33.181Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "6",
+    "object_repr": "Which programming language do you prefer?",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2024-09-23T01:35:00.640Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "7",
+    "object_repr": "In python, which of the following data types is mutable?",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2024-09-23T02:01:14.796Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "6",
+    "object_repr": "string",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2024-09-23T02:01:19.782Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "7",
+    "object_repr": "int",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2024-09-23T02:01:24.367Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "8",
+    "object_repr": "float",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2024-09-23T02:01:28.551Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "9",
+    "object_repr": "list",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2024-09-23T02:01:34.539Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "10",
+    "object_repr": "tuple",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2024-09-23T02:01:40.654Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "11",
+    "object_repr": "C",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2024-09-23T02:01:46.099Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "12",
+    "object_repr": "C++",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2024-09-23T02:01:51.020Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "13",
+    "object_repr": "python",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2024-09-23T02:01:56.124Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "14",
+    "object_repr": "Rust",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2024-09-23T02:02:25.481Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "15",
+    "object_repr": "Suits",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 28,
+  "fields": {
+    "action_time": "2024-09-23T02:02:35.990Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "16",
+    "object_repr": "Hannibal",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 29,
+  "fields": {
+    "action_time": "2024-09-23T02:03:06.165Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "17",
+    "object_repr": "F.R.I.E.N.D.S",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 30,
+  "fields": {
+    "action_time": "2024-09-23T02:03:15.328Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "18",
+    "object_repr": "Green Mile",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 31,
+  "fields": {
+    "action_time": "2024-09-23T02:03:23.396Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "19",
+    "object_repr": "Forrest Gump",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 32,
+  "fields": {
+    "action_time": "2024-09-23T02:03:39.682Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "20",
+    "object_repr": "Sully",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 33,
+  "fields": {
+    "action_time": "2024-09-23T02:03:49.590Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "21",
+    "object_repr": "Django unchained",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 34,
+  "fields": {
+    "action_time": "2024-09-23T02:04:07.493Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "22",
+    "object_repr": "The Dark Knight",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 35,
+  "fields": {
+    "action_time": "2024-09-23T02:04:12.842Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "23",
+    "object_repr": "Pizza",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 36,
+  "fields": {
+    "action_time": "2024-09-23T02:04:17.883Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "24",
+    "object_repr": "Burger",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 37,
+  "fields": {
+    "action_time": "2024-09-23T02:05:01.060Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "25",
+    "object_repr": "Grilled Chicken",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 38,
+  "fields": {
+    "action_time": "2024-09-23T02:05:06.659Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "26",
+    "object_repr": "Black",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 39,
+  "fields": {
+    "action_time": "2024-09-23T02:05:22.419Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "19",
+    "object_repr": "Forrest Gump",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Question\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 40,
+  "fields": {
+    "action_time": "2024-09-23T04:43:32.867Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "9",
+    "object_repr": "list",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Votes\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 41,
+  "fields": {
+    "action_time": "2024-09-23T04:43:42.066Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "6",
+    "object_repr": "string",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Votes\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 42,
+  "fields": {
+    "action_time": "2024-09-23T04:43:49.880Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "Linkin Park",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Votes\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 43,
+  "fields": {
+    "action_time": "2024-10-02T13:31:04.460Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "27",
+    "object_repr": "blue",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 44,
+  "fields": {
+    "action_time": "2024-10-02T13:31:13.159Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "28",
+    "object_repr": "red",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 45,
+  "fields": {
+    "action_time": "2024-10-02T13:31:19.469Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "29",
+    "object_repr": "green",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 46,
+  "fields": {
+    "action_time": "2024-10-20T11:23:18.609Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "8",
+    "object_repr": "Answer to the Ultimate Question",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 47,
+  "fields": {
+    "action_time": "2024-10-20T11:23:46.654Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "30",
+    "object_repr": "42",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 48,
+  "fields": {
+    "action_time": "2024-10-20T11:23:52.828Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "30",
+    "object_repr": "42",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 49,
+  "fields": {
+    "action_time": "2024-10-20T11:24:05.084Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "31",
+    "object_repr": "foobar",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 2,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 2,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 2,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 2,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 3,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 3,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 3,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 3,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 4,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 4,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 4,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 4,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 5,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 5,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 5,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 5,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 6,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 6,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 6,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 6,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add question",
+    "content_type": 7,
+    "codename": "add_question"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change question",
+    "content_type": 7,
+    "codename": "change_question"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete question",
+    "content_type": 7,
+    "codename": "delete_question"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view question",
+    "content_type": 7,
+    "codename": "view_question"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add choice",
+    "content_type": 8,
+    "codename": "add_choice"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change choice",
+    "content_type": 8,
+    "codename": "change_choice"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete choice",
+    "content_type": 8,
+    "codename": "delete_choice"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view choice",
+    "content_type": 8,
+    "codename": "view_choice"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 9,
+    "codename": "add_pollsuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 9,
+    "codename": "change_pollsuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 9,
+    "codename": "delete_pollsuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 9,
+    "codename": "view_pollsuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add polls moderator",
+    "content_type": 10,
+    "codename": "add_pollsmoderator"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change polls moderator",
+    "content_type": 10,
+    "codename": "change_pollsmoderator"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete polls moderator",
+    "content_type": 10,
+    "codename": "delete_pollsmoderator"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view polls moderator",
+    "content_type": 10,
+    "codename": "view_pollsmoderator"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$BXWbwQWUApcCJapA7aCe0w$17N51wVJz0zHWu20wdP3fLp8nuuCCfNcVBnNh2I6c8k=",
+    "last_login": "2024-10-20T11:22:50.080Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2024-09-18T00:26:59.051Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$4EWlVdXBNpIcdkQEjRvXZj$8qPs6J6ZRE5FplzqAf0iXBcLmoJBvjuAvvZyUaNxjc0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "FooBar",
+    "first_name": "Foo",
+    "last_name": "Bar",
+    "email": "foo@bar.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-09-22T23:37:41.130Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "HamSpam",
+    "first_name": "Ham",
+    "last_name": "Spam",
+    "email": "ham@spam.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-09-23T00:08:17.966Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$x592CDyKBzdkbh4Pl7w11T$014E8QJDPQgJJKYRwzsqSiEjNXr7aVKvYEbCG+FGogg=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "foobar",
+    "first_name": "foo",
+    "last_name": "bar",
+    "email": "foo.bar@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-09-23T16:56:02.850Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "polls",
+    "model": "question"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "polls",
+    "model": "choice"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "polls",
+    "model": "pollsuser"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "polls",
+    "model": "pollsmoderator"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "hnhccefti6aw8jv97nhmknvlvjsaup36",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hAGKFCX7j0DGYZBqoYmpV0Z765NutDtf-_9l4i4rTVunZc4ZXEWIE6_W0J6cNtBvmO7zZLmti5TkrsiD9rldc78vBzu30HFXr81AXBO1gfFrANwAfAFTBpGxKCLZ8SxuKAGTYacNUaRzlYhk0XnMor3B_AFOEw:1t2U1K:n9t6ig8jqOZSRTIiGmRRZorO5SLgWZ5F3hPh0ZygsoA",
+    "expire_date": "2024-11-03T11:22:50.105Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "kux39y08blsjc8zi9vq8dut2ig2pmmpo",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hAGKFCX7j0DGYZBqoYmpV0Z765NutDtf-_9l4i4rTVunZc4ZXEWIE6_W0J6cNtBvmO7zZLmti5TkrsiD9rldc78vBzu30HFXr81AXBO1gfFrANwAfAFTBpGxKCLZ8SxuKAGTYacNUaRzlYhk0XnMor3B_AFOEw:1ssWbt:V-Wouz4KB6J6tCDy9xtOqYyGjp29vdIGEnxhWL9DmNc",
+    "expire_date": "2024-10-07T00:07:25.058Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "r5bxpcq0wc6se71fa4j0yw5veltoagci",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hAGKFCX7j0DGYZBqoYmpV0Z765NutDtf-_9l4i4rTVunZc4ZXEWIE6_W0J6cNtBvmO7zZLmti5TkrsiD9rldc78vBzu30HFXr81AXBO1gfFrANwAfAFTBpGxKCLZ8SxuKAGTYacNUaRzlYhk0XnMor3B_AFOEw:1sy6nk:-QEgATt3Ra1jBkB7h0GMfvPInhteFsygID6AscGZFQc",
+    "expire_date": "2024-10-22T09:46:44.284Z"
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 1,
+  "fields": {
+    "question_text": "Which color do you like the most?",
+    "pub_date": "2024-09-23T00:07:49.300Z",
+    "exp_date": "2024-11-07T08:47:42.965Z"
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 2,
+  "fields": {
+    "question_text": "Which food do you like the most?",
+    "pub_date": "2024-09-23T00:13:46.627Z",
+    "exp_date": "2024-11-07T08:47:42.965Z"
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 3,
+  "fields": {
+    "question_text": "Which movie do you like the most?",
+    "pub_date": "2024-09-23T00:13:58.021Z",
+    "exp_date": "2024-11-07T08:47:42.965Z"
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 4,
+  "fields": {
+    "question_text": "Which series do you like the most?",
+    "pub_date": "2024-09-23T00:14:07.100Z",
+    "exp_date": "2024-11-07T08:47:42.965Z"
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 5,
+  "fields": {
+    "question_text": "Which band do you like the most?",
+    "pub_date": "2024-09-23T00:14:19.074Z",
+    "exp_date": "2024-11-07T08:47:42.965Z"
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 6,
+  "fields": {
+    "question_text": "Which programming language do you prefer?",
+    "pub_date": "2024-09-23T01:34:33.179Z",
+    "exp_date": "2024-11-07T08:47:42.965Z"
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 7,
+  "fields": {
+    "question_text": "In python, which of the following data types is mutable?",
+    "pub_date": "2024-09-23T01:35:00.639Z",
+    "exp_date": "2024-11-07T08:47:42.965Z"
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 8,
+  "fields": {
+    "question_text": "Answer to the Ultimate Question",
+    "pub_date": "2024-10-20T11:23:04Z",
+    "exp_date": "2025-10-20T11:23:16Z"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 1,
+  "fields": {
+    "question": 5,
+    "choice_text": "Linkin Park",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 2,
+  "fields": {
+    "question": 5,
+    "choice_text": "Evanescence",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 3,
+  "fields": {
+    "question": 5,
+    "choice_text": "Disturbed",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 4,
+  "fields": {
+    "question": 5,
+    "choice_text": "Nightwish",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 5,
+  "fields": {
+    "question": 4,
+    "choice_text": "Supernatural",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 6,
+  "fields": {
+    "question": 7,
+    "choice_text": "string",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 7,
+  "fields": {
+    "question": 7,
+    "choice_text": "int",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 8,
+  "fields": {
+    "question": 7,
+    "choice_text": "float",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 9,
+  "fields": {
+    "question": 7,
+    "choice_text": "list",
+    "votes": 2
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 10,
+  "fields": {
+    "question": 7,
+    "choice_text": "tuple",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 11,
+  "fields": {
+    "question": 6,
+    "choice_text": "C",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 12,
+  "fields": {
+    "question": 6,
+    "choice_text": "C++",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 13,
+  "fields": {
+    "question": 6,
+    "choice_text": "python",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 14,
+  "fields": {
+    "question": 6,
+    "choice_text": "Rust",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 15,
+  "fields": {
+    "question": 4,
+    "choice_text": "Suits",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 16,
+  "fields": {
+    "question": 4,
+    "choice_text": "Hannibal",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 17,
+  "fields": {
+    "question": 4,
+    "choice_text": "F.R.I.E.N.D.S",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 18,
+  "fields": {
+    "question": 3,
+    "choice_text": "Green Mile",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 19,
+  "fields": {
+    "question": 3,
+    "choice_text": "Forrest Gump",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 20,
+  "fields": {
+    "question": 3,
+    "choice_text": "Sully",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 21,
+  "fields": {
+    "question": 3,
+    "choice_text": "Django unchained",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 22,
+  "fields": {
+    "question": 3,
+    "choice_text": "The Dark Knight",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 23,
+  "fields": {
+    "question": 2,
+    "choice_text": "Pizza",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 24,
+  "fields": {
+    "question": 2,
+    "choice_text": "Burger",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 25,
+  "fields": {
+    "question": 2,
+    "choice_text": "Grilled Chicken",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 26,
+  "fields": {
+    "question": 1,
+    "choice_text": "Black",
+    "votes": 6
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 27,
+  "fields": {
+    "question": 1,
+    "choice_text": "blue",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 28,
+  "fields": {
+    "question": 1,
+    "choice_text": "red",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 29,
+  "fields": {
+    "question": 1,
+    "choice_text": "green",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 30,
+  "fields": {
+    "question": 8,
+    "choice_text": "42",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 31,
+  "fields": {
+    "question": 8,
+    "choice_text": "foobar",
+    "votes": 0
+  }
+}
 ]

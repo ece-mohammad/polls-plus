@@ -134,222 +134,240 @@ def import_data():
     from polls.models import Question
 
     polls_question_1 = Question()
-    polls_question_1.question_text = 'Which color do you like the most?'
-    polls_question_1.pub_date = dateutil.parser.parse("2024-09-23T00:07:49.300000+00:00")
-    polls_question_1.exp_date = dateutil.parser.parse("2024-11-07T08:47:42.965195+00:00")
+    polls_question_1.question_text = 'Answer to the Ultimate Question'
+    polls_question_1.pub_date = dateutil.parser.parse("2024-10-20T11:23:04+00:00")
+    polls_question_1.exp_date = dateutil.parser.parse("2025-10-20T11:23:16+00:00")
     polls_question_1 = importer.save_or_locate(polls_question_1)
 
     polls_question_2 = Question()
-    polls_question_2.question_text = 'Which food do you like the most?'
-    polls_question_2.pub_date = dateutil.parser.parse("2024-09-23T00:13:46.627000+00:00")
+    polls_question_2.question_text = 'In python, which of the following data types is mutable?'
+    polls_question_2.pub_date = dateutil.parser.parse("2024-09-23T01:35:00.639000+00:00")
     polls_question_2.exp_date = dateutil.parser.parse("2024-11-07T08:47:42.965195+00:00")
     polls_question_2 = importer.save_or_locate(polls_question_2)
 
     polls_question_3 = Question()
-    polls_question_3.question_text = 'Which movie do you like the most?'
-    polls_question_3.pub_date = dateutil.parser.parse("2024-09-23T00:13:58.021000+00:00")
+    polls_question_3.question_text = 'Which programming language do you prefer?'
+    polls_question_3.pub_date = dateutil.parser.parse("2024-09-23T01:34:33.179000+00:00")
     polls_question_3.exp_date = dateutil.parser.parse("2024-11-07T08:47:42.965195+00:00")
     polls_question_3 = importer.save_or_locate(polls_question_3)
 
     polls_question_4 = Question()
-    polls_question_4.question_text = 'Which series do you like the most?'
-    polls_question_4.pub_date = dateutil.parser.parse("2024-09-23T00:14:07.100000+00:00")
+    polls_question_4.question_text = 'Which band do you like the most?'
+    polls_question_4.pub_date = dateutil.parser.parse("2024-09-23T00:14:19.074000+00:00")
     polls_question_4.exp_date = dateutil.parser.parse("2024-11-07T08:47:42.965195+00:00")
     polls_question_4 = importer.save_or_locate(polls_question_4)
 
     polls_question_5 = Question()
-    polls_question_5.question_text = 'Which band do you like the most?'
-    polls_question_5.pub_date = dateutil.parser.parse("2024-09-23T00:14:19.074000+00:00")
+    polls_question_5.question_text = 'Which series do you like the most?'
+    polls_question_5.pub_date = dateutil.parser.parse("2024-09-23T00:14:07.100000+00:00")
     polls_question_5.exp_date = dateutil.parser.parse("2024-11-07T08:47:42.965195+00:00")
     polls_question_5 = importer.save_or_locate(polls_question_5)
 
     polls_question_6 = Question()
-    polls_question_6.question_text = 'Which programming language do you prefer?'
-    polls_question_6.pub_date = dateutil.parser.parse("2024-09-23T01:34:33.179000+00:00")
+    polls_question_6.question_text = 'Which movie do you like the most?'
+    polls_question_6.pub_date = dateutil.parser.parse("2024-09-23T00:13:58.021000+00:00")
     polls_question_6.exp_date = dateutil.parser.parse("2024-11-07T08:47:42.965195+00:00")
     polls_question_6 = importer.save_or_locate(polls_question_6)
 
     polls_question_7 = Question()
-    polls_question_7.question_text = 'In python, which of the following data types is mutable?'
-    polls_question_7.pub_date = dateutil.parser.parse("2024-09-23T01:35:00.639000+00:00")
+    polls_question_7.question_text = 'Which food do you like the most?'
+    polls_question_7.pub_date = dateutil.parser.parse("2024-09-23T00:13:46.627000+00:00")
     polls_question_7.exp_date = dateutil.parser.parse("2024-11-07T08:47:42.965195+00:00")
     polls_question_7 = importer.save_or_locate(polls_question_7)
+
+    polls_question_8 = Question()
+    polls_question_8.question_text = 'Which color do you like the most?'
+    polls_question_8.pub_date = dateutil.parser.parse("2024-09-23T00:07:49.300000+00:00")
+    polls_question_8.exp_date = dateutil.parser.parse("2024-11-07T08:47:42.965195+00:00")
+    polls_question_8 = importer.save_or_locate(polls_question_8)
 
     # Processing model: polls.models.Choice
 
     from polls.models import Choice
 
     polls_choice_1 = Choice()
-    polls_choice_1.question = polls_question_5
+    polls_choice_1.question = polls_question_4
     polls_choice_1.choice_text = 'Linkin Park'
     polls_choice_1.votes = 0
     polls_choice_1 = importer.save_or_locate(polls_choice_1)
 
     polls_choice_2 = Choice()
-    polls_choice_2.question = polls_question_5
+    polls_choice_2.question = polls_question_4
     polls_choice_2.choice_text = 'Evanescence'
     polls_choice_2.votes = 0
     polls_choice_2 = importer.save_or_locate(polls_choice_2)
 
     polls_choice_3 = Choice()
-    polls_choice_3.question = polls_question_5
+    polls_choice_3.question = polls_question_4
     polls_choice_3.choice_text = 'Disturbed'
     polls_choice_3.votes = 0
     polls_choice_3 = importer.save_or_locate(polls_choice_3)
 
     polls_choice_4 = Choice()
-    polls_choice_4.question = polls_question_5
+    polls_choice_4.question = polls_question_4
     polls_choice_4.choice_text = 'Nightwish'
     polls_choice_4.votes = 0
     polls_choice_4 = importer.save_or_locate(polls_choice_4)
 
     polls_choice_5 = Choice()
-    polls_choice_5.question = polls_question_4
+    polls_choice_5.question = polls_question_5
     polls_choice_5.choice_text = 'Supernatural'
     polls_choice_5.votes = 0
     polls_choice_5 = importer.save_or_locate(polls_choice_5)
 
     polls_choice_6 = Choice()
-    polls_choice_6.question = polls_question_7
+    polls_choice_6.question = polls_question_2
     polls_choice_6.choice_text = 'string'
     polls_choice_6.votes = 0
     polls_choice_6 = importer.save_or_locate(polls_choice_6)
 
     polls_choice_7 = Choice()
-    polls_choice_7.question = polls_question_7
+    polls_choice_7.question = polls_question_2
     polls_choice_7.choice_text = 'int'
     polls_choice_7.votes = 0
     polls_choice_7 = importer.save_or_locate(polls_choice_7)
 
     polls_choice_8 = Choice()
-    polls_choice_8.question = polls_question_7
+    polls_choice_8.question = polls_question_2
     polls_choice_8.choice_text = 'float'
     polls_choice_8.votes = 0
     polls_choice_8 = importer.save_or_locate(polls_choice_8)
 
     polls_choice_9 = Choice()
-    polls_choice_9.question = polls_question_7
+    polls_choice_9.question = polls_question_2
     polls_choice_9.choice_text = 'list'
     polls_choice_9.votes = 2
     polls_choice_9 = importer.save_or_locate(polls_choice_9)
 
     polls_choice_10 = Choice()
-    polls_choice_10.question = polls_question_7
+    polls_choice_10.question = polls_question_2
     polls_choice_10.choice_text = 'tuple'
     polls_choice_10.votes = 0
     polls_choice_10 = importer.save_or_locate(polls_choice_10)
 
     polls_choice_11 = Choice()
-    polls_choice_11.question = polls_question_6
+    polls_choice_11.question = polls_question_3
     polls_choice_11.choice_text = 'C'
     polls_choice_11.votes = 0
     polls_choice_11 = importer.save_or_locate(polls_choice_11)
 
     polls_choice_12 = Choice()
-    polls_choice_12.question = polls_question_6
+    polls_choice_12.question = polls_question_3
     polls_choice_12.choice_text = 'C++'
     polls_choice_12.votes = 0
     polls_choice_12 = importer.save_or_locate(polls_choice_12)
 
     polls_choice_13 = Choice()
-    polls_choice_13.question = polls_question_6
+    polls_choice_13.question = polls_question_3
     polls_choice_13.choice_text = 'python'
     polls_choice_13.votes = 0
     polls_choice_13 = importer.save_or_locate(polls_choice_13)
 
     polls_choice_14 = Choice()
-    polls_choice_14.question = polls_question_6
+    polls_choice_14.question = polls_question_3
     polls_choice_14.choice_text = 'Rust'
     polls_choice_14.votes = 0
     polls_choice_14 = importer.save_or_locate(polls_choice_14)
 
     polls_choice_15 = Choice()
-    polls_choice_15.question = polls_question_4
+    polls_choice_15.question = polls_question_5
     polls_choice_15.choice_text = 'Suits'
     polls_choice_15.votes = 0
     polls_choice_15 = importer.save_or_locate(polls_choice_15)
 
     polls_choice_16 = Choice()
-    polls_choice_16.question = polls_question_4
+    polls_choice_16.question = polls_question_5
     polls_choice_16.choice_text = 'Hannibal'
     polls_choice_16.votes = 0
     polls_choice_16 = importer.save_or_locate(polls_choice_16)
 
     polls_choice_17 = Choice()
-    polls_choice_17.question = polls_question_4
+    polls_choice_17.question = polls_question_5
     polls_choice_17.choice_text = 'F.R.I.E.N.D.S'
     polls_choice_17.votes = 0
     polls_choice_17 = importer.save_or_locate(polls_choice_17)
 
     polls_choice_18 = Choice()
-    polls_choice_18.question = polls_question_3
+    polls_choice_18.question = polls_question_6
     polls_choice_18.choice_text = 'Green Mile'
     polls_choice_18.votes = 0
     polls_choice_18 = importer.save_or_locate(polls_choice_18)
 
     polls_choice_19 = Choice()
-    polls_choice_19.question = polls_question_3
+    polls_choice_19.question = polls_question_6
     polls_choice_19.choice_text = 'Forrest Gump'
     polls_choice_19.votes = 0
     polls_choice_19 = importer.save_or_locate(polls_choice_19)
 
     polls_choice_20 = Choice()
-    polls_choice_20.question = polls_question_3
+    polls_choice_20.question = polls_question_6
     polls_choice_20.choice_text = 'Sully'
     polls_choice_20.votes = 0
     polls_choice_20 = importer.save_or_locate(polls_choice_20)
 
     polls_choice_21 = Choice()
-    polls_choice_21.question = polls_question_3
+    polls_choice_21.question = polls_question_6
     polls_choice_21.choice_text = 'Django unchained'
     polls_choice_21.votes = 0
     polls_choice_21 = importer.save_or_locate(polls_choice_21)
 
     polls_choice_22 = Choice()
-    polls_choice_22.question = polls_question_3
+    polls_choice_22.question = polls_question_6
     polls_choice_22.choice_text = 'The Dark Knight'
     polls_choice_22.votes = 0
     polls_choice_22 = importer.save_or_locate(polls_choice_22)
 
     polls_choice_23 = Choice()
-    polls_choice_23.question = polls_question_2
+    polls_choice_23.question = polls_question_7
     polls_choice_23.choice_text = 'Pizza'
     polls_choice_23.votes = 0
     polls_choice_23 = importer.save_or_locate(polls_choice_23)
 
     polls_choice_24 = Choice()
-    polls_choice_24.question = polls_question_2
+    polls_choice_24.question = polls_question_7
     polls_choice_24.choice_text = 'Burger'
     polls_choice_24.votes = 0
     polls_choice_24 = importer.save_or_locate(polls_choice_24)
 
     polls_choice_25 = Choice()
-    polls_choice_25.question = polls_question_2
+    polls_choice_25.question = polls_question_7
     polls_choice_25.choice_text = 'Grilled Chicken'
     polls_choice_25.votes = 0
     polls_choice_25 = importer.save_or_locate(polls_choice_25)
 
     polls_choice_26 = Choice()
-    polls_choice_26.question = polls_question_1
+    polls_choice_26.question = polls_question_8
     polls_choice_26.choice_text = 'Black'
     polls_choice_26.votes = 6
     polls_choice_26 = importer.save_or_locate(polls_choice_26)
 
     polls_choice_27 = Choice()
-    polls_choice_27.question = polls_question_1
+    polls_choice_27.question = polls_question_8
     polls_choice_27.choice_text = 'blue'
     polls_choice_27.votes = 0
     polls_choice_27 = importer.save_or_locate(polls_choice_27)
 
     polls_choice_28 = Choice()
-    polls_choice_28.question = polls_question_1
+    polls_choice_28.question = polls_question_8
     polls_choice_28.choice_text = 'red'
     polls_choice_28.votes = 0
     polls_choice_28 = importer.save_or_locate(polls_choice_28)
 
     polls_choice_29 = Choice()
-    polls_choice_29.question = polls_question_1
+    polls_choice_29.question = polls_question_8
     polls_choice_29.choice_text = 'green'
     polls_choice_29.votes = 0
     polls_choice_29 = importer.save_or_locate(polls_choice_29)
+
+    polls_choice_30 = Choice()
+    polls_choice_30.question = polls_question_1
+    polls_choice_30.choice_text = '42'
+    polls_choice_30.votes = 0
+    polls_choice_30 = importer.save_or_locate(polls_choice_30)
+
+    polls_choice_31 = Choice()
+    polls_choice_31.question = polls_question_1
+    polls_choice_31.choice_text = 'foobar'
+    polls_choice_31.votes = 0
+    polls_choice_31 = importer.save_or_locate(polls_choice_31)
 
