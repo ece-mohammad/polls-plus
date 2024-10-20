@@ -12,7 +12,7 @@
   <ul>
     {% for poll in polls %}
     <li>
-      <a href="{% url 'polls:polls_details' poll_id=poll.id %}">
+      <a href="{% url 'polls:poll_details' poll_id=poll.id %}">
         {{ poll.question_text }}
       </a>
     </li>

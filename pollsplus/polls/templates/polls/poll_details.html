@@ -9,7 +9,7 @@
   <h1>Poll Details</h1>
 </section>
 <section>
-  <form action="{% url 'polls:polls_vote' poll_id=poll.id %}" method="POST">
+  <form action="{% url 'polls:poll_vote' poll_id=poll.id %}" method="POST">
     {% csrf_token %}
     <fieldset>
       <legend><h1>{{ poll.question_text }}</h1></legend>
@@ -27,7 +27,7 @@
       <input type="reset" value="Clear">
     </div>
   </form>
-  <a href="{% url 'polls:polls_result' poll_id=poll.id %}">Results</a>
+  <a href="{% url 'polls:poll_result' poll_id=poll.id %}">Results</a>
 </section>
 </body>
 </html>
