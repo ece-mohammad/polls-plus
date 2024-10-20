@@ -52,7 +52,7 @@ class PollsManager(SortedPollsManager):
         ).filter(
             pub_date__gt=timezone.now(),
             choice_count__lt=2
-        ).prefetch_related("choices")
+        ).order_by(self.ORDER_KEY).prefetch_related("choices")
 
     def published(self):
         """Get all the published polls.
@@ -65,7 +65,7 @@ class PollsManager(SortedPollsManager):
         ).filter(
             pub_date__lte=timezone.now(),
             choice_count__gt=1
-        ).prefetch_related("choices")
+        ).order_by(self.ORDER_KEY).prefetch_related("choices")
 
     def closed_for_vote(self):
         """Return all polls that are closed for voting.
@@ -74,7 +74,7 @@ class PollsManager(SortedPollsManager):
         """
         return self.filter(
             exp_date__lte=timezone.now()
-        )
+        ).order_by(self.ORDER_KEY)
 
     def open_for_vote(self):
         """Get all polls that are open for voting.
@@ -87,7 +87,7 @@ class PollsManager(SortedPollsManager):
             pub_date__lte=timezone.now(),
             exp_date__gt=timezone.now(),
             choice_count__gt=1
-        ).prefetch_related("choices")
+        ).order_by(self.ORDER_KEY).prefetch_related("choices")
 
     def closed_no_votes(self):
         """Return all closed poll that have zero votes."""
@@ -96,7 +96,7 @@ class PollsManager(SortedPollsManager):
         ).filter(
             exp_date__lte=timezone.now(),
             vote_count=0
-        ).prefetch_related("choices")
+        ).order_by(self.ORDER_KEY).prefetch_related("choices")
 
     def published_no_votes(self):
         """Return polls that published and have no votes."""
@@ -108,7 +108,7 @@ class PollsManager(SortedPollsManager):
             exp_date__gt=timezone.now(),
             choice_count__gt=1,
             vote_count=0
-        ).prefetch_related("choices")
+        ).order_by(self.ORDER_KEY).prefetch_related("choices")
 
     def most_voted(self, count: int | None = None) -> models.QuerySet:
         """Return N most voted questions of all time."""

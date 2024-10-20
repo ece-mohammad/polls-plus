@@ -14,7 +14,6 @@ app_name = "polls"
 
 urlpatterns = [
     path("", PollsHomeView.as_view(), name="polls_home"),
-    path("owner/", owner_view, name="owner"),
     path("all/", PollsListView.as_view(), name="polls_list"),
     path("<int:poll_id>/", PollDetailView.as_view(), name="poll_details"),
     path("<int:poll_id>/vote", PollVoteView.as_view(), name="poll_vote"),

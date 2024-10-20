@@ -27,7 +27,8 @@ class PollsHomeViewTest(TestCase):
         question: Question = create_question(
             "foo", pub_date=timezone.now() + timedelta(
                 days=-1
-            )
+            ),
+            choices=["bar", "ham", "spam"]
         )
         response: HttpResponse = self.client.get(
             reverse_lazy("polls:polls_home")
@@ -40,7 +41,10 @@ class PollsHomeViewTest(TestCase):
         self.assertQuerySetEqual(response.context["polls"], [question])
 
     def test_future_question_expect_not_in_view(self):
-        create_question("foo", pub_date=timezone.now() + timedelta(days=1))
+        create_question(
+            "foo", pub_date=timezone.now() + timedelta(days=1),
+            choices=["bar", "ham", "spam"]
+        )
         response: HttpResponse = self.client.get(
             reverse_lazy("polls:polls_home")
         )
@@ -55,12 +59,14 @@ class PollsHomeViewTest(TestCase):
         past_question = create_question(
             "foo", pub_date=timezone.now() + timedelta(
                 days=-1
-            )
+            ),
+            choices=["bar", "ham", "spam"]
         )
         future_question = create_question(
             "foo", pub_date=timezone.now() + timedelta(
                 days=1
-            )
+            ),
+            choices=["bar", "ham", "spam"]
         )
         response: HttpResponse = self.client.get(
             reverse_lazy("polls:polls_home")
@@ -74,12 +80,12 @@ class PollsHomeViewTest(TestCase):
 
     def test_multiple_questions_expect_n_most_recent(self):
         questions = []
-        for i in range(settings.RECENT_POLLS_SIZE * 2):
+        for i in range(1, (settings.RECENT_POLLS_SIZE * 2) + 1):
             questions.append(
                 create_question(
-                    f"foo {i + 1}",
+                    f"foo {i}",
                     choices=["bar", "ham", "spam"],
-                    pub_date=timezone.now() + timedelta(days=-1)
+                    pub_date=timezone.now() + timedelta(days=-1, seconds=i)
                 )
             )
         response: HttpResponse = self.client.get(
@@ -87,10 +93,13 @@ class PollsHomeViewTest(TestCase):
         )
         self.assertEquals(response.status_code, 200)
 
-        for i in range(settings.RECENT_POLLS_SIZE):
+        for i in range(
+                settings.RECENT_POLLS_SIZE + 1,
+                (settings.RECENT_POLLS_SIZE * 2) + 1
+                ):
             self.assertContains(
                 response,
-                f"foo {i + settings.RECENT_POLLS_SIZE + 1}"
+                f"foo {i}"
             )
         self.assertQuerySetEqual(
             response.context["polls"],
@@ -114,7 +123,8 @@ class PollsListViewTest(TestCase):
         question: Question = create_question(
             "foo", pub_date=timezone.now() + timedelta(
                 days=-1
-            )
+            ),
+            choices=["bar", "ham", "spam"]
         )
         response: HttpResponse = self.client.get(
             reverse_lazy("polls:polls_list")
@@ -127,7 +137,7 @@ class PollsListViewTest(TestCase):
         self.assertQuerySetEqual(response.context["polls"], [question])
 
     def test_future_question_expect_not_in_view(self):
-        create_question("foo", pub_date=timezone.now() + timedelta(days=1))
+        create_question("foo", pub_date=timezone.now() + timedelta(days=1), choices=["bar", "ham", "spam"])
         response: HttpResponse = self.client.get(
             reverse_lazy("polls:polls_list")
         )
@@ -142,12 +152,14 @@ class PollsListViewTest(TestCase):
         past_question = create_question(
             "foo", pub_date=timezone.now() + timedelta(
                 days=-1
-            )
+            ),
+            choices=["bar", "ham", "spam"]
         )
         future_question = create_question(
             "foo", pub_date=timezone.now() + timedelta(
                 days=1
-            )
+            ),
+            choices=["bar", "ham", "spam"]
         )
         response: HttpResponse = self.client.get(
             reverse_lazy("polls:polls_list")
@@ -165,7 +177,8 @@ class PollsListViewTest(TestCase):
             questions.append(
                 create_question(
                     f"foo {i + 1}",
-                    pub_date=timezone.now() + timedelta(days=-1)
+                    pub_date=timezone.now() + timedelta(days=-1),
+                    choices=["bar", "ham", "spam"]
                 )
             )
         response: HttpResponse = self.client.get(
@@ -189,11 +202,11 @@ class PollsDetailsViewTest(TestCase):
         choices: List[str] = ["bar", "ham", "spam"]
         question: Question = create_question(
             "foo",
-            choices=choices
+            choices=choices,
         )
         response: HttpResponse = self.client.get(
             reverse_lazy(
-                "polls:polls_details",
+                "polls:poll_details",
                 kwargs={
                     "poll_id": question.id
                 }
@@ -213,7 +226,7 @@ class PollsDetailsViewTest(TestCase):
         choice: Choice = question.choices.first()
         response: HttpResponse = self.client.post(
             reverse_lazy(
-                "polls:polls_vote",
+                "polls:poll_vote",
                 kwargs={
                     "poll_id": choice.id
                 }
