@@ -3,63 +3,72 @@
   "model": "polls.question",
   "pk": 1,
   "fields": {
-    "user": 2,
-    "question_text": "Which color do you like the most?",
-    "pub_date": "2024-09-23T00:07:49.300Z"
+    "question_text": "What color do you like the most?",
+    "pub_date": "2024-10-20T11:23:04Z",
+    "exp_date": "2025-10-20T11:23:16Z"
   }
 },
 {
   "model": "polls.question",
   "pk": 2,
   "fields": {
-    "user": 2,
-    "question_text": "Which food do you like the most?",
-    "pub_date": "2024-09-23T00:13:46.627Z"
+    "question_text": "What's your favorite food?",
+    "pub_date": "2024-10-20T11:23:04Z",
+    "exp_date": "2025-10-20T11:23:16Z"
   }
 },
 {
   "model": "polls.question",
   "pk": 3,
   "fields": {
-    "user": 2,
     "question_text": "Which movie do you like the most?",
-    "pub_date": "2024-09-23T00:13:58.021Z"
+    "pub_date": "2024-09-23T00:13:58.021Z",
+    "exp_date": "2024-11-07T08:47:42.965Z"
   }
 },
 {
   "model": "polls.question",
   "pk": 4,
   "fields": {
-    "user": 2,
     "question_text": "Which series do you like the most?",
-    "pub_date": "2024-09-23T00:14:07.100Z"
+    "pub_date": "2024-09-23T00:14:07.100Z",
+    "exp_date": "2024-11-07T08:47:42.965Z"
   }
 },
 {
   "model": "polls.question",
   "pk": 5,
   "fields": {
-    "user": 2,
     "question_text": "Which band do you like the most?",
-    "pub_date": "2024-09-23T00:14:19.074Z"
+    "pub_date": "2024-09-23T00:14:19.074Z",
+    "exp_date": "2024-11-07T08:47:42.965Z"
   }
 },
 {
   "model": "polls.question",
   "pk": 6,
   "fields": {
-    "user": 3,
     "question_text": "Which programming language do you prefer?",
-    "pub_date": "2024-09-23T01:34:33.179Z"
+    "pub_date": "2024-09-23T01:34:33.179Z",
+    "exp_date": "2024-11-07T08:47:42.965Z"
   }
 },
 {
   "model": "polls.question",
   "pk": 7,
   "fields": {
-    "user": 3,
     "question_text": "In python, which of the following data types is mutable?",
-    "pub_date": "2024-09-23T01:35:00.639Z"
+    "pub_date": "2024-09-23T01:35:00.639Z",
+    "exp_date": "2024-11-07T08:47:42.965Z"
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 9,
+  "fields": {
+    "question_text": "Answer to the Ultimate Question",
+    "pub_date": "2024-10-20T22:02:35Z",
+    "exp_date": "2025-10-20T22:02:37Z"
   }
 },
 {
@@ -140,7 +149,7 @@
   "fields": {
     "question": 7,
     "choice_text": "list",
-    "votes": 0
+    "votes": 2
   }
 },
 {
@@ -293,6 +302,51 @@
   "fields": {
     "question": 1,
     "choice_text": "Black",
+    "votes": 8
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 27,
+  "fields": {
+    "question": 1,
+    "choice_text": "blue",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 28,
+  "fields": {
+    "question": 1,
+    "choice_text": "red",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 29,
+  "fields": {
+    "question": 1,
+    "choice_text": "green",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 32,
+  "fields": {
+    "question": 9,
+    "choice_text": "Foobar",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 33,
+  "fields": {
+    "question": 9,
+    "choice_text": "42",
     "votes": 0
   }
 }

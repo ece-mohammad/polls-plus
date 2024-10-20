@@ -28,7 +28,7 @@ from polls.models import Question, Choice
 def owner_view(request: HttpRequest) -> HttpResponse:
     return HttpResponse(
         "Hello, world. {user_id} is the polls index.".format(
-            user_id="f320924d "
+            user_id="169c6230"
         )
     )
 

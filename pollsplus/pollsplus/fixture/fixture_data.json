@@ -637,6 +637,123 @@
   }
 },
 {
+  "model": "admin.logentry",
+  "pk": 50,
+  "fields": {
+    "action_time": "2024-10-20T21:43:16.988Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "8",
+    "object_repr": "Answer to the Ultimate Question",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 51,
+  "fields": {
+    "action_time": "2024-10-20T21:43:24.125Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "2",
+    "object_repr": "Answer to the Ultimate Question",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 52,
+  "fields": {
+    "action_time": "2024-10-20T22:00:59.024Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "8",
+    "object_repr": "Answer to the Ultimate Question",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 53,
+  "fields": {
+    "action_time": "2024-10-20T22:01:31.767Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "1",
+    "object_repr": "What color do you like the most?",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Question text\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 54,
+  "fields": {
+    "action_time": "2024-10-20T22:01:35.427Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "29",
+    "object_repr": "green",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 55,
+  "fields": {
+    "action_time": "2024-10-20T22:01:57.982Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "2",
+    "object_repr": "What's your favorite food?",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Question text\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 56,
+  "fields": {
+    "action_time": "2024-10-20T22:02:44.080Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "9",
+    "object_repr": "Answer to the Ultimate Question",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 57,
+  "fields": {
+    "action_time": "2024-10-20T22:02:59.036Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "32",
+    "object_repr": "Foobar",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 58,
+  "fields": {
+    "action_time": "2024-10-20T22:03:04.583Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "33",
+    "object_repr": "42",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
   "model": "auth.permission",
   "pk": 1,
   "fields": {
@@ -1176,7 +1293,7 @@
   "model": "polls.question",
   "pk": 1,
   "fields": {
-    "question_text": "Answer to the Ultimate Question",
+    "question_text": "What color do you like the most?",
     "pub_date": "2024-10-20T11:23:04Z",
     "exp_date": "2025-10-20T11:23:16Z"
   }
@@ -1185,7 +1302,7 @@
   "model": "polls.question",
   "pk": 2,
   "fields": {
-    "question_text": "Answer to the Ultimate Question",
+    "question_text": "What's your favorite food?",
     "pub_date": "2024-10-20T11:23:04Z",
     "exp_date": "2025-10-20T11:23:16Z"
   }
@@ -1237,11 +1354,11 @@
 },
 {
   "model": "polls.question",
-  "pk": 8,
+  "pk": 9,
   "fields": {
     "question_text": "Answer to the Ultimate Question",
-    "pub_date": "2024-10-20T11:23:04Z",
-    "exp_date": "2025-10-20T11:23:16Z"
+    "pub_date": "2024-10-20T22:02:35Z",
+    "exp_date": "2025-10-20T22:02:37Z"
   }
 },
 {
@@ -1507,19 +1624,19 @@
 },
 {
   "model": "polls.choice",
-  "pk": 30,
+  "pk": 32,
   "fields": {
-    "question": 8,
-    "choice_text": "42",
-    "votes": 1
+    "question": 9,
+    "choice_text": "Foobar",
+    "votes": 0
   }
 },
 {
   "model": "polls.choice",
-  "pk": 31,
+  "pk": 33,
   "fields": {
-    "question": 8,
-    "choice_text": "foobar",
+    "question": 9,
+    "choice_text": "42",
     "votes": 0
   }
 }
