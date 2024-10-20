@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Polls+ | Results | {{ poll.question_text }} </title>
+</head>
+<body>
+<section>
+  <h1>Poll Results</h1>
+</section>
+<section>
+  <h2>{{ poll.question_text }}</h2>
+  <ul>
+    {% for choice in poll.choices.all %}
+    <li>{{ choice.choice_text }}, <span>votes: {{ choice.votes }}</span></li>
+    <br>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'polls:polls_details' poll_id=poll.id %}">Vote</a>
+</section>
+</body>
+</html>

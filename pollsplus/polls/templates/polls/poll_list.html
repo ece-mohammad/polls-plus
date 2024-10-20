@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Polls+ | All</title>
+</head>
+<body>
+<header>Polls+</header>
+
+<section>
+  <h2>Most Recent Polls</h2>
+  {% if polls %}
+  <ul>
+    {% for poll in polls %}
+    <li>
+      <a href="{% url 'polls:polls_details' poll_id=poll.id %}">
+        {{ poll.question_text }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>
+    No questions yet! Start by starting a new poll
+  </p>
+  {% endif %}
+</section>
+
+<footer>Powered by Django</footer>
+</body>
+</html>
