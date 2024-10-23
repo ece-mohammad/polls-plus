@@ -8,13 +8,12 @@ from django.conf import settings
 from django.http import (
     HttpRequest,
     HttpResponse,
-    Http404,
     HttpResponseNotAllowed,
     HttpResponseRedirect,
     HttpResponseNotModified,
     HttpResponseBadRequest,
 )
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy
 from django.views.generic import (
     ListView,
@@ -54,6 +53,18 @@ class PollDetailView(DetailView):
     slug_field = "id"
     context_object_name = "poll"
 
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        if self.check_voted():
+            context_data["voted"] = True
+        return context_data
+
+    def check_voted(self):
+        voted_polls = self.request.session.get("votes", None)
+        if voted_polls is not None:
+            return self.object.id in voted_polls
+        return False
+
 
 class PollResultsView(DetailView):
     model = Question
@@ -71,11 +82,10 @@ class PollVoteView(UpdateView):
             return HttpResponseNotAllowed(["POST"])
         return super().dispatch(request, *args, **kwargs)
 
-    def post(
-        self, request: HttpRequest, *args, **kwargs) -> HttpResponse | Http404:
+    def post(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
         poll_id = kwargs["poll_id"]
         redirect_url = "polls:poll_details"
-        response_data = {"poll_id": poll_id}
+        url_kwargs = {"poll_id": poll_id}
 
         question = get_object_or_404(Question, id=poll_id)
         if question.is_closed_for_voting():
@@ -89,17 +99,28 @@ class PollVoteView(UpdateView):
         try:
             choice: Choice = question.choices.get(id=choice_id)
         except Choice.DoesNotExist:
-            response_data["errors"] = "Choice does not exist."
-            return HttpResponseRedirect(
-                reverse_lazy(redirect_url, kwargs=response_data)
+            return render(
+                request,
+                PollDetailView.template_name,
+                {
+                    "errors": "Selected choice does not exist."
+                }
             )
 
         choice.votes += 1
         choice.save()
+        self.mark_question_as_voted(poll_id)
         return HttpResponseRedirect(
-            reverse_lazy(redirect_url, kwargs=response_data)
+            reverse_lazy(redirect_url, kwargs=url_kwargs)
         )
 
+    def mark_question_as_voted(self, poll_id: int):
+        voted_questions = self.request.session.get("votes", None)
+        if voted_questions is None:
+            voted_questions = [poll_id]
+        elif poll_id not in voted_questions:
+            voted_questions.append(poll_id)
+        self.request.session["votes"] = voted_questions
 
 """
 

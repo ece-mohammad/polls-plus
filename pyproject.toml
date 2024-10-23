@@ -17,6 +17,13 @@ pytest = "^8.3.3"
 pytest-django = "^4.9.0"
 pytest-xdist = "^3.6.1"
 pytest-sugar = "^1.0.0"
+django-test-plus = "^2.2.4"
+django-robots = "^6.1"
+django-redirects = "^0.6.0"
+django-extra-views = "^0.15.0"
+django-vanilla-views = "^3.0.0"
+neapolitan = "^24.6"
+django-filter = "^24.3"
 
 
 [build-system]

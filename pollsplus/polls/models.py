@@ -37,85 +37,38 @@ class SortedPollsManager(DefaultPollsManager):
 
 
 class PollsManager(SortedPollsManager):
-    def by_pub_date(self):
-        """Return all polls sorted by publish date"""
-        return self.get_queryset().order_by(self.ORDER_KEY)
-
-    def unpublished(self):
-        """Get polls that are not published.
-
-        A poll is unpublished if its pub_date has not come yet, or it has less
-        than 2 choices.
-        """
-        return self.annotate(
-            choice_count=models.Count("choice")
-        ).filter(
-            pub_date__gt=timezone.now(),
-            choice_count__lt=2
-        ).order_by(self.ORDER_KEY).prefetch_related("choices")
+    def get_queryset(self):
+        return super().get_queryset().filter(
+            pub_date__lte=timezone.now()
+        ).order_by(self.ORDER_KEY)
 
     def published(self):
         """Get all the published polls.
 
         A poll is published when its pub_date has passed. And has at least 2
-        choices.
+        choices. Includes expired questions.
         """
         return self.annotate(
             choice_count=models.Count("choice")
         ).filter(
             pub_date__lte=timezone.now(),
             choice_count__gt=1
-        ).order_by(self.ORDER_KEY).prefetch_related("choices")
+        ).prefetch_related("choices")
 
-    def closed_for_vote(self):
-        """Return all polls that are closed for voting.
-
-        A poll is closed for voting if its exp_date has passed.
+    def published_open_for_vote(self):
         """
-        return self.filter(
-            exp_date__lte=timezone.now()
-        ).order_by(self.ORDER_KEY)
-
-    def open_for_vote(self):
-        """Get all polls that are open for voting.
-
-        A poll is open for voting if it's published and not expired.
+        Get all published polls that are still open for voting.
         """
-        return self.annotat(
-            choice_count=models.Count("choice")
-        ).filter(
-            pub_date__lte=timezone.now(),
-            exp_date__gt=timezone.now(),
-            choice_count__gt=1
-        ).order_by(self.ORDER_KEY).prefetch_related("choices")
-
-    def closed_no_votes(self):
-        """Return all closed poll that have zero votes."""
-        return self.annotate(
-            vote_count=models.Sum("choice__votes")
-        ).filter(
-            exp_date__lte=timezone.now(),
-            vote_count=0
-        ).order_by(self.ORDER_KEY).prefetch_related("choices")
-
-    def published_no_votes(self):
-        """Return polls that published and have no votes."""
-        return self.annotate(
-            choice_count=models.Count("choice"),
-            vote_count=models.Sum("choice__votes")
-        ).filter(
-            pub_date__lte=timezone.now(),
-            exp_date__gt=timezone.now(),
-            choice_count__gt=1,
-            vote_count=0
-        ).order_by(self.ORDER_KEY).prefetch_related("choices")
+        return self.published().filter(
+            exp_date__gt=timezone.now()
+        ).prefetch_related("choices")
 
     def most_voted(self, count: int | None = None) -> models.QuerySet:
         """Return N most voted questions of all time."""
         qs = self.annotate(
             vote_count=models.Sum("choice__votes")
         ).order_by(
-            "-vote_count"
+            "-vote_count", self.ORDER_KEY
         ).prefetch_related("choices")
 
         if count is None:
@@ -124,14 +77,15 @@ class PollsManager(SortedPollsManager):
 
     def most_recent(self, count: int | None = None) -> QuerySet:
         """
-        Get most recent N poll questions ordered by ORDER_KEY.
+        Get N most recent published polls that are open for voting, ordered by
+        ORDER_KEY.
 
         :param count: number of questions to retrieve, default is 5.
         :type count: int
         :return: N most recent questions, ordered by ORDER_KEY.
         :rtype: QuerySet
         """
-        qs = self.published()
+        qs = self.published_open_for_vote()
         if count is None:
             return qs
         return qs[:count]
@@ -141,7 +95,7 @@ class PollsManager(SortedPollsManager):
         start: datetime.datetime = timezone.now(),
         end: datetime.datetime = timezone.now() + timedelta(days=1)
     ) -> QuerySet:
-        """Get published polls that are about to expire within a period of time.
+        """Get polls that are about to expire within a period of time.
 
         :param start: start of the expiry period
         :type start: datetime.datetime
@@ -151,13 +105,12 @@ class PollsManager(SortedPollsManager):
         :rtype: QuerySet
         """
         return self.filter(
-            pub_date__lte=timezone.now(),
             exp_date__gte=start,
             exp_date__lte=end
         )
 
     def about_to_expire(self, count: int | None = None):
-        """Get the first N polls that are about to expire."""
+        """Get the first N polls that will expire in the next 24 hours."""
         qs = self.expires_within(
             start=timezone.now(),
             end=timezone.now() + timedelta(days=1),
@@ -166,20 +119,10 @@ class PollsManager(SortedPollsManager):
             return qs
         return qs[:count]
 
-    def oldest(self):
-        """Get the oldest question."""
-        return self.order_by(self.ORDER_KEY).last()
-
-    def newest(self):
-        """Get the most recent question."""
-        return self.order_by(self.ORDER_KEY).first()
-
-
 # TODO:: add user
 
 class Question(models.Model):
     class Meta:
-        ordering = ["-pub_date"]
         indexes = [
             models.Index(fields=("pub_date",)),
             models.Index(fields=("exp_date",)),

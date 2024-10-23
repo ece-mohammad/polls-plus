@@ -104,6 +104,33 @@ files = [
 Django = ">=3.2"
 
 [[package]]
+name = "django-extra-views"
+version = "0.15.0"
+description = "Extra class-based views for Django"
+optional = false
+python-versions = ">=3.5"
+files = [
+    {file = "django_extra_views-0.15.0-py2.py3-none-any.whl", hash = "sha256:610e6f24d4831cc065622420a6622c558b5b3fc4bc6797c3bbe0c3398e4995b8"},
+]
+
+[package.dependencies]
+Django = ">=2.1"
+
+[[package]]
+name = "django-filter"
+version = "24.3"
+description = "Django-filter is a reusable Django application for allowing users to filter querysets dynamically."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "django_filter-24.3-py3-none-any.whl", hash = "sha256:c4852822928ce17fb699bcfccd644b3574f1a2d80aeb2b4ff4f16b02dd49dc64"},
+    {file = "django_filter-24.3.tar.gz", hash = "sha256:d8ccaf6732afd21ca0542f6733b11591030fa98669f8d15599b358e24a2cd9c3"},
+]
+
+[package.dependencies]
+Django = ">=4.2"
+
+[[package]]
 name = "django-ipython"
 version = "0.1.1"
 description = "An IPython extension for using django with ipython notbeook"
@@ -111,6 +138,53 @@ optional = false
 python-versions = "*"
 files = [
     {file = "django-ipython-0.1.1.tar.gz", hash = "sha256:2592ad713c4e5d177a01d1ea79a9197521a7ed7a88c7d3fff1173a43c2162ea5"},
+]
+
+[[package]]
+name = "django-redirects"
+version = "0.6.0"
+description = "django redirects as they should be, with full control."
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-redirects-0.6.0.tar.gz", hash = "sha256:f3ec486345c20ce4956166641dff75412f1e658c54daf31b5d5ca4a6a6e57da3"},
+    {file = "django_redirects-0.6.0-py3-none-any.whl", hash = "sha256:a5db0486973cb862398b28d2baad4d257d45b24e502e99a9b1e1971b0e2c389c"},
+]
+
+[[package]]
+name = "django-robots"
+version = "6.1"
+description = "Robots exclusion application for Django, complementing Sitemaps."
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "django-robots-6.1.tar.gz", hash = "sha256:f86bcc3d16d7d7c2a4e37af6063cb4785f50ae16943f82248b48c9e7ac034f1d"},
+    {file = "django_robots-6.1-py3-none-any.whl", hash = "sha256:07e11a1bf3ddc08290123ec3c55abb45dbbffb9b38aea0a002e9b4a87bd9abcc"},
+]
+
+[[package]]
+name = "django-test-plus"
+version = "2.2.4"
+description = "\"django-test-plus provides useful additions to Django's default TestCase\""
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "django-test-plus-2.2.4.tar.gz", hash = "sha256:06488209a07dca60dc2bbeaeae5ce340d17344163e0b121709cdac7405c6d9ef"},
+    {file = "django_test_plus-2.2.4-py3-none-any.whl", hash = "sha256:96e4e16fabd3e0339a4b46e02a0a88c92c19800de38d00446571ea036614d332"},
+]
+
+[package.extras]
+test = ["factory-boy", "flake8", "pyflakes", "pytest", "pytest-cov", "pytest-django"]
+
+[[package]]
+name = "django-vanilla-views"
+version = "3.0.0"
+description = "Beautifully simple class based views."
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "django-vanilla-views-3.0.0.tar.gz", hash = "sha256:b65f27b8d5de53f695a397438337be882a6c7b5d8d30333a4cf98c9239fe0b86"},
+    {file = "django_vanilla_views-3.0.0-py3-none-any.whl", hash = "sha256:ab49c4e410f00e04a89eff0403aa14f098c0ba251657deff7a2d5c3ebe23602f"},
 ]
 
 [[package]]
@@ -304,6 +378,25 @@ files = [
 
 [package.dependencies]
 traitlets = "*"
+
+[[package]]
+name = "neapolitan"
+version = "24.6"
+description = "Neapolitan: quick CRUD views for Django."
+optional = false
+python-versions = "*"
+files = [
+    {file = "neapolitan-24.6-py2.py3-none-any.whl", hash = "sha256:2315b23fdfac09c380fd3e3899af237b77db702f60e6779e66dd9f133bce571b"},
+    {file = "neapolitan-24.6.tar.gz", hash = "sha256:0c84963a4b5cab2411952ee5bd939adbb8987ef27b3a53ca1399ab607b691cab"},
+]
+
+[package.dependencies]
+Django = "*"
+django-filter = "*"
+
+[package.extras]
+docs = ["Sphinx"]
+tests = ["coverage[toml]", "django_coverage_plugin"]
 
 [[package]]
 name = "packaging"
@@ -617,4 +710,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "b882bee05f651c2b2192722c1006d22773e6d8672795b22210bfbb59c7672b21"
+content-hash = "800da0c45931efd44f21f2389656e89dbe09dd9f6f583294cd124da2fcd02a40"

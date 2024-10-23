@@ -23,7 +23,11 @@
       {% endfor %}
     </fieldset>
     <div>
+      {% if voted is true %}
       <input type="submit" value="Vote">
+      {% else %}
+      <input type="submit" value="Vote again?">
+      {% endif %}
       <input type="reset" value="Clear">
     </div>
   </form>

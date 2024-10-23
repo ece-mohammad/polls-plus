@@ -347,6 +347,15 @@
   "fields": {
     "question": 9,
     "choice_text": "42",
+    "votes": 4
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 34,
+  "fields": {
+    "question": 9,
+    "choice_text": "30",
     "votes": 0
   }
 }
