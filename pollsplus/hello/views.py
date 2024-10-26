@@ -1,5 +1,5 @@
 from django.http import HttpRequest
-from vanilla import TemplateView
+from django.views.generic import TemplateView
 
 
 class HelloView(TemplateView):
