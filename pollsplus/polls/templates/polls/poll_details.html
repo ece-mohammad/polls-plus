@@ -23,7 +23,9 @@
       {% endfor %}
     </fieldset>
     <div>
-      {% if voted is true %}
+      {% if poll.is_closed_for_voting %}
+      <input type="submit" value="Poll closed" disabled>
+      {% elif voted is true %}
       <input type="submit" value="Vote">
       {% else %}
       <input type="submit" value="Vote again?">

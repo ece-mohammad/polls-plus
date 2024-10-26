@@ -19,14 +19,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from polls.views import owner_view, PollsHomeView
+
 
 urlpatterns = [
-    path("", PollsHomeView.as_view(), name="index"),
+    path("", include("home.urls")),
+    path("hello/", include("hello.urls")),
     path("admin/", admin.site.urls),
     path("polls/", include("polls.urls")),
     path("accounts/", include("django.contrib.auth.urls")),
-    path("owner/", owner_view, name="owner"),
 ]
 
 urlpatterns.extend(

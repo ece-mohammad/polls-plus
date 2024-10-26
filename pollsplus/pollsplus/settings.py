@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     "django_extensions",
     "debug_toolbar",
     "polls.apps.PollsConfig",
+    "home.apps.HomeConfig",
+    "hello.apps.HelloConfig",
 ]
 
 MIDDLEWARE = [

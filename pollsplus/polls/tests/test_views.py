@@ -49,10 +49,6 @@ class PollsHomeViewTest(TestCase):
             reverse_lazy("polls:polls_home")
         )
         self.assertEquals(response.status_code, 200)
-        self.assertContains(
-            response,
-            "foo"
-        )
         self.assertQuerySetEqual(response.context["polls"], [])
 
     def test_past_and_future_questions_expect_past_question(self):
@@ -105,6 +101,42 @@ class PollsHomeViewTest(TestCase):
             response.context["polls"],
             questions[::-1][:settings.RECENT_POLLS_SIZE]
         )
+
+    def test_past_question_with_no_choices_expect_not_in_view(self):
+        question = create_question(
+            "foo",
+            pub_date=timezone.now() + timedelta(days=-1)
+        )
+        response: HttpResponse = self.client.get(
+            reverse_lazy("polls:polls_home")
+        )
+        self.assertEquals(response.status_code, 200)
+        self.assertQuerySetEqual(response.context["polls"], [])
+
+    def test_past_question_with_one_choice_expect_not_in_view(self):
+        question = create_question(
+            "foo",
+            pub_date=timezone.now() + timedelta(days=-1),
+            choices=["bar"]
+        )
+        response: HttpResponse = self.client.get(
+            reverse_lazy("polls:polls_home")
+        )
+        self.assertEquals(response.status_code, 200)
+        self.assertQuerySetEqual(response.context["polls"], [])
+
+    def test_expired_question_expect_not_in_view(self):
+        question = create_question(
+            "foo",
+            choices=["bar", "ham", "spam"],
+            pub_date=timezone.now() + timedelta(days=-2),
+            exp_date=timezone.now() + timedelta(days=-1),
+        )
+        response: HttpResponse = self.client.get(
+            reverse_lazy("polls:polls_home")
+        )
+        self.assertEquals(response.status_code, 200)
+        self.assertQuerySetEqual(response.context["polls"], [])
 
 
 class PollsListViewTest(TestCase):
@@ -196,12 +228,37 @@ class PollsListViewTest(TestCase):
             questions[::-1]
         )
 
+    def test_expired_question_expect_in_view(self):
+        question = create_question(
+            "foo",
+            choices=["bar", "ham", "spam"],
+            pub_date=timezone.now() + timedelta(days=-2),
+            exp_date=timezone.now() + timedelta(days=-1),
+        )
+        response: HttpResponse = self.client.get(
+            reverse_lazy("polls:polls_list")
+        )
+        self.assertEquals(response.status_code, 200)
+        self.assertQuerySetEqual(response.context["polls"], [question])
+
+    def test_question_with_no_choices_expect_not_in_view(self):
+        question = create_question(
+            "foo",
+            pub_date=timezone.now() + timedelta(days=-2),
+            exp_date=timezone.now() + timedelta(days=-1),
+        )
+        response: HttpResponse = self.client.get(
+            reverse_lazy("polls:polls_list")
+        )
+        self.assertEquals(response.status_code, 200)
+        self.assertQuerySetEqual(response.context["polls"], [])
+
 
 class PollsDetailsViewTest(TestCase):
-    def test_details_expect_choices_text(self):
+    def test_poll_expect_question_text_and_choices_text(self):
         choices: List[str] = ["bar", "ham", "spam"]
         question: Question = create_question(
-            "foo",
+            "foo?",
             choices=choices,
         )
         response: HttpResponse = self.client.get(
@@ -214,6 +271,7 @@ class PollsDetailsViewTest(TestCase):
         )
 
         self.assertEquals(response.status_code, 200)
+        self.assertContains(response, question.question_text)
         for ch in choices:
             self.assertContains(response, ch)
 
@@ -228,7 +286,7 @@ class PollsDetailsViewTest(TestCase):
             reverse_lazy(
                 "polls:poll_vote",
                 kwargs={
-                    "poll_id": choice.id
+                    "poll_id": question.id
                 }
             ),
             data={"choice": 1},
@@ -239,9 +297,47 @@ class PollsDetailsViewTest(TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertEquals(choice.votes, 1)
 
+    def test_submitting_choice_expect_vote_again_button(self):
+        choices: List[str] = ["bar", "ham", "spam"]
+        question: Question = create_question(
+            "foo",
+            choices=choices
+        )
+        choice: Choice = question.choices.first()
+        response: HttpResponse = self.client.post(
+            reverse_lazy(
+                "polls:poll_vote",
+                kwargs={
+                    "poll_id": question.id
+                }
+            ),
+            data={"choice": 1},
+            follow=True
+        )
+        choice.refresh_from_db()
 
-class PollsResultsViewTest(TestCase):
-    ...
+        self.assertEquals(response.status_code, 200)
+        self.assertContains(response, "Vote again?")
+
+    def test_expired_question_expect_voting_is_not_enabled(self):
+        choices: List[str] = ["bar", "ham", "spam"]
+        question: Question = create_question(
+            "foo",
+            choices=choices,
+            pub_date=timezone.now() + timedelta(days=-2),
+            exp_date=timezone.now() + timedelta(days=-1),
+        )
+        response: HttpResponse = self.client.get(
+            reverse_lazy(
+                "polls:poll_details",
+                kwargs={
+                    "poll_id": question.id
+                }
+            )
+        )
+
+        self.assertEquals(response.status_code, 200)
+        self.assertContains(response, "Poll closed")
 
 
 class PollsVoteViewTest(TestCase):
@@ -251,8 +347,24 @@ class PollsVoteViewTest(TestCase):
     def test_vote_non_existent_question_expect_error_404(self):
         ...
 
-    def test_vote_non_existent_choice_expect_error_404(self):
+    def test_vote_non_existent_choice_id_expect_error_404(self):
         ...
 
     def test_vote_future_question_expect_error_not_allowed(self):
         ...
+
+    def test_vote_question_with_no_choices_expect_error_not_allowed(self):
+        ...
+
+    def test_vote_expired_question_expect_error_not_allowed(self):
+        ...
+
+    def test_vote_question_without_choice_id_expect_error_bad_request(self):
+        ...
+
+    def test_vote_choice_for_another_question_expect_error_404(self):
+        ...
+
+
+class PollsResultsViewTest(TestCase):
+    ...

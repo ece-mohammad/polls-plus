@@ -10,10 +10,9 @@ from django.http import (
     HttpResponse,
     HttpResponseNotAllowed,
     HttpResponseRedirect,
-    HttpResponseNotModified,
-    HttpResponseBadRequest,
+    HttpResponseBadRequest, HttpResponseNotFound,
 )
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import (
     ListView,
@@ -27,7 +26,7 @@ from polls.models import Question, Choice
 def owner_view(request: HttpRequest) -> HttpResponse:
     return HttpResponse(
         "Hello, world. {user_id} is the polls index.".format(
-            user_id="169c6230"
+            user_id="c3d67032"
         )
     )
 
@@ -88,8 +87,8 @@ class PollVoteView(UpdateView):
         url_kwargs = {"poll_id": poll_id}
 
         question = get_object_or_404(Question, id=poll_id)
-        if question.is_closed_for_voting():
-            return HttpResponseNotModified("Poll is closed.")
+        if not question.is_published() or question.is_closed_for_voting():
+            return HttpResponseNotAllowed("Poll is closed.")
 
         try:
             choice_id: int = int(request.POST["choice"])
@@ -99,13 +98,7 @@ class PollVoteView(UpdateView):
         try:
             choice: Choice = question.choices.get(id=choice_id)
         except Choice.DoesNotExist:
-            return render(
-                request,
-                PollDetailView.template_name,
-                {
-                    "errors": "Selected choice does not exist."
-                }
-            )
+            return HttpResponseNotFound("Choice was not found.")
 
         choice.votes += 1
         choice.save()
