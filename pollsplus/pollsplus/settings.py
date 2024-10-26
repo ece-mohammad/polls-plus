@@ -131,3 +131,5 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 RECENT_POLLS_SIZE: int = 5
+
+DJ4E_USER_ID = "c3d67032"

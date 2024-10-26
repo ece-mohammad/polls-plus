@@ -1,5 +1,6 @@
 from django.http import HttpRequest
 from django.views.generic import TemplateView
+from django.conf import settings
 
 
 class HelloView(TemplateView):
@@ -16,5 +17,5 @@ class HelloView(TemplateView):
         rsp = super().dispatch(request, *args, **kwargs)
         dj4e_cookie = request.COOKIES.get("dj4e_cookie")
         if dj4e_cookie is None:
-            rsp.set_cookie("dj4e_cookie", "c3d67032")
+            rsp.set_cookie("dj4e_cookie", settings.DJ4E_USER_ID)
         return rsp
