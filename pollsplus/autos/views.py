@@ -3,13 +3,14 @@ from django.urls import reverse_lazy
 from django.views.generic import (
     ListView, DetailView, CreateView, UpdateView, DeleteView
 )
-from autos.forms import AutoForm
+
+from autos.forms import AutoForm, MakeForm
 from autos.models import Make, Auto
 
 
 # Create your views here.
 class MakeRedirectView:
-    success_url = reverse_lazy("autos:autos_list")
+    success_url = reverse_lazy("autos:auto_list")
 
 
 class MakeListView(LoginRequiredMixin, ListView):
@@ -22,13 +23,13 @@ class MakeDetailView(LoginRequiredMixin, DetailView):
 
 class MakeCreateView(LoginRequiredMixin, MakeRedirectView, CreateView):
     model = Make
-    fields = "__all__"
+    form_class = MakeForm
     template_name = "autos/make_create.html"
 
 
 class MakeUpdateView(LoginRequiredMixin, MakeRedirectView, UpdateView):
     model = Make
-    fields = "__all__"
+    form_class = MakeForm
     template_name = "autos/make_update.html"
 
 
