@@ -9,7 +9,7 @@ from autos.models import Make, Auto
 
 # Create your views here.
 class MakeRedirectView:
-    success_url = reverse_lazy("autos:make_list")
+    success_url = reverse_lazy("autos:autos_list")
 
 
 class MakeListView(LoginRequiredMixin, ListView):
