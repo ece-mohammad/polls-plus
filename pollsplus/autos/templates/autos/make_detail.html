@@ -1,0 +1,26 @@
+{% extends "autos/base.html" %}
+
+{% block title %}Car Make{% endblock %}
+
+{% block content %}
+
+<h1>Car Make</h1>
+
+<p>
+  <strong>Name:</strong> {{ make.name }}
+</p>
+
+<div>
+  <a href="{% url 'autos:make_update' pk=make.pk %}">Edit</a>
+</div>
+<div>
+  <a href="{% url 'autos:make_delete' pk=make.pk %}">Delete</a>
+</div>
+<div>
+  <a href="{% url 'autos:make_create' %}">Add Make</a>
+</div>
+<p>
+  <a href="{% url 'autos:make_list' %}">Back to makes</a>
+</p>
+
+{% endblock %}

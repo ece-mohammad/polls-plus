@@ -1,0 +1,42 @@
+{% extends "autos/base.html" %}
+
+{%  block title %}Auto Details{% endblock %}
+
+{% block content %}
+
+<h1>Auto Details</h1>
+
+<table>
+  <tr>
+    <th>Make</th>
+    <td>{{ auto.make }}</td>
+  </tr>
+  <tr>
+    <th>Nickname</th>
+    <td>{{ auto.nickname }}</td>
+  </tr>
+  <tr>
+    <th>Mileage</th>
+    <td>{{ auto.mileage }}</td>
+  </tr>
+  <tr>
+    <th>Comments</th>
+    <td>{%if auto.comments %}{{ auto.comments }}{% else %}No comments{% endif %}
+    </td>
+  </tr>
+</table>
+
+<div>
+  <a href="{% url 'autos:auto_update' pk=auto.pk %}">Edit</a>
+</div>
+<div>
+  <a href="{% url 'autos:auto_delete' pk=auto.pk %}">Delete</a>
+</div>
+<div>
+  <a href="{% url 'autos:auto_create' %}">Add Auto</a>
+</div>
+<div>
+  <a href="{% url 'autos:auto_list' %}">Back to autos</a>
+</div>
+
+{% endblock %}

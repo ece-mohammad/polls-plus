@@ -3,8 +3,7 @@
   <component name="de.achimonline.quickjinja.settings.QuickJinjaProjectSettingsState">
     <option name="settings">
       <QuickJinjaProjectSettings>
-        <option name="resultViewMode" value="HTML" />
-        <option name="templateFilePath" value="$PROJECT_DIR$/pollsplus/polls/tests/test_views.py" />
+        <option name="templateFilePath" value="$PROJECT_DIR$/pollsplus/cars/views.py" />
       </QuickJinjaProjectSettings>
     </option>
   </component>

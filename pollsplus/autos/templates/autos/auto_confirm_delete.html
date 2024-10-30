@@ -1,0 +1,25 @@
+{% extends "autos/base.html" %}
+
+{% block title %}Delete Auto{% endblock %}
+
+{% block content %}
+
+<h1>Delete Auto</h1>
+
+<div>
+  <form method="post" action="">
+    {% csrf_token %}
+    <p>Are you sure you want to delete the following auto: <strong>{{ model.nickname }}</strong></p>
+    <br>
+    <div>
+      <input type="submit" value="Confirm">
+    </div>
+    <div>
+      <button type="reset" onclick="location='{% url 'autos:auto_list' %}'">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

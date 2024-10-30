@@ -1,0 +1,24 @@
+{% extends "autos/base.html" %}
+
+{% block title %}Add Auto{% endblock %}
+
+{% block content %}
+
+<h1>Add Auto</h1>
+
+<div>
+  <form method="post" action="">
+    {% csrf_token %}
+    <fieldset>
+      {{ form.as_p }}
+    </fieldset>
+    <div>
+      <input type="submit" value="Add">
+    </div>
+    <div>
+      <input type="button" value="Cancel" onclick="location='{% url 'autos:auto_list' %}'">
+    </div>
+  </form>
+</div>
+
+{% endblock %}

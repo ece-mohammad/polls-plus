@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Home</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
 <h1>Applications</h1>
 <ul>
   <li><p><a href="/polls">A Polls Application</a></p></li>
   <li><p><a href="/hello">Hello, Session & Cookies</a></p></li>
+  <li><p><a href="/autos">Autos</a></p></li>
 </ul>
-</body>
-</html>
+{% endblock %}
+
+{% block footer %}
+Made with Django, Bootstrap and PyCharm.
+{% endblock %}

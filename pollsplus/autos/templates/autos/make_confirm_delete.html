@@ -1,0 +1,23 @@
+{% extends "autos/base.html" %}
+
+{% block title %}Delete Car Make{% endblock %}
+
+{% block content %}
+
+<h1>Delete Car Make</h1>
+
+<form method="post" action="">
+  {% csrf_token %}
+  <p>Are you sure you want to delete the following car make: <strong>{{ make.name }}</strong></p>
+  <br>
+  <div>
+    <input type="submit" value="Confirm">
+  </div>
+  <div>
+    <button type="reset" onclick="location='{% url 'autos:make_list' %}'">
+      Cancel
+    </button>
+  </div>
+</form>
+
+{% endblock %}
