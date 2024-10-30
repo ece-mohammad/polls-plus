@@ -52,9 +52,8 @@ INSTALLED_APPS = [
     "home.apps.HomeConfig",
     "hello.apps.HelloConfig",
     "autos.apps.AutosConfig",
-    "accounts.apps.AccountsConfig",
-    "pomodoro.apps.PomodoroConfig",
-
+    # "accounts.apps.AccountsConfig",
+    # "pomodoro.apps.PomodoroConfig",
 ]
 
 MIDDLEWARE = [
