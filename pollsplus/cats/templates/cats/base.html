@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+<div>
+  <a href="{% url 'cats:cats_list' %}">Cats</a>
+</div>
+<div>
+  <a href="{% url 'cats:breeds_list' %}">Breeds</a>
+</div>
+{% endblock %}

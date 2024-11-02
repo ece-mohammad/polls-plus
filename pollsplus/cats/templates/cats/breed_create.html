@@ -1,0 +1,24 @@
+{% extends "cats/base.html" %}
+
+{% block title %}Add Breed{% endblock %}
+
+{% block content %}
+
+<h1>Add Breed</h1>
+
+<div>
+  <form method="post" action="">
+    {% csrf_token %}
+    <fieldset>
+      {{ form.as_p }}
+    </fieldset>
+    <div>
+      <input type="submit" value="Submit">
+    </div>
+    <div>
+      <input type="button" value="Cancel" onclick="location='{% url 'cats:cats_list' %}'">
+    </div>
+  </form>
+</div>
+
+{% endblock %}

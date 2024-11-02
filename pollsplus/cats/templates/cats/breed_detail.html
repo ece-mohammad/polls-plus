@@ -1,0 +1,26 @@
+{% extends "cats/base.html" %}
+
+{% block title %}Cat Breed{% endblock %}
+
+{% block content %}
+
+<h1>Cat Breed</h1>
+
+<p>
+  <strong>Name:</strong> {{ breed.name }}
+</p>
+
+<div>
+  <a href="{% url 'cats:breed_update' pk=breed.pk %}">Edit</a>
+</div>
+<div>
+  <a href="{% url 'cats:breed_delete' pk=breed.pk %}">Delete</a>
+</div>
+<div>
+  <a href="{% url 'cats:breed_create' %}">Add Breed</a>
+</div>
+<p>
+  <a href="{% url 'cats:breeds_list' %}">Back to breeds</a>
+</p>
+
+{% endblock %}

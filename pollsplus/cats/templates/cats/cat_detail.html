@@ -1,0 +1,41 @@
+{% extends "cats/base.html" %}
+
+{%  block title %}Cat Details{% endblock %}
+
+{% block content %}
+
+<h1>Cat Details</h1>
+
+<table>
+  <tr>
+    <th>Nickname</th>
+    <td>{{ cat.nickname }}</td>
+  </tr>
+  <tr>
+    <th>Breed</th>
+    <td>{{ cat.breed }}</td>
+  </tr>
+  <tr>
+    <th>Weight</th>
+    <td>{{ cat.weight }} lb{{ cat.weight|pluralize }}</td>
+  </tr>
+  <tr>
+    <th>Food</th>
+    <td>{{ cat.foods }}</td>
+  </tr>
+</table>
+
+<div>
+  <a href="{% url 'cats:cat_update' pk=cat.pk %}">Edit</a>
+</div>
+<div>
+  <a href="{% url 'cats:cat_delete' pk=cat.pk %}">Delete</a>
+</div>
+<div>
+  <a href="{% url 'cats:cat_create' %}">Add Cat</a>
+</div>
+<div>
+  <a href="{% url 'cats:cats_list' %}">Back to cats</a>
+</div>
+
+{% endblock %}
