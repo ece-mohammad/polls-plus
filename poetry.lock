@@ -522,6 +522,16 @@ files = [
 tests = ["pytest"]
 
 [[package]]
+name = "pybase62"
+version = "1.0.0"
+description = "Python module for base62 encoding"
+optional = false
+python-versions = "*"
+files = [
+    {file = "pybase62-1.0.0-py3-none-any.whl", hash = "sha256:60539ad956ec9e9de091bc7ae88c9550bc2fa17f503050cf34d021b75e73cb27"},
+]
+
+[[package]]
 name = "pygments"
 version = "2.18.0"
 description = "Pygments is a syntax highlighting package written in Python."
@@ -739,4 +749,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "52a58bbad77b8590dcfe804c6be41f76cba0486e94c32c388a49b29e2e4dd881"
+content-hash = "5e43d0ab2edaf523c36a16263c6eb259ac893ed19092f0b49ce080c5dd0ea4e3"

@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "hello.apps.HelloConfig",
     "autos.apps.AutosConfig",
     "cats.apps.CatsConfig",
+    "short_url.apps.ShortUrlConfig",
     # "accounts.apps.AccountsConfig",
     # "pomodoro.apps.PomodoroConfig",
 ]
@@ -149,3 +150,5 @@ LOGOUT_REDIRECT_URL = "/"
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+MAX_SHORT_URL: int = 10

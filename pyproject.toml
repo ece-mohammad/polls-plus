@@ -26,6 +26,7 @@ neapolitan = "^24.6"
 django-filter = "^24.3"
 django-crispy-forms = "^2.3"
 crispy-bootstrap4 = "^2024.10"
+pybase62 = "^1.0.0"
 
 
 [build-system]

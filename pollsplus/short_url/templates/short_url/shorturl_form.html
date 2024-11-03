@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Short URL{% endblock %}
+
+{% block content %}
+
+{% if url is not None %}
+<section>
+  <p>Result:
+    <a href="{{ url }}">{{ url }}</a>
+  </p>
+</section>
+{% endif %}
+
+<section>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div>
+      <input type="submit" value="Submit">
+    </div>
+    <div>
+      <input type="reset" value="Clear">
+    </div>
+    <div>
+      <p>
+        Short URLs are valid for 30 days.
+      </p>
+    </div>
+  </form>
+</section>
+
+{% endblock %}
