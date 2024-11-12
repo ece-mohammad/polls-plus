@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Add New Question</title>
-</head>
-<body>
+{%  extends "polls/base.html" %}
+
+{% block title %}Add New Question{% endblock %}
+
+{% block content %}
+
 <h1>Add Question</h1>
 
 <form method="POST" action="{% url 'polls:polls_new' %}">
@@ -14,5 +13,4 @@
   <button onclick="">Cancel</button>
 </form>
 
-</body>
-</html>
+{% endblock %}

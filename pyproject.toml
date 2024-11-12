@@ -17,7 +17,6 @@ pytest = "^8.3.3"
 pytest-django = "^4.9.0"
 pytest-xdist = "^3.6.1"
 pytest-sugar = "^1.0.0"
-django-test-plus = "^2.2.4"
 django-robots = "^6.1"
 django-redirects = "^0.6.0"
 django-extra-views = "^0.15.0"
@@ -27,7 +26,15 @@ django-filter = "^24.3"
 django-crispy-forms = "^2.3"
 crispy-bootstrap4 = "^2024.10"
 pybase62 = "^1.0.0"
+mysqlclient = "^2.2.5"
 
+
+[tool.poetry.group.dev.dependencies]
+django-test-plus = "^2.2.4"
+pytest-django = "^4.9.0"
+pytest = "^8.3.3"
+pytest-xdist = "^3.6.1"
+pytest-sugar = "^1.0.0"
 
 [build-system]
 requires = ["poetry-core"]
