@@ -1,4 +1,5 @@
-{% load crispy_forms_tags %}
+{% load static %}
+{% load app_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +20,16 @@
         href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
   <link rel="stylesheet"
         href="https://use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+  <link rel="icon" type="image/png"
+        href="{% static 'favicon/favicon-96x96.png' %}" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml"
+        href="{% static 'favicon/favicon.svg' %}" />
+  <link rel="shortcut icon"
+        href="{% static 'favicon/favicon.ico' %}" />
+  <link rel="apple-touch-icon" sizes="180x180"
+        href="{% static 'favicon/apple-touch-icon.png' %}" />
+  <link rel="manifest"
+        href="{% static 'favicon/site.webmanifest' %}" />
   <title>{% block title %}Home{% endblock %} | DJ4E Projects</title>
 </head>
 <body>
@@ -36,6 +47,7 @@
         {% if user.is_authenticated %}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img style="width: 25px;" src="{{ user|gravatar:60 }}"/>
             <b class="caret">{{ user.username }}</b>
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

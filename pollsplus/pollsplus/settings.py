@@ -56,6 +56,10 @@ INSTALLED_APPS = [
     "polls.apps.PollsConfig",
     "autos.apps.AutosConfig",
     "cats.apps.CatsConfig",
+    "short_url.apps.ShortUrlConfig",
+    "ads.apps.AdsConfig",
+    # "accounts.apps.AccountsConfig",
+    # "pomodoro.apps.PomodoroConfig",
 ]
 
 MIDDLEWARE = [
@@ -86,6 +90,9 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
             ],
+            "libraries": {
+                "app_tags": "ads.templatetags.app_tags",
+            },
         },
     },
 ]
@@ -100,6 +107,16 @@ DATABASES = {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME"  : BASE_DIR / "db.sqlite3",
     }
+    # "default": {
+    #     "ENGINE": "django.db.backends.mysql",
+    #     "NAME": "pollsplus",
+    #     "PASSWORD": "M3t4n0!d3&007.5",
+    #     "USER": "spaghetticheff",
+    #     "HOST": "localhost",
+    #     "OPTIONS": {
+    #         "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+    #     },
+    # }
 }
 
 # Password validation
@@ -123,9 +140,30 @@ AUTH_PASSWORD_VALIDATORS = [
 # caching
 CACHES = {
     "default": {
+        # "BACKEND": "django.core.cache.backends.memcached.PyMemcacheCache",
+        # "LOCATION": "127.0.0.1:11211",
         "BACKEND": "django.core.cache.backends.dummy.DummyCache",
     }
 }
+
+# memcached
+# CACHES = {
+#     "default": {
+#         # "BACKEND": "django.core.cache.backends.memcached.PyMemcacheCache",
+#         # "LOCATION": "127.0.0.1:11211",
+#     }
+# }
+
+# redis
+# CACHES = {
+# "default": {
+#     "BACKEND": "django_redis.cache.RedisCache",
+#     "LOCATION": "redis://127.0.0.1:6379/1",
+#     "OPTIONS": {
+#         "CLIENT_CLASS": "django_redis.client.DefaultClient",
+#     }
+# }
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -142,6 +180,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = "static/"
+
+STATICFILES_DIRS = [
+    str(BASE_DIR / 'static')
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
