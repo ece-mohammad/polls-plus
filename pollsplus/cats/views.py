@@ -39,7 +39,11 @@ class BreedDeleteView(LoginRequiredMixin, DeleteView):
 
 class CatListView(LoginRequiredMixin, ListView):
     model = Cat
-    extra_context = {"breed_count": Breed.objects.count()}
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["breed_count"] = Breed.objects.count()
+        return context
 
 
 class CatDetailView(LoginRequiredMixin, DetailView):

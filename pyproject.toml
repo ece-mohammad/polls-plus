@@ -27,7 +27,21 @@ django-filter = "^24.3"
 django-crispy-forms = "^2.3"
 crispy-bootstrap4 = "^2024.10"
 pybase62 = "^1.0.0"
+mysqlclient = "^2.2.5"
+pillow = "^11.1.0"
+pymemcache = "^4.0.0"
+django-redis = "^5.4.0"
+redis = "^5.2.1"
+whitenoise = "^6.8.2"
+django-simple-history = "^3.7.0"
 
+
+[tool.poetry.group.dev.dependencies]
+django-test-plus = "^2.2.4"
+pytest-django = "^4.9.0"
+pytest = "^8.3.3"
+pytest-xdist = "^3.6.1"
+pytest-sugar = "^1.0.0"
 
 [build-system]
 requires = ["poetry-core"]
@@ -35,7 +49,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "pollsplus.settings"
-python_files = ["test_*.py", "*_test.py"]
+python_files = ["test_*.py", "*_test.py", "tests.py"]
 required_plugins = ["pytest-django"]
 addopts = "-x -l --no-header --fail-on-template-vars"
 filterwarnings = ["ignore::DeprecationWarning"]

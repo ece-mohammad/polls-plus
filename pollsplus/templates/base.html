@@ -1,3 +1,4 @@
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,36 +22,40 @@
   <title>{% block title %}Home{% endblock %} | DJ4E Projects</title>
 </head>
 <body>
-<section>
-  {% block header %}
-  <a href="/"><h1>DJ4E Projects</h1></a>
-  {% endblock %}
-</section>
 <nav>
-  <div>
-    {% block navbar %}
-    {% endblock %}
-  </div>
-  <div>
-    {% if user.is_authenticated %}
-    <div>
-      <a href="/">Home</a>
+  {% block navbar %}
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">DJ4E Projects</a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ app_url }}">{{ app_name }}</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        {% if user.is_authenticated %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <b class="caret">{{ user.username }}</b>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <li>
+              <form action="{% url 'logout' %}?next={{ request.get_full_path }}" method="post">
+                <button type="submit" class="dropdown-item">Logout</button>
+                {% csrf_token %}
+              </form>
+            </li>
+          </ul>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}?next={{ request.get_full_path }}">Login</a>
+        </li>
+        {% endif %}
+      </ul>
     </div>
-    <div>
-      <a href="#">{{ user.username }}</a>
-    </div>
-    <div>
-      <form action="{% url 'logout' %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Logout</button>
-      </form>
-    </div>
-    {% else %}
-    <div>
-      <a href="{% url 'login' %}">Login</a>
-    </div>
-    {% endif %}
-  </div>
+  </nav>
+  {% endblock %}
 </nav>
 <aside>
   {% block sidebar %}

@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Polls+ | All</title>
-</head>
-<body>
+{% extends "polls/base.html" %}
+
+{% block title %}Polls+ | All Polls{% endblock %}
+
+{% block content %}
+
 <header>Polls+</header>
 
 <section>
@@ -26,6 +25,4 @@
   {% endif %}
 </section>
 
-<footer>Powered by Django</footer>
-</body>
-</html>
+{% endblock %}

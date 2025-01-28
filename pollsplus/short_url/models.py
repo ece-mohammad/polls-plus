@@ -2,6 +2,7 @@ from django.conf import settings
 from django.core.validators import MinLengthValidator
 from django.db import models
 from django.utils.crypto import get_random_string
+from simple_history.models import HistoricalRecords
 
 
 class ShortURL(models.Model):
@@ -16,6 +17,7 @@ class ShortURL(models.Model):
     )
     slug = models.SlugField(max_length=MAX_SLUG_LEN, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    history = HistoricalRecords()
 
     def save(self, *args, **kwargs):
         if not self.slug:
