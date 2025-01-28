@@ -43,7 +43,11 @@ class AutoRedirectView:
 
 class AutoListView(LoginRequiredMixin, ListView):
     model = Auto
-    extra_context = {"make_count": Make.objects.count()}
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["make_count"] = Make.objects.count()
+        return context
 
 
 class AutoDetailView(LoginRequiredMixin, DetailView):

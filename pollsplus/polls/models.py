@@ -10,6 +10,7 @@ from datetime import timedelta
 from django.db import models
 from django.db.models import QuerySet
 from django.utils import timezone
+from simple_history.models import HistoricalRecords
 
 """
 from django.contrib.auth.models import User, Permission, Group
@@ -138,6 +139,7 @@ class Question(models.Model):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField("Date the poll is available for voting.")
     exp_date = models.DateTimeField("Date the poll is closed for voting.")
+    history = HistoricalRecords()
 
     # managers
     objects = DefaultPollsManager()
@@ -183,6 +185,7 @@ class Choice(models.Model):
     )
     choice_text = models.CharField(max_length=200)
     votes = models.IntegerField(default=0)
+    history = HistoricalRecords()
 
     def __str__(self):
         return self.choice_text

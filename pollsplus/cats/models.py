@@ -1,5 +1,6 @@
 from django.core.validators import MinLengthValidator
 from django.db import models
+from simple_history.models import HistoricalRecords
 
 
 # Create your models here.
@@ -15,6 +16,7 @@ class Breed(models.Model):
             )
         ]
     )
+    history = HistoricalRecords()
 
     def __str__(self):
         return self.name
@@ -35,6 +37,7 @@ class Cat(models.Model):
     )
     weight = models.PositiveIntegerField()
     foods = models.CharField(max_length=200)
+    history = HistoricalRecords()
 
     def __str__(self):
         return self.nickname

@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinLengthValidator
+from simple_history.models import HistoricalRecords
 
 # Create your models here.
 class Make(models.Model):
@@ -11,6 +12,7 @@ class Make(models.Model):
         null=False,
         unique=True
     )
+    history = HistoricalRecords()
 
     def __str__(self):
         return self.name
@@ -31,6 +33,7 @@ class Auto(models.Model):
     )
     mileage = models.IntegerField()
     comments = models.TextField(blank=True, max_length=300)
+    history = HistoricalRecords()
 
     def __str__(self):
         return self.nickname

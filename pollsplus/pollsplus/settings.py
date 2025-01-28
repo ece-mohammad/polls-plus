@@ -29,6 +29,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+APP_NAME = "DJ4E Projects"
+
 INTERNAL_IPS = [
     "127.0.0.1"
 ]
@@ -48,14 +50,12 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "crispy_forms",
     "crispy_bootstrap4",
-    "polls.apps.PollsConfig",
+    "simple_history",
     "home.apps.HomeConfig",
     "hello.apps.HelloConfig",
+    "polls.apps.PollsConfig",
     "autos.apps.AutosConfig",
     "cats.apps.CatsConfig",
-    "short_url.apps.ShortUrlConfig",
-    # "accounts.apps.AccountsConfig",
-    # "pomodoro.apps.PomodoroConfig",
 ]
 
 MIDDLEWARE = [
@@ -67,6 +67,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    'simple_history.middleware.HistoryRequestMiddleware',
 ]
 
 ROOT_URLCONF = "pollsplus.urls"
@@ -118,6 +119,13 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+# caching
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.dummy.DummyCache",
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/

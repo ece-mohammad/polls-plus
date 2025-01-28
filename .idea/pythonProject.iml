@@ -14,9 +14,10 @@
       <sourceFolder url="file://$MODULE_DIR$/pollsplus/pomodoro" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/pollsplus/cats" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/pollsplus/short_url" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pollsplus/ads" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.11 (PollsPlus)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.11 virtualenv at ~/Projects/PythonProject/PollsPlus/.venv" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
