@@ -54,10 +54,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <li>
-              <form action="{% url 'logout' %}?next={{ request.get_full_path }}" method="post">
-                <button type="submit" class="dropdown-item">Logout</button>
-                {% csrf_token %}
-              </form>
+                <a  href="{% url 'custom_logout' %}?next={{ request.get_full_path }}" style="text-decoration: none;">Logout</a>
             </li>
           </ul>
         </li>
