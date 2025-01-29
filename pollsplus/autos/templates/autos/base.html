@@ -1,9 +1,4 @@
 {% extends "base.html" %}
-{% block navbar %}
-<div>
-  <a href="{% url 'autos:auto_list' %}">Autos</a>
-</div>
-<div>
-  <a href="{% url 'autos:make_list' %}">Makes</a>
-</div>
-{% endblock %}
+
+{% block app_name %}Autos{% endblock %}
+{% block app_url %}{% url 'autos:auto_list' %}{% endblock %}

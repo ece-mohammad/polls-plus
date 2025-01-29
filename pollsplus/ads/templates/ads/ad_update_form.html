@@ -1,0 +1,18 @@
+{% extends "ads/base.html" %}
+
+{% block content %}
+
+<section>
+  <h2>Update your ad</h2>
+  <form action="{% url 'ads:ad_update' pk=ad.id %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+      {{ form.as_p }}
+    </fieldset>
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+    <button type="button" onclick="window.location.href='{% url 'ads:ad_details' pk=ad.id %}'">Cancel</button>
+  </form>
+</section>
+
+{% endblock %}

@@ -1,5 +1,4 @@
 {% extends "base.html" %}
 
-{% block navbar %}
-<a href="{% url 'polls:polls_home' %}">Polls+</a>
-{% endblock %}
+{% block app_name %}Polls+{% endblock %}
+{% block app_url %}{% url 'polls:polls_home' %}{% endblock %}

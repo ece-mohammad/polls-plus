@@ -1,17 +1,50 @@
 {% extends "base.html" %}
 
+{% block app_name %}Home{% endblock %}
+{% block app_url %}{% url 'home:home' %}{% endblock %}
+
+{% block custom_styles %}
+<style>
+    .list-group-flush .list-group-item:nth-child(odd) {
+        background-color: rgba(0,0,0,.03);
+    }
+    .list-group-flush .list-group-item:nth-child(even) {
+        background-color: rgba(0,0,0,.06);
+    }
+    .list-group-flush .list-group-item:hover {
+        background-color: rgba(0,0,0,.1);
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<h1>Applications</h1>
-<ul>
-  <li><p><a href="/polls">Polls+</a></p></li>
-  <li><p><a href="/hello">Hello, Session & Cookies</a></p></li>
-  <li><p><a href="/autos">Autos</a></p></li>
-  <li><p><a href="/cats">Cats</a></p></li>
-  <li><p><a href="/ads">Ads</a></p></li>
-  <li><p><a href="/shrt">Short URL</a></p></li>
-</ul>
+<div class="container mt-5">
+  <h1 class="mb-4">Applications</h1>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item list-group-item-action">
+      <a href="/polls" class="text-decoration-none">Polls+</a>
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <a href="/hello" class="text-decoration-none">Reloadinator</a>
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <a href="/autos" class="text-decoration-none">Autos</a>
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <a href="/cats" class="text-decoration-none">Cats</a>
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <a href="/ads" class="text-decoration-none">Ads</a>
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <a href="/shrt" class="text-decoration-none">Short URL</a>
+    </li>
+  </ul>
+</div>
 {% endblock %}
 
 {% block footer %}
-Made with Django, Bootstrap and PyCharm.
+<div class="text-center mt-4">
+  <small class="text-muted">Made with Django, Bootstrap, and PyCharm.</small>
+</div>
 {% endblock %}

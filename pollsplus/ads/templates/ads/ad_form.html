@@ -1,0 +1,19 @@
+{% extends "ads/base.html" %}
+
+{% block content %}
+
+<section>
+  <h2>Advertise with us</h2>
+  <p>Fill out the form below to advertise with us.</p>
+  <form action="{% url 'ads:ad_create' %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+      {{ form.as_p }}
+    </fieldset>
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+    <button type="button" onclick="window.location.href='{% url 'ads:home' %}'">Cancel</button>
+  </form>
+</section>
+
+{% endblock %}

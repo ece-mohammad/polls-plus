@@ -1,12 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Hello</title>
-</head>
-<body>
-<div>
-  <p>view count={{ view_count }}</p>
+{% extends "base.html" %}
+
+{% block app_name %}Reloadinator{% endblock %}
+{% block app_url %}{% url 'hello:hello' %}{% endblock %}
+
+{% block title %}Reloadinator{% endblock %}
+
+{% block custom_styles %}
+<style>
+  .pulsate {
+      animation: pulse 1.5s infinite;
+      margin-top: 20px;
+  }
+  @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <h2 class="card-title mb-0 text-center">
+            <i class="bi bi-hand-wave"></i>
+            Reloadinator
+          </h2>
+        </div>
+        <div class="card-body text-center py-4">
+          <div class="display-4 mb-3">
+            <span class="badge bg-success rounded-pill">
+              {{ view_count }}
+            </span>
+          </div>
+          <p class="text-muted mb-0">
+            Reloads since your last moment of productivity
+          </p>
+          <p class="text-muted mb-0">
+            (PS: Reload for some ✨ shinies ✨)
+          </p>
+          <div class="alert
+            {% if view_count < 4 %}alert-info
+            {% elif view_count < 7 %}alert-warning
+            {% elif view_count < 10 %}alert-danger
+            {% else %}alert-dark {% endif %}
+            mt-3 animate__animated animate__fadeIn">
+            {{ message }}
+
+            {% if view_count > 15 %}
+              <div class="mt-2 fs-6">
+                (System Note: Please consider sunlight 🌞)
+              </div>
+            {% endif %}
+            {% if view_count > 20 %}
+              <div>
+                <span class="badge bg-danger pulsate">
+                  <i class="bi bi-exclamation-octagon"></i> CRITICAL
+                </span>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="card-footer text-center small">
+          Session & Cookies Demo
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-</body>
-</html>
+{% endblock %}

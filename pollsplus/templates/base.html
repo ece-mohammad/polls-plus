@@ -30,17 +30,19 @@
         href="{% static 'favicon/apple-touch-icon.png' %}" />
   <link rel="manifest"
         href="{% static 'favicon/site.webmanifest' %}" />
-  <title>{% block title %}Home{% endblock %} | DJ4E Projects</title>
+  <title>{% block title %}Home{% endblock %} | Django Projects</title>
+  {% block custom_styles %}
+  {% endblock %}
 </head>
 <body>
 <nav>
   {% block navbar %}
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">DJ4E Projects</a>
+      <a class="navbar-brand" href="/">Django Projects</a>
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="{{ app_url }}">{{ app_name }}</a>
+          <a class="nav-link" href="{% block app_url %}{% endblock %}">{% block app_name %}{% endblock %}</a>
         </li>
       </ul>
       <ul class="navbar-nav">
