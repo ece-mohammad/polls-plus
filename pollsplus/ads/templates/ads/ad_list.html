@@ -4,11 +4,10 @@
 
 <h1>Ads</h1>
 {% if ad_list %}
-{% for ad in ad_list %}
 <ul class="list-group">
-  <li class="list-group-item">
-    {{ ad.title }}: {{ ad.text | truncatewords:30 }}
-    <a href="{% url 'ads:ad_details' pk=ad.id %}">Read more...</a>
+{% for ad in ad_list %}
+  <li class="list-group-item list-group-item-action">
+    <a href="{% url 'ads:ad_details' pk=ad.id %}">{{ ad.title }}</a>
     {% if user.is_authenticated %}
       {% if user == ad.owner %}
         <a href="{% url 'ads:ad_update' pk=ad.id %}">Edit</a>
@@ -16,8 +15,8 @@
       {% endif %}
     {% endif %}
   </li>
+  {% endfor %}
 </ul>
-{% endfor %}
 {% else %}
 <p>There are no ads in the database.</p>
 {% endif %}
