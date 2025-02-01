@@ -49,8 +49,6 @@ INSTALLED_APPS = [
     "django_werkzeug",
     "django_extensions",
     "debug_toolbar",
-    "crispy_forms",
-    "crispy_bootstrap4",
     "simple_history",
     "home.apps.HomeConfig",
     "hello.apps.HelloConfig",
@@ -61,6 +59,7 @@ INSTALLED_APPS = [
     "ads.apps.AdsConfig",
     # "accounts.apps.AccountsConfig",
     # "pomodoro.apps.PomodoroConfig",
+    "widget_tweaks",
 ]
 
 MIDDLEWARE = [
@@ -197,9 +196,5 @@ DJ4E_USER_ID = "c3d67032"
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
-
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
-
-CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 MAX_SHORT_URL: int = 10

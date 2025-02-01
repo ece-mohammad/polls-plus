@@ -1,25 +1,73 @@
 {% extends "ads/base.html" %}
 
 {% block content %}
+<section class="mt-5">
+  <div class="container">
+    <h1 class="mb-4 text-center">Ads</h1>
 
-<h1>Ads</h1>
-{% if ad_list %}
-<ul class="list-group">
-{% for ad in ad_list %}
-  <li class="list-group-item list-group-item-action">
-    <a href="{% url 'ads:ad_details' pk=ad.id %}">{{ ad.title }}</a>
-    {% if user.is_authenticated %}
-      {% if user == ad.owner %}
-        <a href="{% url 'ads:ad_update' pk=ad.id %}">Edit</a>
-        <a href="{% url 'ads:ad_delete' pk=ad.id %}">Delete</a>
-      {% endif %}
+    {% if ad_list %}
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      {% for ad in ad_list %}
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <!-- Placeholder for Image -->
+          <div class="card-img-top bg-light d-flex justify-content-center align-items-center" style="height: 200px;">
+            <p class="text-muted">Image coming soon</p>
+            <!-- <img src="https://via.placeholder.com/300" class="card-img-top" alt="{{ ad.title }} image"> -->
+            </div>
+
+          <div class="card-body">
+            <!-- Ad Title -->
+            <h5 class="card-title">
+              <a href="{% url 'ads:ad_details' pk=ad.id %}" class="text-decoration-none">{{ ad.title }}</a>
+            </h5>
+
+            <!-- Ad Description Preview -->
+            <p class="card-text">
+              {{ ad.text|truncatewords:20 }}
+            </p>
+
+            <!-- Price -->
+            <p class="text-success fw-bold mb-2">
+              {{ ad.price }}
+            </p>
+
+            <!-- Owner and Created Date -->
+            <small class="text-muted">
+              Posted by <strong>{{ ad.owner.username }}</strong> on {{ ad.created_at|date:"F j, Y" }}
+            </small>
+          </div>
+
+          <!-- Action Buttons for Owner -->
+          <div class="card-footer d-flex justify-content-between">
+            {% if user.is_authenticated and user == ad.owner %}
+            <div>
+              <a href="{% url 'ads:ad_update' pk=ad.id %}" class="btn btn-sm btn-outline-warning">
+                Edit
+              </a>
+              <a href="{% url 'ads:ad_delete' pk=ad.id %}" class="btn btn-sm btn-outline-danger">
+                Delete
+              </a>
+            </div>
+            {% endif %}
+            <a href="{% url 'ads:ad_details' pk=ad.id %}" class="btn btn-sm btn-primary">
+              View Details
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-center mt-4">There are no ads in the database.</p>
     {% endif %}
-  </li>
-  {% endfor %}
-</ul>
-{% else %}
-<p>There are no ads in the database.</p>
-{% endif %}
-<a href="{% url 'ads:ad_create' %}">Create Ad</a>
 
+    <!-- Create Ad Button -->
+    <div class="text-center mt-5">
+      <a href="{% url 'ads:ad_create' %}" class="btn btn-lg btn-success">
+        Create Ad
+      </a>
+    </div>
+  </div>
+</section>
 {% endblock %}

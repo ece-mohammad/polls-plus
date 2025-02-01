@@ -13,7 +13,8 @@ class ShortURL(models.Model):
         blank=False,
         validators=[
             MinLengthValidator(3, "URL must be at least 3 characters long"),
-        ]
+        ],
+        verbose_name="URL",
     )
     slug = models.SlugField(max_length=MAX_SLUG_LEN, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)

@@ -1,18 +1,54 @@
 {% extends "ads/base.html" %}
 
 {% block content %}
+<section class="mt-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <!-- Page Heading -->
+        <h2 class="display-5 mb-4 text-center">Update Your Ad</h2>
+        <p class="lead text-center mb-5">Make changes to your ad using the form below.</p>
 
-<section>
-  <h2>Update your ad</h2>
-  <form action="{% url 'ads:ad_update' pk=ad.id %}" method="post">
-    {% csrf_token %}
-    <fieldset>
-      {{ form.as_p }}
-    </fieldset>
-    <button type="submit">Submit</button>
-    <button type="reset">Reset</button>
-    <button type="button" onclick="window.location.href='{% url 'ads:ad_details' pk=ad.id %}'">Cancel</button>
-  </form>
+        <!-- Update Form -->
+        <form action="{% url 'ads:ad_update' pk=ad.id %}" method="post" class="needs-validation" novalidate>
+          {% csrf_token %}
+          <fieldset>
+            <!-- Dynamically render form fields with Bootstrap styling -->
+            {% for field in form %}
+              <div class="row mb-3 align-items-start">
+                <!-- Label -->
+                <div class="col-md-3">
+                  <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                </div>
+                <!-- Input Field -->
+                <div class="col-md-9">
+                  {{ field }}
+                  {% if field.help_text %}
+                    <div class="form-text">{{ field.help_text }}</div>
+                  {% endif %}
+                  {% for error in field.errors %}
+                    <div class="invalid-feedback d-block">{{ error }}</div>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+          </fieldset>
+
+          <!-- Form Buttons -->
+          <div class="d-flex justify-content-end gap-2 mt-4">
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-check"></i> Submit
+            </button>
+            <button type="reset" class="btn btn-outline-secondary">
+              <i class="fas fa-undo"></i> Reset
+            </button>
+            <button type="button" class="btn btn-outline-danger" onclick="window.location.href='{% url 'ads:ad_details' pk=ad.id %}'">
+              <i class="fas fa-times"></i> Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </section>
-
 {% endblock %}

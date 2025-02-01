@@ -1,99 +1,189 @@
 {% load static %}
+{% load widget_tweaks %}
 {% load app_tags %}
+{% spaceless %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Django Developer Portfolio - Showcasing Backend Development Projects">
+  <meta name="keywords" content="Django, Python, Backend Development, Web Development, Portfolio">
   <meta name="dj4e" content="c3d67032530cee152ef2af02a4afd571">
   <meta name="dj4e-code" content="42173029139562">
-  <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous">
-  <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"></script>
-  <link rel="stylesheet"
-        href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-  <link rel="stylesheet"
-        href="https://use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
-  <link rel="icon" type="image/png"
-        href="{% static 'favicon/favicon-96x96.png' %}" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml"
-        href="{% static 'favicon/favicon.svg' %}" />
-  <link rel="shortcut icon"
-        href="{% static 'favicon/favicon.ico' %}" />
-  <link rel="apple-touch-icon" sizes="180x180"
-        href="{% static 'favicon/apple-touch-icon.png' %}" />
-  <link rel="manifest"
-        href="{% static 'favicon/site.webmanifest' %}" />
-  <title>{% block title %}Home{% endblock %} | Django Projects</title>
-  {% block custom_styles %}
-  {% endblock %}
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="{% static 'favicon/favicon-96x96.png' %}" sizes="96x96">
+  <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json" src="{% static 'schema.json' %}"></script>
+
+  <title>{% block title %}Home{% endblock %} | Django Portfolio</title>
+
+  {% block custom_styles %}{% endblock %}
 </head>
+
 <body>
-<nav>
-  {% block navbar %}
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">Django Projects</a>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container-fluid">
+    <!-- Brand -->
+    <a class="navbar-brand" href="/">
+      <i class="fas fa-project-diagram"></i> Django Projects
+    </a>
+
+    <!-- Mobile Toggle Button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Content -->
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+      <!-- Left Side Navigation -->
+      <!--home link-->
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="{% block app_url %}{% endblock %}">{% block app_name %}{% endblock %}</a>
+          <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">Home</a>
         </li>
+        <!--app home link-->
+        {% if app_name and app_url %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% block app_url %}{% endblock %}">
+            {% block app_name %}{% endblock %}
+          </a>
+        </li>
+        {% endif %}
+        <!-- Add more navigation items as needed -->
       </ul>
+
+      <!-- Right Side Navigation -->
       <ul class="navbar-nav">
+        <!-- Dark Mode Toggle -->
+        <li class="nav-item me-3">
+          <button id="theme-toggle" class="nav-link btn btn-link" aria-label="Toggle theme">
+            <i class="fas fa-sun" id="theme-icon"></i>
+            <span class="theme-label" id="theme-text">Dark</span>
+          </button>
+        </li>
+
         {% if user.is_authenticated %}
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img style="width: 25px;" src="{{ user|gravatar:60 }}"/>
-            <b class="caret">{{ user.username }}</b>
+          <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img class="user-avatar me-2" src="{{ user|gravatar:60 }}" alt="User avatar">
+            <span>{{ user.username }}</span>
           </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <ul class="dropdown-menu dropdown-menu-end"
+              aria-labelledby="userDropdown">
             <li>
-                <a  href="{% url 'custom_logout' %}?next={{ request.get_full_path }}" style="text-decoration: none;">Logout</a>
+              <a class="dropdown-item" href="{% url 'custom_logout' %}?next={{ request.get_full_path }}">
+                <i class="fas fa-sign-out-alt"></i> Logout
+              </a>
             </li>
           </ul>
         </li>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'login' %}?next={{ request.get_full_path }}">Login</a>
+          <a class="nav-link" href="{% url 'login' %}?next={{ request.get_full_path }}">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </a>
         </li>
         {% endif %}
       </ul>
     </div>
-  </nav>
-  {% endblock %}
-</nav>
-<aside>
-  {% block sidebar %}
-  {% endblock %}
-</aside>
-<div>
-  {% block breadcrumbs %}
-  {% endblock %}
-</div>
-<div>
-  {% block messages %}
-  {% if messages %}
-  {% for msg in messages %}
-  <div class="alert alert-{{msg.level_tag}}" role="alert">
-    {{msg.message}}
   </div>
-  {% endfor %}
-  {% endif %}
-  {% endblock %}
-</div>
-<section>
-  {% block content %}
-  {% endblock %}
-</section>
-<footer>
-  {% block footer %}
-  {% endblock %}
+</nav>
+
+<!-- Main Content Wrapper -->
+<main class="main-content-wrapper">
+  <div class="main-content">
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs-wrapper">
+          {% block breadcrumbs %}{% endblock %}
+        </div>
+
+        <!-- Messages -->
+        <div class="messages-wrapper">
+          {% block messages %}
+            {% if messages %}
+              {% for message in messages %}
+              <div class="alert alert-{{ message.tags }} alert-dismissible fade show"
+                  role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                </button>
+              </div>
+              {% endfor %}
+            {% endif %}
+          {% endblock %}
+        </div>
+        <!-- Main Content -->
+        <div class="content-wrapper">
+          {% block content %}{% endblock %}
+        </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="text-center">
+  <div class="container">
+    <p>&copy; {% now "Y" %} Django Portfolio | All rights reserved.</p>
+    <div class="footer-social-icons">
+      <a href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </div>
+  </div>
 </footer>
+
+<!-- Bootstrap 5 JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Theme Toggle Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeIcon = document.getElementById('theme-icon');
+      const themeLabel = document.getElementById('theme-text');
+
+      // Check for saved theme preference or default to 'light'
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      updateTheme(savedTheme);
+
+      themeToggle.addEventListener('click', () => {
+          const currentTheme = document.documentElement.getAttribute('data-theme');
+          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+          document.documentElement.setAttribute('data-theme', newTheme);
+          localStorage.setItem('theme', newTheme);
+          updateTheme(newTheme);
+      });
+
+      function updateTheme(theme) {
+          themeIcon.classList.remove('fa-sun', 'fa-moon');
+          themeIcon.classList.add(theme === 'light' ? 'fa-moon' : 'fa-sun');
+          themeLabel.textContent = theme === 'light' ? 'Light' : 'Dark';
+      }
+  });
+</script>
 </body>
 </html>
+{% endspaceless %}

@@ -1,0 +1,10 @@
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "name": "Mohammad Mohsen",
+  "url": "{{ request.build_absolute_uri }}",
+  "sameAs": [
+    "https://github.com/ece-mohammad",
+    "https://www.linkedin.com/in/mohammadtolba"
+  ]
+}
