@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block custom_styles %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css"/>
+{% endblock %}
+
+
+{% block content %}
+<div class="projects-container">
+  <header class="section-header">
+    <h1 class="section-title">
+        <i class="fas fa-code"></i>
+        Spaghetti Chef
+        <i class="fas fa-utensils"></i>
+    </h1>
+    <p class="section-subtitle">Untangling Code, One Project at a Time</p>
+  </header>
+
+  <section class="projects-grid">
+    {% for project in project_list %}
+    <article class="project-card" role="article" aria-labelledby="project-title-{{ project.id }}">
+      <div class="project-image {% if not project.image %}no-image{% endif %}">
+        {% if project.image %}
+        <img src="{{ project.image.url }}" alt="{{ project.title }} screenshot">
+        {% endif %}
+        <div class="project-quick-links">
+          {% if project.github_url %}
+          <a href="{{ project.github_url }}" class="quick-link" title="View Source" aria-label="View source code on GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          {% endif %}
+          {% if project.demo_url %}
+          <a href="{{ project.demo_url }}" class="quick-link" title="Live Demo" aria-label="Open live demo">
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+          {% endif %}
+          {% if project.docs_url %}
+          <a href="{{ project.docs_url }}" class="quick-link" title="Documentation" aria-label="Read documentation">
+            <i class="fas fa-book"></i>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="project-content">
+        <div class="project-header">
+          <h2 id="project-title-{{ project.id }}" class="project-title">{{ project.title }}</h2>
+          {% if project.status %}
+          <span class="project-status {% if project.status == 'Beta' %}status-beta{% endif %}">
+            {{ project.status }}
+          </span>
+          {% endif %}
+        </div>
+
+        <div class="project-stats">
+          {% if project.version %}
+          <span class="stat-item" title="Version">
+            <i class="fas fa-code-branch"></i>
+            <span>v{{ project.version }}</span>
+          </span>
+          {% endif %}
+          {% if project.rating %}
+          <span class="stat-item" title="Rating">
+            <i class="fas fa-star"></i>
+            <span>{{ project.rating }}</span>
+          </span>
+          {% endif %}
+        </div>
+
+        {% if project.categories %}
+        <div class="project-categories">
+          {% for category in project.categories %}
+          <span class="category-tag">{{ category }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if project.description %}
+        <p class="project-description">
+          {{ project.description }}
+        </p>
+        {% endif %}
+
+        {% if project.technologies %}
+        <div class="project-tech-stack">
+          {% for tech in project.technologies %}
+          <span class="tech-badge">{{ tech }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <a href="{{ project.url }}" class="project-link" aria-label="View {{ project.title }} project details">
+          View Project <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </article>
+    {% empty %}
+    <div class="no-projects">
+      <p>No projects available at the moment.</p>
+    </div>
+    {% endfor %}
+  </section>
+
+  <footer class="tech-footer">
+    <div class="tech-stack">
+      <span class="tech-item">
+        <i class="fab fa-python"></i>
+        Django
+      </span>
+      <span class="tech-item">
+        <i class="fab fa-bootstrap"></i>
+        Bootstrap
+      </span>
+      <span class="tech-item">
+        <i class="fas fa-code"></i>
+        PyCharm
+      </span>
+    </div>
+  </footer>
+</div>
+{% endblock %}
