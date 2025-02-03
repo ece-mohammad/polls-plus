@@ -5,6 +5,7 @@ from django.contrib.auth import logout
 from django.http import HttpRequest, HttpResponseRedirect
 from django.shortcuts import redirect
 from django.views.decorators.http import require_http_methods
+from django.urls import reverse_lazy
 
 
 @require_http_methods(["GET", "POST"])
@@ -13,3 +14,10 @@ def custom_logout(request: HttpRequest) -> HttpResponseRedirect:
     logout(request)
     return redirect(next_page)
 
+
+def about_view(request):
+    return HttpResponseRedirect(reverse_lazy("home:home"))
+
+
+def contact_view(request):
+    return HttpResponseRedirect(reverse_lazy("home:home"))

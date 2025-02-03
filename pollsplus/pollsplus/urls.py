@@ -19,11 +19,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from .views import custom_logout
+from .views import custom_logout, contact_view, about_view
 
 
 urlpatterns = [
     path("", include("home.urls")),
+    path("contact/", contact_view, name="contact"),
+    path("about/", about_view, name="about"),
     path("hello/", include("hello.urls")),
     path("admin/", admin.site.urls),
     path("polls/", include("polls.urls")),
