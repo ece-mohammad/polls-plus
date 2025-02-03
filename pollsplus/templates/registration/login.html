@@ -1,81 +1,86 @@
 {% extends "base.html" %}
-
 {% load widget_tweaks %}
+{% load static %}
+
+{% block custom_styles %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}" type="text/css"/>
+{% endblock %}
 
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <!-- Page Heading -->
-          <h2 class="text-center mb-4">Login</h2>
-
-          <!-- Information Message (For `next` parameter) -->
-          {% if next %}
-            {% if user.is_authenticated %}
-              <div class="alert alert-danger">
-                Your account doesn't have access to this page. Please login with an account that has access.
-              </div>
-            {% else %}
-              <div class="alert alert-info">
-                Please login to see this page.
-              </div>
-            {% endif %}
-          {% endif %}
-
-          <!-- Display Non-Field Errors (Wrong Credentials) -->
-          {% if form.non_field_errors %}
-            <div class="alert alert-danger">
-              {{ form.non_field_errors }}
-            </div>
-          {% endif %}
-
-          <!-- Login Form -->
-          <form method="POST" action="{% url 'login' %}" class="needs-validation" novalidate>
-            {% csrf_token %}
-            <fieldset>
-              <!-- Dynamically render form fields with Bootstrap styling -->
-              {% for field in form %}
-                <div class="mb-3">
-                  <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
-                  {{ field|add_class:"form-control" }}
-                  {% if field.help_text %}
-                    <small class="form-text text-muted">{{ field.help_text }}</small>
-                  {% endif %}
-                  {% for error in field.errors %}
-                    <div class="invalid-feedback d-block">{{ error }}</div>
-                  {% endfor %}
-                </div>
-              {% endfor %}
-            </fieldset>
-
-            <!-- Hidden Input for Next URL -->
-            <input type="hidden" name="next" value="{{ next }}">
-
-            <!-- Submit Button -->
-            <div class="d-grid gap-2 mb-3">
-              <button type="submit" class="btn btn-primary btn-block">
-                <i class="bi bi-box-arrow-in-right"></i> Login
-              </button>
-            </div>
-
-            <!-- Links -->
-            <div class="d-flex justify-content-between">
-              <a href="{% url 'password_reset' %}" class="text-decoration-none">
-                Forgot Password?
-              </a>
-              {% comment %}
-              <a href="{% url 'register' %}" class="text-decoration-none">Register</a>
-              {% endcomment %}
-            </div>
-          </form>
-        </div>
-      </div>
+<div class="auth-container">
+  <div class="auth-card">
+    <!-- Card Header -->
+    <div class="auth-header">
+      <h2 class="auth-title">
+        <i class="fas fa-sign-in-alt"></i>
+        Login
+      </h2>
     </div>
+
+    <!-- Information Messages -->
+    {% if next %}
+      {% if user.is_authenticated %}
+        <div class="alert alert-danger">
+          Your account doesn't have access to this page. Please login with an account that has access.
+        </div>
+      {% else %}
+        <div class="alert alert-info">
+          Please login to see this page.
+        </div>
+      {% endif %}
+    {% endif %}
+
+    <!-- Form Errors -->
+    {% if form.non_field_errors %}
+      <div class="alert alert-danger">
+        {{ form.non_field_errors }}
+      </div>
+    {% endif %}
+
+    <!-- Login Form -->
+    <form method="POST" action="{% url 'login' %}" class="auth-form" novalidate>
+      {% csrf_token %}
+
+      <!-- Form Fields -->
+      {% for field in form %}
+        <div class="form-group">
+          <label for="{{ field.id_for_label }}" class="form-label">
+            {{ field.label }}
+          </label>
+          {{ field|add_class:"form-input" }}
+          {% if field.help_text %}
+            <small class="form-help">{{ field.help_text }}</small>
+          {% endif %}
+          {% for error in field.errors %}
+            <div class="form-error">{{ error }}</div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+
+      <input type="hidden" name="next" value="{{ next }}">
+
+      <!-- Submit Button -->
+      <button type="submit" class="auth-submit">
+        <i class="fas fa-sign-in-alt"></i>
+        Login
+      </button>
+
+      <!-- Links -->
+      <div class="auth-links">
+        <a href="{% url 'password_reset' %}" class="auth-link">
+          <i class="fas fa-key"></i>
+          Forgot Password?
+        </a>
+        {% comment %}
+        <a href="{% url 'register' %}" class="auth-link">
+          <i class="fas fa-user-plus"></i>
+          Register
+        </a>
+        {% endcomment %}
+      </div>
+    </form>
   </div>
 </div>
-
 {% endblock %}
