@@ -1,9 +1,11 @@
-{% extends "ads/base.html" %}
+{% extends "base.html" %}
 
 {% block content %}
-<section class="mt-5">
+<section class="ads-section mt-5">
   <div class="container">
-    <h1 class="mb-4 text-center">Ads</h1>
+    <header class="section-header text-center mb-4">
+      <h1 class="section-title">Ads</h1>
+    </header>
 
     {% if ad_list %}
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -12,14 +14,18 @@
         <div class="card h-100 shadow-sm">
           <!-- Placeholder for Image -->
           <div class="card-img-top bg-light d-flex justify-content-center align-items-center" style="height: 200px;">
+            {% if ad.image %}
+            <img src="{{ ad.image.url }}" class="card-img-top"
+                 alt="{{ ad.title }} image" loading="lazy">
+            {% else %}
             <p class="text-muted">Image coming soon</p>
-            <!-- <img src="https://via.placeholder.com/300" class="card-img-top" alt="{{ ad.title }} image"> -->
-            </div>
+            {% endif %}
+          </div>
 
           <div class="card-body">
             <!-- Ad Title -->
             <h5 class="card-title">
-              <a href="{% url 'ads:ad_details' pk=ad.id %}" class="text-decoration-none">{{ ad.title }}</a>
+              <a href="{% url 'ads:ad_details' pk=ad.id %}" class="text-decoration-none text-primary">{{ ad.title }}</a>
             </h5>
 
             <!-- Ad Description Preview -->
@@ -29,7 +35,7 @@
 
             <!-- Price -->
             <p class="text-success fw-bold mb-2">
-              {{ ad.price }}
+              ${{ ad.price }}
             </p>
 
             <!-- Owner and Created Date -->
@@ -39,18 +45,18 @@
           </div>
 
           <!-- Action Buttons for Owner -->
-          <div class="card-footer d-flex justify-content-between">
-            {% if user.is_authenticated and user == ad.owner %}
-            <div>
+          <div class="card-footer d-flex flex-column flex-md-row justify-content-between align-items-center">
+            <div class="d-flex gap-2 mb-2 mb-md-0">
+              {% if user.is_authenticated and user == ad.owner %}
               <a href="{% url 'ads:ad_update' pk=ad.id %}" class="btn btn-sm btn-outline-warning">
                 Edit
               </a>
               <a href="{% url 'ads:ad_delete' pk=ad.id %}" class="btn btn-sm btn-outline-danger">
                 Delete
               </a>
+              {% endif %}
             </div>
-            {% endif %}
-            <a href="{% url 'ads:ad_details' pk=ad.id %}" class="btn btn-sm btn-primary">
+            <a href="{% url 'ads:ad_details' pk=ad.id %}" class="btn btn-sm btn-primary ms-md-auto">
               View Details
             </a>
           </div>

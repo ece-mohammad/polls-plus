@@ -1,13 +1,17 @@
 {% extends "ads/base.html" %}
 
+{% load widget_tweaks %}
+
 {% block content %}
-<section class="mt-5">
+<section class="ad-update-section mt-5">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-6">
         <!-- Page Heading -->
-        <h2 class="display-5 mb-4 text-center">Update Your Ad</h2>
-        <p class="lead text-center mb-5">Make changes to your ad using the form below.</p>
+        <header class="text-center mb-5">
+          <h2 class="display-5">Update Your Ad</h2>
+          <p class="lead">Make changes to your ad using the form below.</p>
+        </header>
 
         <!-- Update Form -->
         <form action="{% url 'ads:ad_update' pk=ad.id %}" method="post" class="needs-validation" novalidate>
@@ -15,22 +19,18 @@
           <fieldset>
             <!-- Dynamically render form fields with Bootstrap styling -->
             {% for field in form %}
-              <div class="row mb-3 align-items-start">
-                <!-- Label -->
-                <div class="col-md-3">
-                  <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
-                </div>
-                <!-- Input Field -->
-                <div class="col-md-9">
-                  {{ field }}
-                  {% if field.help_text %}
-                    <div class="form-text">{{ field.help_text }}</div>
-                  {% endif %}
-                  {% for error in field.errors %}
-                    <div class="invalid-feedback d-block">{{ error }}</div>
-                  {% endfor %}
-                </div>
-              </div>
+            <div class="mb-3">
+              <!-- Label -->
+              <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+              <!-- Input Field -->
+              {{ field|add_class:"form-control" }}
+              {% if field.help_text %}
+              <div class="form-text">{{ field.help_text }}</div>
+              {% endif %}
+              {% for error in field.errors %}
+              <div class="invalid-feedback d-block">{{ error }}</div>
+              {% endfor %}
+            </div>
             {% endfor %}
           </fieldset>
 

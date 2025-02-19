@@ -1,61 +1,98 @@
 {% extends "ads/base.html" %}
 
 {% block content %}
-<section class="mt-5">
+<section class="ad-details-section mt-5">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-8">
         <!-- Ad Title -->
-        <h1 class="display-4 mb-4">{{ ad.title }}</h1>
+        <header class="mb-4">
+          <h1 class="display-4">{{ ad.title }}</h1>
+        </header>
 
         <!-- Ad Metadata -->
-        <div class="mb-4">
-          <p class="text-muted mb-1">
-            <strong>Created at:</strong> {{ ad.created_at|date:"F j, Y, g:i a" }}
-          </p>
-          <p class="text-muted mb-1">
-            <strong>Updated at:</strong> {{ ad.updated_at|date:"F j, Y, g:i a" }}
-          </p>
-          <p class="text-muted mb-1">
-            <strong>By:</strong> {{ ad.owner.username }}
-          </p>
-          <p class="text-muted mb-1">
-            <strong>Price:</strong> <span class="text-success fw-bold">{{ ad.price }}</span>
-          </p>
+        <div class="ad-metadata mb-4">
+          <ul class="list-unstyled">
+            <li class="text-muted mb-1">
+              <strong>Created at:</strong> {{ ad.created_at|date:"F j, Y, g:i a" }}
+            </li>
+            <li class="text-muted mb-1">
+              <strong>Updated at:</strong> {{ ad.updated_at|date:"F j, Y, g:i a" }}
+            </li>
+            <li class="text-muted mb-1">
+              <strong>By:</strong> {{ ad.owner.username }}
+            </li>
+            <li class="text-muted mb-1">
+              <strong>Price:</strong> <span class="text-success fw-bold">${{ ad.price }}</span>
+            </li>
+          </ul>
         </div>
 
-        <!-- Ad Images Placeholder -->
-        <div class="mb-5">
+        <!-- Ad Images -->
+        <div class="ad-images mb-5">
           <h3 class="h5 mb-3">Images</h3>
-          <div class="d-flex justify-content-center align-items-center bg-light p-5 rounded">
-            <p class="text-muted">Images will be displayed here in a later version.</p>
+          {% if ad.images.all %}
+          <div class="d-flex flex-wrap gap-3">
+            {% for image in ad.images.all %}
+            <img src="{{ image.image.url }}" class="img-fluid rounded"
+                 alt="Image for {{ ad.title }}" loading="lazy"
+                 style="max-width: 150px;">
+            {% endfor %}
           </div>
+          {% else %}
+          <div class="d-flex justify-content-center align-items-center bg-light p-5 rounded">
+            <p class="text-muted">No images available.</p>
+          </div>
+          {% endif %}
         </div>
 
         <!-- Ad Description -->
-        <div class="mb-5">
+        <div class="ad-description mb-5">
           <h3 class="h5 mb-3">Description</h3>
           <p class="lead">{{ ad.text }}</p>
         </div>
 
         <!-- Owner Actions -->
         {% if user == ad.owner %}
-          <div class="d-flex justify-content-start gap-2 mb-5">
-            <a href="{% url 'ads:ad_update' pk=ad.id %}" class="btn btn-warning">
-              <i class="fas fa-edit"></i> Edit
-            </a>
-            <a href="{% url 'ads:ad_delete' pk=ad.id %}" class="btn btn-danger">
-              <i class="fas fa-trash"></i> Delete
-            </a>
-          </div>
+        <div class="owner-actions d-flex justify-content-start gap-2 mb-5">
+          <a href="{% url 'ads:ad_update' pk=ad.id %}" class="btn btn-warning">
+            <i class="fas fa-edit"></i> Edit
+          </a>
+          <a href="{% url 'ads:ad_delete' pk=ad.id %}" class="btn btn-danger">
+            <i class="fas fa-trash"></i> Delete
+          </a>
+        </div>
         {% endif %}
 
-        <!-- Comments Placeholder -->
-        <div class="mb-5">
+        <!-- Comments Section -->
+        <div class="comments-section mb-5">
           <h3 class="h5 mb-3">Comments</h3>
-          <div class="d-flex justify-content-center align-items-center bg-light p-5 rounded">
-            <p class="text-muted">Comments will be displayed here in a later version.</p>
-          </div>
+          {% if ad.comments.all %}
+          <ul class="list-group mb-4">
+            {% for comment in ad.comments.all %}
+            <li class="list-group-item">
+              <strong>{{ comment.author.username }}</strong> said:
+              <p>{{ comment.text }}</p>
+              <small class="text-muted">{{ comment.created_at|date:"F j, Y, g:i
+                a" }}</small>
+            </li>
+            {% endfor %}
+          </ul>
+          {% else %}
+          <p class="text-muted">No comments yet. Be the first to comment!</p>
+          {% endif %}
+
+          <!-- Comment Form -->
+          {% if user.is_authenticated %}
+          <form method="post" class="mb-4">
+            {% csrf_token %}
+            {{ comment_form.as_div }}
+            <button type="submit" class="btn btn-primary">Add Comment</button>
+          </form>
+          {% else %}
+          <p class="text-center">Please <a href="{% url 'login' %}">log in</a>
+            to add a comment.</p>
+          {% endif %}
         </div>
 
         <!-- Back to Ads Link -->

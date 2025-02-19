@@ -6,8 +6,7 @@ from decimal import Decimal
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.validators import (
-    BaseValidator,
-    ValidationError
+    BaseValidator, MinLengthValidator, MaxLengthValidator
 )
 from django.db import models
 from simple_history import register
@@ -31,8 +30,75 @@ class AdTitleValidator(BaseValidator):
         return title.strip()
 
 
+class AdImage(models.Model):
+    ad = models.ForeignKey(
+        "Ad",
+        on_delete=models.CASCADE,
+        verbose_name="Ad",
+        help_text="Ad that this image belongs to",
+        related_name="images",
+        related_query_name="image",
+    )
+    image = models.ImageField(
+        verbose_name="Image",
+        help_text="Image for your advertisement",
+        upload_to="ads",
+        null=True,
+        blank=True,
+        validators=[
+            MaxLengthValidator(settings.AD_IMAGE_MAX_SIZE, "Image must be less than 2 MB")
+        ]
+    )
+    uploaded_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="Created at",
+        help_text="When the image was uploaded",
+    )
+
+    def __str__(self):
+        return f"Image for {self.ad.title}"
+
+
+class AdComment(models.Model):
+    ad = models.ForeignKey(
+        "Ad",
+        on_delete=models.CASCADE,
+        verbose_name="Ad",
+        help_text="Ad that this comment belongs to",
+        related_name="comments",
+        related_query_name="comment",
+    )
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        verbose_name="Created by",
+        help_text="User that created the comment",
+        null=True,
+    )
+    text = models.TextField(
+        verbose_name="Comment",
+        help_text="Comment for your advertisement",
+        validators=[
+            MinLengthValidator(3, "Comment must be at least 3 characters long")
+        ]
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="Created at",
+        help_text="When the comment was created"
+    )
+
+    def __str__(self):
+        return f"Comment for {self.ad.title}: {self.text}"
+
 # Create your models here.
 class Ad(models.Model):
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name="Created by",
+        help_text="User that created the advertisement"
+    )
     title = models.CharField(
         max_length=200,
         validators=[
@@ -56,12 +122,6 @@ class Ad(models.Model):
         default="",
         verbose_name="Description",
         help_text="Description for your advertisement"
-    )
-    owner = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        verbose_name="Created by",
-        help_text="User that created the advertisement"
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
