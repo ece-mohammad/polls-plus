@@ -57,14 +57,33 @@
 /* Project Cards */
 .project-card {
     background-color: var(--bg);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: var(--radius-md);
     overflow: hidden;
+    height: 100%; /* Ensures all cards have the same height */
     box-shadow: var(--shadow-lg);
     transition: var(--transition);
     position: relative;
 }
 
 .project-card:hover {
+    transform: translateY(-5px);
+}
+
+[data-theme="dark"] .project-card {
+    background-color: var(--dark);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: var(--transition);
+}
+
+.project-card-link:hover .project-card {
     transform: translateY(-5px);
 }
 
@@ -229,29 +248,6 @@
     font-weight: 500;
 }
 
-/* Project Link */
-.project-link {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-xs);
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 500;
-    transition: var(--transition);
-}
-
-.project-link:hover {
-    gap: var(--space-sm);
-}
-
-.project-link i {
-    transition: var(--transition);
-}
-
-.project-link:hover i {
-    transform: translateX(3px);
-}
-
 /* Tech Footer */
 .tech-footer {
     background-color: var(--bg);
@@ -264,13 +260,13 @@
 .tech-stack {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: var(--space-xl);
     color: var(--text);
 }
 
 .tech-item {
     display: flex;
-    align-items: center;
     gap: var(--space-xs);
     font-size: 0.9rem;
 }

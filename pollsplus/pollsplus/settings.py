@@ -17,8 +17,6 @@ from typing import Type
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SITE_ROOT = str(BASE_DIR / "site")
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -51,7 +49,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "simple_history",
     "home.apps.HomeConfig",
-    "hello.apps.HelloConfig",
+    "reloadinator.apps.ReloadinatorConfig",
     "polls.apps.PollsConfig",
     "autos.apps.AutosConfig",
     "cats.apps.CatsConfig",
@@ -59,6 +57,7 @@ INSTALLED_APPS = [
     "ads.apps.AdsConfig",
     # "accounts.apps.AccountsConfig",
     # "pomodoro.apps.PomodoroConfig",
+    # "tahajjod.apps.TahajjodConfig",
     "widget_tweaks",
 ]
 
@@ -89,6 +88,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.media",
             ],
             "libraries": {
                 "app_tags": "ads.templatetags.app_tags",
@@ -182,8 +182,14 @@ USE_TZ = True
 STATIC_URL = "static/"
 
 STATICFILES_DIRS = [
-    str(BASE_DIR / 'static')
+    str(BASE_DIR / 'static'),
 ]
+
+MEDIA_URL = "/media/"
+
+MEDIA_ROOT = BASE_DIR / "media"
+
+SITE_ROOT = str(BASE_DIR / "site")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -198,3 +204,4 @@ LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
 MAX_SHORT_URL: int = 10
+PROJECTS_RECENT_COUNT: int = 5

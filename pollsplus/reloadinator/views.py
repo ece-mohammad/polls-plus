@@ -82,7 +82,7 @@ MESSAGES: Final[Dict[int | str, str | List[str]]] = {
 }
 
 class HelloView(TemplateView):
-    template_name = "hello/hello.html"
+    template_name = "reloadinator/index.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

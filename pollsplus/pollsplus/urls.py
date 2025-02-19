@@ -26,7 +26,7 @@ urlpatterns = [
     path("", include("home.urls")),
     path("contact/", contact_view, name="contact"),
     path("about/", about_view, name="about"),
-    path("hello/", include("hello.urls")),
+    path("reloadinator/", include("reloadinator.urls")),
     path("admin/", admin.site.urls),
     path("polls/", include("polls.urls")),
     path("autos/", include("autos.urls")),
@@ -38,7 +38,7 @@ urlpatterns = [
 ]
 
 urlpatterns.extend(
-    static("site/", document_root=settings.SITE_ROOT, show_indexes=True)
+    static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
 )
 
 urlpatterns.append(
