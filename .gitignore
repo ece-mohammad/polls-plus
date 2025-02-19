@@ -162,3 +162,7 @@ cython_debug/
 #.idea/
 *.sqbpro
 *.bak
+*.png
+*.jpg
+*.jpeg
+
