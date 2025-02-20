@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "cats.apps.CatsConfig",
     "short_url.apps.ShortUrlConfig",
     "ads.apps.AdsConfig",
+    "accounts.apps.AccountsConfig",
     # "accounts.apps.AccountsConfig",
     # "pomodoro.apps.PomodoroConfig",
     # "tahajjod.apps.TahajjodConfig",

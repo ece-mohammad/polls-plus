@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Django Developer Portfolio - Showcasing Backend Development Projects">
   <meta name="keywords" content="Django, Python, Backend Development, Web Development, Portfolio">
-  <meta name="dj4e" content="c3d67032530cee152ef2af02a4afd571">
+  <meta name="dj4e" content="37ac87fd9ff2682f02d87461fbd7ea6d">
   <meta name="dj4e-code" content="42173029139562">
 
   <!-- Bootstrap 5 CSS -->
@@ -111,7 +111,7 @@
           <ul class="dropdown-menu dropdown-menu-end"
               aria-labelledby="userDropdown">
             <li>
-              <a class="dropdown-item" href="{% url 'custom_logout' %}?next={{ request.get_full_path }}">
+              <a class="dropdown-item" href="{% url 'accounts:logout' %}?next={{ request.get_full_path }}">
                 <i class="fas fa-sign-out-alt"></i>Logout
               </a>
             </li>
@@ -119,7 +119,7 @@
         </li>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'login' %}?next={{ request.get_full_path }}">
+          <a class="nav-link" href="{% url 'accounts:login' %}?next={{ request.get_full_path }}">
             <i class="fas fa-sign-in-alt"></i>Login
           </a>
         </li>

@@ -19,8 +19,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from .views import custom_logout, contact_view, about_view
 
+from .views import contact_view, about_view
 
 urlpatterns = [
     path("", include("home.urls")),
@@ -33,8 +33,9 @@ urlpatterns = [
     path("cats/", include("cats.urls")),
     path("ads/", include("ads.urls")),
     path("shrt/", include("short_url.urls")),
-    path("accounts/logout/", custom_logout, name="custom_logout"),
-    path("accounts/", include("django.contrib.auth.urls")),
+    path("accounts/", include("accounts.urls")),
+    # path("accounts/logout/", custom_logout, name="custom_logout"),
+    # path("accounts/", include("django.contrib.auth.urls")),
 ]
 
 urlpatterns.extend(

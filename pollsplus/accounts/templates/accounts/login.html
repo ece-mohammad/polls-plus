@@ -21,42 +21,44 @@
 
     <!-- Information Messages -->
     {% if next %}
-      {% if user.is_authenticated %}
-        <div class="alert alert-danger">
-          Your account doesn't have access to this page. Please login with an account that has access.
-        </div>
-      {% else %}
-        <div class="alert alert-info">
-          Please login to continue.
-        </div>
-      {% endif %}
+    {% if user.is_authenticated %}
+    <div class="alert alert-danger">
+      Your account doesn't have access to this page.
+      Please login with an account that has access.
+    </div>
+    {% else %}
+    <div class="alert alert-info">
+      Please login to continue.
+    </div>
+    {% endif %}
     {% endif %}
 
     <!-- Form Errors -->
     {% if form.non_field_errors %}
-      <div class="alert alert-danger">
-        {{ form.non_field_errors }}
-      </div>
+    <div class="alert alert-danger">
+      {{ form.non_field_errors }}
+    </div>
     {% endif %}
 
     <!-- Login Form -->
-    <form method="POST" action="{% url 'login' %}" class="auth-form" novalidate>
+    <form method="POST" action="{% url 'accounts:login' %}" class="auth-form"
+          novalidate>
       {% csrf_token %}
 
       <!-- Form Fields -->
       {% for field in form %}
-        <div class="form-group">
-          <label for="{{ field.id_for_label }}" class="form-label">
-            {{ field.label }}
-          </label>
-          {{ field|add_class:"form-input" }}
-          {% if field.help_text %}
-            <small class="form-help">{{ field.help_text }}</small>
-          {% endif %}
-          {% for error in field.errors %}
-            <div class="form-error">{{ error }}</div>
-          {% endfor %}
-        </div>
+      <div class="form-group">
+        <label for="{{ field.id_for_label }}" class="form-label">
+          {{ field.label }}
+        </label>
+        {{ field|add_class:"form-input" }}
+        {% if field.help_text %}
+        <small class="form-help">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+        <div class="form-error">{{ error }}</div>
+        {% endfor %}
+      </div>
       {% endfor %}
 
       <input type="hidden" name="next" value="{{ next }}">
@@ -68,18 +70,18 @@
       </button>
 
       <!-- Links -->
+      {% comment %}
       <div class="auth-links">
         <a href="{% url 'password_reset' %}" class="auth-link">
           <i class="fas fa-key"></i>
           Forgot Password?
         </a>
-        {% comment %}
         <a href="{% url 'register' %}" class="auth-link">
           <i class="fas fa-user-plus"></i>
           Register
         </a>
-        {% endcomment %}
       </div>
+      {% endcomment %}
     </form>
   </div>
 </div>
