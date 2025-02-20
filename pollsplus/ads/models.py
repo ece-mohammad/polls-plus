@@ -60,6 +60,10 @@ class AdImage(models.Model):
 
 
 class AdComment(models.Model):
+    class Meta:
+        ordering = ["-created_at"]
+
+
     ad = models.ForeignKey(
         "Ad",
         on_delete=models.CASCADE,
@@ -79,7 +83,7 @@ class AdComment(models.Model):
         verbose_name="Comment",
         help_text="Comment for your advertisement",
         validators=[
-            MinLengthValidator(3, "Comment must be at least 3 characters long")
+            MinLengthValidator(2, "Comment must be at least 2 characters long")
         ]
     )
     created_at = models.DateTimeField(
@@ -93,7 +97,7 @@ class AdComment(models.Model):
 
 # Create your models here.
 class Ad(models.Model):
-    owner = models.ForeignKey(
+    author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         verbose_name="Created by",

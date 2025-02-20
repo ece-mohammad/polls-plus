@@ -1,0 +1,38 @@
+{% extends "ads/base.html" %}
+
+{% load widget_tweaks %}
+
+{% block title %}Edit Comment{% endblock %}
+
+{% block content %}
+<section class="adcomment-update-section mt-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <!-- Page Heading -->
+        <header class="text-center mb-4">
+          <h2 class="display-5">Edit Comment</h2>
+          <p class="lead">Make changes to your comment below.</p>
+        </header>
+
+        <!-- Edit Comment Form -->
+        <form method="POST" class="needs-validation p-4 rounded shadow-sm"
+              novalidate>
+          {% csrf_token %}
+          {% include "ads/adcomment_form.html" %}
+          <div class="row mt-4">
+            <div class="col-12 d-flex justify-content-end">
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save"></i> Save
+              </button>
+              <a href="{% url 'ads:ad_details' pk=adcomment.ad.id %}" class="btn btn-outline-secondary">
+                <i class="fas fa-times"></i> Cancel
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

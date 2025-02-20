@@ -1,1 +1,176 @@
-/* ads.css */
+/*****************************************/
+/* styles for ads list */
+/*****************************************/
+
+/* Ad Card Styles */
+.ad-card {
+    background-color: var(--bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ad-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Light Mode Specific Styles */
+[data-theme="light"] .ad-card {
+    background-color: var(--white);
+}
+
+/* Dark Mode Specific Styles */
+[data-theme="dark"] .ad-card {
+    background-color: var(--dark);
+}
+
+/* Image Placeholder */
+.card-img-top {
+    height: 200px;
+    background-color: var(--bg-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-img-top img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .ad-card {
+        margin-bottom: var(--space-md);
+    }
+}
+
+/*****************************************/
+/* styles for ad details */
+/*****************************************/
+
+/* Ad Details Section */
+.ad-details-section {
+    background-color: var(--bg);
+    color: var(--text);
+    padding: var(--space-xl) 0;
+}
+
+.ad-metadata, .ad-description {
+    background-color: var(--bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.ad-images img {
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .ad-details-section {
+        padding: var(--space-md);
+    }
+}
+
+/* Comments Section Styles */
+.comments-section {
+    background-color: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--space-md);
+}
+
+/* Comment List Item */
+.comments-section .list-group-item {
+    background-color: inherit;
+    color: inherit;
+    border: none;
+    padding: var(--space-md);
+    margin-bottom: var(--space-sm);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .comments-section {
+        padding: var(--space-sm);
+    }
+}
+
+/******************************************/
+/*adcomment update*/
+/******************************************/
+/* Edit Comment Section */
+.adcomment-update-section {
+    background-color: var(--bg);
+    color: var(--text);
+    padding: var(--space-xl) 0;
+}
+
+.adcomment-update-section header {
+    margin-bottom: var(--space-lg);
+}
+
+.adcomment-update-section h2 {
+    color: var(--primary);
+    font-size: 2rem;
+    margin-bottom: var(--space-sm);
+}
+
+.adcomment-update-section p.lead {
+    color: var(--text);
+    font-size: 1.1rem;
+    margin-bottom: var(--space-md);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .adcomment-update-section {
+        padding: var(--space-md);
+    }
+}
+
+/*******************************************
+ * styles for comment delete
+ *******************************************/
+/* Delete Comment Section */
+.adcomment-delete-section {
+    background-color: var(--bg);
+    color: var(--text);
+    padding: var(--space-xl) 0;
+}
+
+.adcomment-delete-section header {
+    margin-bottom: var(--space-lg);
+}
+
+.adcomment-delete-section h2 {
+    color: var(--primary);
+    font-size: 2rem;
+    margin-bottom: var(--space-sm);
+}
+
+.adcomment-delete-section p.lead {
+    color: var(--text);
+    font-size: 1.1rem;
+    margin-bottom: var(--space-md);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .adcomment-delete-section {
+        padding: var(--space-md);
+    }
+}

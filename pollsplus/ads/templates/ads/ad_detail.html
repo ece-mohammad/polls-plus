@@ -1,5 +1,9 @@
 {% extends "ads/base.html" %}
 
+{% load widget_tweaks %}
+
+{% block title %}Ad Details{% endblock %}
+
 {% block content %}
 <section class="ad-details-section mt-5">
   <div class="container">
@@ -11,8 +15,8 @@
         </header>
 
         <!-- Ad Metadata -->
-        <div class="ad-metadata mb-4">
-          <ul class="list-unstyled">
+        <div class="ad-metadata mb-4 p-3 rounded shadow-sm">
+          <ul class="list-unstyled mb-0">
             <li class="text-muted mb-1">
               <strong>Created at:</strong> {{ ad.created_at|date:"F j, Y, g:i a" }}
             </li>
@@ -47,7 +51,7 @@
         </div>
 
         <!-- Ad Description -->
-        <div class="ad-description mb-5">
+        <div class="ad-description mb-5 p-3 rounded shadow-sm">
           <h3 class="h5 mb-3">Description</h3>
           <p class="lead">{{ ad.text }}</p>
         </div>
@@ -71,10 +75,38 @@
           <ul class="list-group mb-4">
             {% for comment in ad.comments.all %}
             <li class="list-group-item">
-              <strong>{{ comment.author.username }}</strong> said:
-              <p>{{ comment.text }}</p>
-              <small class="text-muted">{{ comment.created_at|date:"F j, Y, g:i
-                a" }}</small>
+              <div class="row">
+                <div class="col-12">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <small class="text-muted">{{ comment.created_at|date:"F j, Y, g:i a" }}</small>
+                      <p class="mb-1">
+                        <strong>{{ comment.author.username }}</strong>: {{ comment.text }}
+                      </p>
+                    </div>
+                    {% if user == comment.author %}
+                    <div class="d-none d-md-flex gap-2">
+                      <a href="{% url 'ads:ad_comment_update' pk=ad.id comment_pk=comment.id %}" class="btn btn-outline-warning btn-sm">
+                        <i class="fas fa-edit"></i>
+                      </a>
+                      <a href="{% url 'ads:ad_comment_delete' pk=ad.id comment_pk=comment.id %}" class="btn btn-outline-danger btn-sm">
+                        <i class="fas fa-trash"></i>
+                      </a>
+                    </div>
+                    {% endif %}
+                  </div>
+                  {% if user == comment.author %}
+                  <div class="d-flex d-md-none justify-content-end mt-2">
+                    <a href="{% url 'ads:ad_comment_update' pk=ad.id comment_pk=comment.id %}" class="btn btn-outline-warning btn-sm me-2">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="{% url 'ads:ad_comment_delete' pk=ad.id comment_pk=comment.id %}" class="btn btn-outline-danger btn-sm">
+                      <i class="fas fa-trash"></i>
+                    </a>
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
             </li>
             {% endfor %}
           </ul>
@@ -84,9 +116,13 @@
 
           <!-- Comment Form -->
           {% if user.is_authenticated %}
-          <form method="post" class="mb-4">
+          <form method="post" class="mb-4" action="{% url 'ads:ad_comment_create' pk=ad.id %}">
             {% csrf_token %}
-            {{ comment_form.as_div }}
+
+            {% with comment_form as form %}
+              {% include "ads/adcomment_form.html" %}
+            {% endwith %}
+
             <button type="submit" class="btn btn-primary">Add Comment</button>
           </form>
           {% else %}

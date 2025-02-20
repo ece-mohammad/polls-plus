@@ -20,6 +20,7 @@
     --dark: #1a1a1a;
     --accent: #22C55E;
     --white: #FFFFFF;
+    --black: #000000;
 
     /* Colors - Theme */
     --bg-light: #F8FAFC;
@@ -28,16 +29,19 @@
     --text-dark: #E2E8F0;
 
     /* Colors - Opacity */
+    --white-05: rgba(255, 255, 255, 0.05);
     --white-10: rgba(255, 255, 255, 0.1);
     --white-85: rgba(255, 255, 255, 0.85);
+    --black-10: rgba(0, 0, 0, 0.1);
+    --black-85: rgba(0, 0, 0, 0.85);
 
     /* Dimensions */
     --navbar-height: 70px;
 
     /* Effects */
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-sm: 0 1px 3px var(--shadow-color);
+    --shadow-md: 0 4px 6px -1px var(--shadow-color);
+    --shadow-lg: 0 10px 15px -3px var(--shadow-color);
 
     /* Transitions */
     --duration: 0.2s;
@@ -71,6 +75,8 @@
     */
     --bg: var(--bg-light);
     --text: var(--text-light);
+    --border-color: var(--black-10);
+    --shadow-color: var(--black-10);
 }
 
 [data-theme="dark"] {
@@ -80,6 +86,8 @@
     */
     --bg: var(--bg-dark);
     --text: var(--text-dark);
+    --border-color: var(--white-10);
+    --shadow-color: var(--white-05);
 }
 
 /* Common Utility Classes */
@@ -343,11 +351,28 @@ body {
 }
 
 .btn-primary:hover {
-    --hover-color: #0284C7;
-
-    background-color: var(--hover-color);
-    border-color: var(--hover-color);
     transform: translateY(-1px);
+}
+
+.btn-outline-secondary {
+    color: var(--text);
+    border-color: var(--border-color);
+}
+
+.btn-outline-secondary:hover {
+    border-color: var(--border-color);
+}
+
+.btn-outline-warning, .btn-outline-danger {
+    transition: var(--transition);
+}
+
+.btn-outline-warning:hover {
+    background-color: #F59E0B;
+}
+
+.btn-outline-danger:hover {
+    background-color: #DC2626;
 }
 
 /* Alert Messages */
@@ -541,4 +566,20 @@ footer {
     .main-content {
         padding: var(--space-md);
     }
+}
+
+/***************************************
+ * 9. Dark Mode Forms
+ ***************************************/
+textarea.form-control {
+    background-color: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    transition: border-color 0.2s ease-in-out;
+}
+
+textarea.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.2rem rgba(14, 165, 233, 0.25);
 }
