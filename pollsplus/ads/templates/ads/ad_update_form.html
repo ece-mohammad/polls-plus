@@ -14,7 +14,7 @@
         </header>
 
         <!-- Update Form -->
-        <form action="{% url 'ads:ad_update' pk=ad.id %}" method="post" class="needs-validation" novalidate>
+        <form action="{% url 'ads:ad_update' pk=ad.id %}" method="post" class="needs-validation" id="ad-update-form">
           {% csrf_token %}
           <fieldset>
             <!-- Dynamically render form fields with Bootstrap styling -->
@@ -35,7 +35,7 @@
           </fieldset>
 
           <!-- Form Buttons -->
-          <div class="d-flex justify-content-end gap-2 mt-4">
+          <div class="form-buttons gap-2 mt-4">
             <button type="submit" class="btn btn-primary">
               <i class="fas fa-check"></i> Submit
             </button>

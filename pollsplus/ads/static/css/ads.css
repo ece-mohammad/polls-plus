@@ -48,9 +48,9 @@
     }
 }
 
-/*****************************************/
-/* styles for ad details */
-/*****************************************/
+/*****************************************
+ * styles for ad details
+ *****************************************/
 
 /* Ad Details Section */
 .ad-details-section {
@@ -109,9 +109,9 @@
     }
 }
 
-/******************************************/
-/*adcomment update*/
-/******************************************/
+/******************************************
+ * comment update
+ ******************************************/
 /* Edit Comment Section */
 .adcomment-update-section {
     background-color: var(--bg);
@@ -172,5 +172,73 @@
 @media (max-width: 768px) {
     .adcomment-delete-section {
         padding: var(--space-md);
+    }
+}
+
+/***************************************
+ * ad comment create
+ ***************************************/
+
+.author-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: var(--space-md);
+}
+
+@media (max-width: 768px) {
+    .author-actions {
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: var(--space-sm);
+    }
+    .author-actions .btn {
+        margin-bottom: var(--space-sm);
+        width: 100%;
+    }
+}
+
+.ad-card-buttons {
+    display: flex;
+    gap: var(--space-sm);
+    width: 100%;
+    justify-content: flex-end; /* This aligns items to the right */
+}
+
+.ad-card-author-actions {
+    display: flex;
+    gap: var(--space-sm);
+    margin-right: auto; /* This pushes the edit/delete buttons to the left */
+}
+
+.view-details-btn {
+    order: 2; /* This ensures the view details button stays on the right */
+}
+
+@media (max-width: 768px) {
+    .ad-card-buttons {
+        flex-direction: column;
+        justify-content: center;
+        gap: var(--space-sm);
+        margin-bottom: var(--space-sm);
+    }
+
+    .ad-card-author-actions {
+        display: flex;
+        gap: var(--space-sm);
+        margin-right: 0; /* Reset margin for mobile view */
+        width: 100%;
+    }
+
+    .ad-card-author-actions .btn {
+        flex: 1; /* Make buttons take equal width */
+    }
+
+    .ad-card-buttons .btn {
+        margin-bottom: var(--space-sm);
+        width: 100%;
+    }
+
+    .view-details-btn {
+        order: 0; /* Reset order for mobile view if you want it to appear last */
     }
 }

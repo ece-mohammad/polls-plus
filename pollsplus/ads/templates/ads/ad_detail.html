@@ -24,7 +24,7 @@
               <strong>Updated at:</strong> {{ ad.updated_at|date:"F j, Y, g:i a" }}
             </li>
             <li class="text-muted mb-1">
-              <strong>By:</strong> {{ ad.owner.username }}
+              <strong>By:</strong> {{ ad.author.username }}
             </li>
             <li class="text-muted mb-1">
               <strong>Price:</strong> <span class="text-success fw-bold">${{ ad.price }}</span>
@@ -38,9 +38,7 @@
           {% if ad.images.all %}
           <div class="d-flex flex-wrap gap-3">
             {% for image in ad.images.all %}
-            <img src="{{ image.image.url }}" class="img-fluid rounded"
-                 alt="Image for {{ ad.title }}" loading="lazy"
-                 style="max-width: 150px;">
+            <img src="{{ image.image.url }}" class="img-fluid rounded" alt="Image for {{ ad.title }}" loading="lazy" style="max-width: 150px;">
             {% endfor %}
           </div>
           {% else %}
@@ -55,18 +53,6 @@
           <h3 class="h5 mb-3">Description</h3>
           <p class="lead">{{ ad.text }}</p>
         </div>
-
-        <!-- Owner Actions -->
-        {% if user == ad.owner %}
-        <div class="owner-actions d-flex justify-content-start gap-2 mb-5">
-          <a href="{% url 'ads:ad_update' pk=ad.id %}" class="btn btn-warning">
-            <i class="fas fa-edit"></i> Edit
-          </a>
-          <a href="{% url 'ads:ad_delete' pk=ad.id %}" class="btn btn-danger">
-            <i class="fas fa-trash"></i> Delete
-          </a>
-        </div>
-        {% endif %}
 
         <!-- Comments Section -->
         <div class="comments-section mb-5">
@@ -116,7 +102,7 @@
 
           <!-- Comment Form -->
           {% if user.is_authenticated %}
-          <form method="post" class="mb-4" action="{% url 'ads:ad_comment_create' pk=ad.id %}">
+          <form method="post" class="mb-4" action="{% url 'ads:ad_comment_create' pk=ad.id %}" id="comment-form">
             {% csrf_token %}
 
             {% with comment_form as form %}
@@ -131,10 +117,24 @@
           {% endif %}
         </div>
 
+        <!-- Author Actions -->
+        {% if user == ad.author %}
+        <div class="author-actions gap-2 mb-5">
+          <a href="{% url 'ads:ad_update' pk=ad.id %}" class="btn btn-warning">
+            <i class="fas fa-edit"></i> Edit
+          </a>
+          <a href="{% url 'ads:ad_delete' pk=ad.id %}" class="btn btn-danger">
+            <i class="fas fa-trash"></i> Delete
+          </a>
+        </div>
+        {% endif %}
+
         <!-- Back to Ads Link -->
-        <a href="{% url 'ads:home' %}" class="btn btn-outline-secondary">
-          <i class="fas fa-arrow-left"></i> Back to ads
-        </a>
+        <div class="go-back-link">
+          <a href="{% url 'ads:home' %}" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left"></i> Back to ads
+          </a>
+        </div>
       </div>
     </div>
   </div>

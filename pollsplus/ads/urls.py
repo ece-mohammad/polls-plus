@@ -1,4 +1,5 @@
 from django.urls import path
+
 from ads.views import (
     HomePageView,
     AdDetailView,

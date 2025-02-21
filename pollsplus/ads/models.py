@@ -6,11 +6,15 @@ from decimal import Decimal
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.validators import (
-    BaseValidator, MinLengthValidator, MaxLengthValidator
+    BaseValidator,
+    MinLengthValidator,
+    MaxLengthValidator
 )
 from django.db import models
 from simple_history import register
 from simple_history.models import HistoricalRecords
+
+from utils.helpers import human_readable_size
 
 register(User)
 
@@ -20,7 +24,7 @@ class AdTitleValidator(BaseValidator):
     def __init__(self, limit_value, message: str = None):
         super().__init__(
             limit_value,
-            message=f"Title must be at least {limit_value}s characters long."
+            message=f"Title must be at least {limit_value} characters long."
         )
 
     def compare(self, a, b):
@@ -30,39 +34,9 @@ class AdTitleValidator(BaseValidator):
         return title.strip()
 
 
-class AdImage(models.Model):
-    ad = models.ForeignKey(
-        "Ad",
-        on_delete=models.CASCADE,
-        verbose_name="Ad",
-        help_text="Ad that this image belongs to",
-        related_name="images",
-        related_query_name="image",
-    )
-    image = models.ImageField(
-        verbose_name="Image",
-        help_text="Image for your advertisement",
-        upload_to="ads",
-        null=True,
-        blank=True,
-        validators=[
-            MaxLengthValidator(settings.AD_IMAGE_MAX_SIZE, "Image must be less than 2 MB")
-        ]
-    )
-    uploaded_at = models.DateTimeField(
-        auto_now_add=True,
-        verbose_name="Created at",
-        help_text="When the image was uploaded",
-    )
-
-    def __str__(self):
-        return f"Image for {self.ad.title}"
-
-
 class AdComment(models.Model):
     class Meta:
         ordering = ["-created_at"]
-
 
     ad = models.ForeignKey(
         "Ad",
@@ -84,6 +58,19 @@ class AdComment(models.Model):
         help_text="Comment for your advertisement",
         validators=[
             MinLengthValidator(2, "Comment must be at least 2 characters long")
+        ]
+    )
+    image = models.ImageField(
+        verbose_name="Image",
+        help_text="Image for your advertisement",
+        upload_to="ads",
+        null=True,
+        blank=True,
+        validators=[
+            MaxLengthValidator(
+                settings.AD_IMAGE_MAX_SIZE,
+                f"Image must be less than {human_readable_size(settings.AD_IMAGE_MAX_SIZE)} MB"
+            )
         ]
     )
     created_at = models.DateTimeField(

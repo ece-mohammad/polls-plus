@@ -23,17 +23,6 @@ from utils.views import (
     AuthorDeleteView
 )
 
-__all__ = (
-    'HomePageView',
-    'AdDetailView',
-    'AdCreateView',
-    'AdUpdateView',
-    'AdDeleteView',
-    'AdCommentCreateView',
-    'AdCommentUpdateView',
-    'AdCommentDeleteView',
-)
-
 
 # Create your views here.
 class HomePageView(UserListView):
@@ -55,7 +44,7 @@ class AdCreateView(LoggedInUserCreateView):
     success_url = reverse_lazy("ads:home")
 
     def form_valid(self, form):
-        form.instance.owner = self.request.user
+        form.instance.author = self.request.user
         return super().form_valid(form)
 
 

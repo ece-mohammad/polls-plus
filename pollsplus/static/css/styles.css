@@ -571,7 +571,7 @@ footer {
 /***************************************
  * 9. Dark Mode Forms
  ***************************************/
-textarea.form-control {
+textarea.form-control, input.form-control {
     background-color: var(--bg);
     color: var(--text);
     border: 1px solid var(--border-color);
@@ -579,7 +579,47 @@ textarea.form-control {
     transition: border-color 0.2s ease-in-out;
 }
 
-textarea.form-control:focus {
+textarea.form-control:focus, input.form-control:focus {
     border-color: var(--primary);
     box-shadow: 0 0 0 0.2rem rgba(14, 165, 233, 0.25);
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: end;
+    gap: var(--space-md);
+}
+
+@media (max-width: 768px) {
+    .form-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-sm);
+    }
+    .form-buttons .btn {
+        width: 100%;
+    }
+}
+
+.form-buttons-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+@media (max-width: 768px) {
+    .form-buttons-centered {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+    .form-buttons-centered .btn {
+        width: 100%;
+    }
+}
+
+.go-back-link {
+    display: flex;
+    justify-content: end;
+    gap: var(--space-md);
 }
