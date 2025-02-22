@@ -41,6 +41,7 @@ class AdDetailView(UserDetailView):
 class AdCreateView(LoggedInUserCreateView):
     model = Ad
     fields = ["title", "price", "text", "image"]
+    template_name_suffix = "_create_form"
     success_url = reverse_lazy("ads:home")
 
     def form_valid(self, form):
@@ -50,8 +51,8 @@ class AdCreateView(LoggedInUserCreateView):
 
 class AdUpdateView(AuthorUpdateView):
     model = Ad
-    template_name_suffix = "_update_form"
     fields = ["title", "price", "text", "image"]
+    template_name_suffix = "_update_form"
 
     def form_valid(self, form):
         form.instance.updated_at = timezone.now()

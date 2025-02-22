@@ -133,5 +133,10 @@ class Ad(models.Model):
             kwargs={"pk": self.id}
         )
 
+    def delete(self, *args, **kwargs):
+        if self.image:
+            self.image.delete()
+        super().delete(*args, **kwargs)
+
     def __str__(self):
         return self.title

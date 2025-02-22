@@ -1,56 +1,21 @@
-{% extends "ads/base.html" %}
-
 {% load widget_tweaks %}
 
-{% block content %}
-<section class="mt-5">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8 col-lg-6">
-        <!-- Page Heading -->
-        <h2 class="display-5 mb-4 text-center">Advertise with Us</h2>
-        <p class="lead text-center mb-5">Fill out the form below to advertise with us.</p>
-
-        <!-- Form -->
-        <form action="{% url 'ads:ad_create' %}" method="post" class="needs-validation" id="ad-form" enctype="multipart/form-data">
-          {% csrf_token %}
-          <fieldset>
-            <!-- Dynamically render form fields with Bootstrap styling -->
-            {% for field in form %}
-              <div class="row mb-3 align-items-start">
-                <!-- Label -->
-                <div class="col-md-3">
-                  <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
-                </div>
-                <!-- Input Field -->
-                <div class="col-md-9">
-                  {{ field|add_class:"form-control" }}
-                  {% if field.help_text %}
-                    <div class="form-text">{{ field.help_text }}</div>
-                  {% endif %}
-                  {% for error in field.errors %}
-                    <div class="invalid-feedback d-block">{{ error }}</div>
-                  {% endfor %}
-                </div>
-              </div>
-            {% endfor %}
-          </fieldset>
-
-          <!-- Form Buttons -->
-          <div class="form-buttons gap-2">
-            <button type="submit" class="btn btn-primary">
-              <i class="fas fa-paper-plane"></i> Submit
-            </button>
-            <button type="reset" class="btn btn-outline-secondary">
-              <i class="fas fa-undo"></i> Reset
-            </button>
-            <button type="button" class="btn btn-outline-danger" onclick="window.location.href='{% url 'ads:home' %}'">
-              <i class="fas fa-times"></i> Cancel
-            </button>
-          </div>
-        </form>
-      </div>
+<!-- Dynamically render form fields with Bootstrap styling -->
+{% for field in form %}
+  <div class="row mb-3 align-items-start">
+    <!-- Label -->
+    <div class="col-md-3">
+      <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+    </div>
+    <!-- Input Field -->
+    <div class="col-md-9">
+      {{ field|add_class:"form-control" }}
+      {% if field.help_text %}
+        <div class="form-text">{{ field.help_text }}</div>
+      {% endif %}
+      {% for error in field.errors %}
+        <div class="invalid-feedback d-block">{{ error }}</div>
+      {% endfor %}
     </div>
   </div>
-</section>
-{% endblock %}
+{% endfor %}

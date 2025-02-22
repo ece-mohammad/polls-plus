@@ -36,7 +36,7 @@
         <div class="ad-image mb-5">
           <h3 class="h5 mb-3">Image</h3>
           {% if ad.image %}
-          <div class="d-flex flex-wrap gap-3">
+          <div class="d-flex flex-wrap justify-content-center gap-3">
             <img src="{{ ad.image.url }}" class="img-fluid rounded" alt="Image for {{ ad.title }}" loading="lazy">
           </div>
           {% else %}
