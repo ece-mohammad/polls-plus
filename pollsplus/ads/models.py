@@ -8,10 +8,10 @@ from django.contrib.auth.models import User
 from django.core.validators import (
     BaseValidator,
     MinLengthValidator,
-    MaxLengthValidator
 )
 from django.db import models
 from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 from simple_history import register
 from simple_history.models import HistoricalRecords
 
@@ -25,7 +25,7 @@ class AdTitleValidator(BaseValidator):
     def __init__(self, limit_value, message: str = None):
         super().__init__(
             limit_value,
-            message=f"Title must be at least {limit_value} characters long."
+            message=_(f"Title must be at least {limit_value} characters long.")
         )
 
     def compare(self, a, b):
@@ -33,6 +33,23 @@ class AdTitleValidator(BaseValidator):
 
     def clean(self, title: str):
         return title.strip()
+
+
+class ImageSizeValidator(BaseValidator):
+
+    def __init__(self, max_size, message: str = None):
+        super().__init__(
+            max_size,
+            message=_(
+                f"Image size must be less than {human_readable_size(max_size)}"
+            )
+        )
+
+    def compare(self, a, b):
+        if a.size > b:
+            return True
+        return False
+
 
 
 class AdComment(models.Model):
@@ -43,7 +60,7 @@ class AdComment(models.Model):
         "Ad",
         on_delete=models.CASCADE,
         verbose_name="Ad",
-        help_text="Ad that this comment belongs to",
+        help_text=_("Ad that this comment belongs to"),
         related_name="comments",
         related_query_name="comment",
     )
@@ -51,20 +68,23 @@ class AdComment(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         verbose_name="Created by",
-        help_text="User that created the comment",
+        help_text=_("User that created the comment"),
         null=True,
     )
     text = models.TextField(
         verbose_name="Comment",
-        help_text="Comment for your advertisement",
+        help_text=_("Comment for your advertisement"),
         validators=[
-            MinLengthValidator(2, "Comment must be at least 2 characters long")
+            MinLengthValidator(
+                2,
+                _("Comment must be at least 2 characters long")
+            )
         ]
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name="Created at",
-        help_text="When the comment was created"
+        help_text=_("When the comment was created")
     )
 
     def __str__(self):
@@ -76,7 +96,7 @@ class Ad(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         verbose_name="Created by",
-        help_text="User that created the advertisement"
+        help_text=_("User that created the advertisement")
     )
     title = models.CharField(
         max_length=200,
@@ -86,7 +106,7 @@ class Ad(models.Model):
         blank=False,
         null=False,
         verbose_name="Title",
-        help_text="Title for your advertisement"
+        help_text=_("Title for your advertisement")
     )
     price = models.DecimalField(
         max_digits=7,
@@ -94,13 +114,13 @@ class Ad(models.Model):
         null=False,
         default=Decimal(0.0),
         verbose_name="Price",
-        help_text="Price for your advertisement"
+        help_text=_("Price for your advertisement")
     )
     text = models.TextField(
         null=True,
         default="",
         verbose_name="Description",
-        help_text="Description for your advertisement"
+        help_text=_("Description for your advertisement")
     )
     image = models.ImageField(
         verbose_name="Image",
@@ -108,22 +128,25 @@ class Ad(models.Model):
         upload_to="ads",
         null=True,
         blank=True,
+        editable=True,
         validators=[
-            MaxLengthValidator(
+            ImageSizeValidator(
                 settings.AD_IMAGE_MAX_SIZE,
-                f"Image must be less than {human_readable_size(settings.AD_IMAGE_MAX_SIZE)} MB"
+                _(
+                    f"Image must be less than {human_readable_size(settings.AD_IMAGE_MAX_SIZE)}"
+                )
             )
         ]
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name="Created at",
-        help_text="When the advertisement was created"
+        help_text=_("When the advertisement was created")
     )
     updated_at = models.DateTimeField(
         auto_now=True,
         verbose_name="Updated at",
-        help_text="Last time the advertisement was updated"
+        help_text=_("Last time the advertisement was updated")
     )
     history = HistoricalRecords()
 

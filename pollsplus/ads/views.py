@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import (
     HttpRequest,
@@ -13,7 +14,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.http import require_http_methods
 from django.views.generic import View
 
-from ads.forms import AdCommentForm
+from ads.forms import AdCommentForm, AdForm
 from ads.models import Ad, AdComment
 from utils.views import (
     UserListView,
@@ -40,9 +41,10 @@ class AdDetailView(UserDetailView):
 
 class AdCreateView(LoggedInUserCreateView):
     model = Ad
-    fields = ["title", "price", "text", "image"]
+    form_class = AdForm
     template_name_suffix = "_create_form"
     success_url = reverse_lazy("ads:home")
+    extra_context = {"max": settings.AD_IMAGE_MAX_SIZE}
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -51,8 +53,9 @@ class AdCreateView(LoggedInUserCreateView):
 
 class AdUpdateView(AuthorUpdateView):
     model = Ad
-    fields = ["title", "price", "text", "image"]
+    form_class = AdForm
     template_name_suffix = "_update_form"
+    extra_context = {"max": settings.AD_IMAGE_MAX_SIZE}
 
     def form_valid(self, form):
         form.instance.updated_at = timezone.now()
