@@ -17,7 +17,7 @@
         {% csrf_token %}
         <div class="form-buttons-centered">
           <button type="submit" class="btn btn-danger me-md-2">
-            <i class="fas fa-trash"></i> Yes, delete
+            <i class="fas fa-trash"></i> Yes, delete.
           </button>
           <a href="{% url 'ads:ad_details' pk=ad.id %}" class="btn btn-outline-secondary">
             <i class="fas fa-times"></i> Cancel

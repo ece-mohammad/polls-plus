@@ -53,6 +53,7 @@ class AdUpdateView(AuthorUpdateView):
     model = Ad
     form_class = AdForm
     template_name_suffix = "_update_form"
+    success_url = reverse_lazy("ads:home")
 
     def get_object(self, queryset=None):
         object = super().get_object(queryset)
@@ -72,12 +73,6 @@ class AdUpdateView(AuthorUpdateView):
                 form.instance.picture = self.old_picture
         form.instance.updated_at = timezone.now()
         return super(AdUpdateView, self).form_valid(form)
-
-    def get_sccess_url(self):
-        return reverse_lazy(
-            "ads:ad_details",
-            kwargs={"pk": self.object.id}
-        )
 
 
 class AdDeleteView(AuthorDeleteView):
