@@ -12,12 +12,12 @@
       {% for ad in ad_list %}
       <div class="col">
         <div class="card ad-card h-100 shadow-sm">
-          <!-- Placeholder for Image -->
+          <!-- Placeholder for Picture -->
           <div class="card-img-top bg-light d-flex justify-content-center align-items-center">
-            {% if ad.image %}
-            <img src="{{ ad.image.url }}" class="card-img-top" alt="{{ ad.title }} image" loading="lazy">
+            {% if ad.picture %}
+            <img src="{{ ad.picture.url }}" class="card-img-top" alt="{{ ad.title }} picture" loading="lazy">
             {% else %}
-            <p class="text-muted">Image coming soon</p>
+            <p class="text-muted">Picture coming soon</p>
             {% endif %}
           </div>
 

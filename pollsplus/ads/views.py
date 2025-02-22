@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import (
     HttpRequest,
@@ -44,7 +43,6 @@ class AdCreateView(LoggedInUserCreateView):
     form_class = AdForm
     template_name_suffix = "_create_form"
     success_url = reverse_lazy("ads:home")
-    extra_context = {"max": settings.AD_IMAGE_MAX_SIZE}
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -55,11 +53,25 @@ class AdUpdateView(AuthorUpdateView):
     model = Ad
     form_class = AdForm
     template_name_suffix = "_update_form"
-    extra_context = {"max": settings.AD_IMAGE_MAX_SIZE}
+
+    def get_object(self, queryset=None):
+        object = super().get_object(queryset)
+        self.old_picture = object.picture
+        return object
 
     def form_valid(self, form):
+        if self.old_picture and not form.cleaned_data["picture"]:
+            self.old_picture.delete()
+
+        elif self.old_picture and form.cleaned_data["picture"]:
+            if self.old_picture != form.cleaned_data["picture"]:
+                self.old_picture.delete()
+                form.instance.picture = form.cleaned_data["picture"]
+
+            else:
+                form.instance.picture = self.old_picture
         form.instance.updated_at = timezone.now()
-        return super().form_valid(form)
+        return super(AdUpdateView, self).form_valid(form)
 
     def get_sccess_url(self):
         return reverse_lazy(

@@ -26,7 +26,7 @@
     background-color: var(--dark);
 }
 
-/* Image Placeholder */
+/* Picture Placeholder */
 .card-img-top {
     height: 200px;
     background-color: var(--bg-light);
@@ -116,7 +116,7 @@
     margin-bottom: var(--space-md);
 }
 
-.ad-image img {
+.ad-picture img {
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     margin-bottom: var(--space-md);

@@ -35,7 +35,7 @@ class AdTitleValidator(BaseValidator):
         return title.strip()
 
 
-class ImageSizeValidator(BaseValidator):
+class PictureSizeValidator(BaseValidator):
 
     def __init__(self, max_size, message: str = None):
         super().__init__(
@@ -122,18 +122,18 @@ class Ad(models.Model):
         verbose_name="Description",
         help_text=_("Description for your advertisement")
     )
-    image = models.ImageField(
-        verbose_name="Image",
-        help_text="Image for your advertisement",
+    picture = models.ImageField(
+        verbose_name="Picture",
+        help_text="Picture for your advertisement",
         upload_to="ads",
         null=True,
         blank=True,
         editable=True,
         validators=[
-            ImageSizeValidator(
-                settings.AD_IMAGE_MAX_SIZE,
+            PictureSizeValidator(
+                settings.AD_PICTURE_MAX_SIZE,
                 _(
-                    f"Image must be less than {human_readable_size(settings.AD_IMAGE_MAX_SIZE)}"
+                    f"Picture must be less than {human_readable_size(settings.AD_PICTURE_MAX_SIZE)}"
                 )
             )
         ]
@@ -157,8 +157,8 @@ class Ad(models.Model):
         )
 
     def delete(self, *args, **kwargs):
-        if self.image:
-            self.image.delete()
+        if self.picture:
+            self.picture.delete()
         super().delete(*args, **kwargs)
 
     def __str__(self):

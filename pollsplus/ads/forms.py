@@ -25,22 +25,9 @@ class AdCommentForm(ModelForm):
 
 
 class AdForm(ModelForm):
-    max_upload_limit = settings.AD_IMAGE_MAX_SIZE
+    max_upload_limit = settings.AD_PICTURE_MAX_SIZE
     max_upload_limit_text = _(f"{human_readable_size(max_upload_limit)}")
 
     class Meta:
         model = Ad
-        fields = ('title', 'price', 'text', 'image',)
-
-    def clean_image(self):
-        image = self.cleaned_data['image']
-        if image is False and self.instance.image:
-            self.instance.image.delete()
-
-        elif image:
-            if image == self.instance.image:
-                return self.instance.image
-            else:
-                self.instance.image.delete()
-
-        return image
+        fields = ('title', 'price', 'text', 'picture',)
