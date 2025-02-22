@@ -14,7 +14,7 @@
         </header>
 
         <!-- Update Form -->
-        <form action="{% url 'ads:ad_update' pk=ad.id %}" method="post" class="needs-validation" id="ad-update-form">
+        <form action="{% url 'ads:ad_update' pk=ad.id %}" method="post" class="needs-validation" id="ad-update-form" enctype="multipart/form-data">
           {% csrf_token %}
           <fieldset>
             <!-- Dynamically render form fields with Bootstrap styling -->

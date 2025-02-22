@@ -40,7 +40,7 @@ class AdDetailView(UserDetailView):
 
 class AdCreateView(LoggedInUserCreateView):
     model = Ad
-    fields = ["title", "price", "text"]
+    fields = ["title", "price", "text", "image"]
     success_url = reverse_lazy("ads:home")
 
     def form_valid(self, form):
@@ -51,12 +51,17 @@ class AdCreateView(LoggedInUserCreateView):
 class AdUpdateView(AuthorUpdateView):
     model = Ad
     template_name_suffix = "_update_form"
-    fields = ["title", "price", "text"]
-    success_url = reverse_lazy("ads:home")
+    fields = ["title", "price", "text", "image"]
 
     def form_valid(self, form):
         form.instance.updated_at = timezone.now()
         return super().form_valid(form)
+
+    def get_sccess_url(self):
+        return reverse_lazy(
+            "ads:ad_details",
+            kwargs={"pk": self.object.id}
+        )
 
 
 class AdDeleteView(AuthorDeleteView):

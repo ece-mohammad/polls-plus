@@ -11,6 +11,7 @@ from django.core.validators import (
     MaxLengthValidator
 )
 from django.db import models
+from django.urls import reverse_lazy
 from simple_history import register
 from simple_history.models import HistoricalRecords
 
@@ -60,19 +61,6 @@ class AdComment(models.Model):
             MinLengthValidator(2, "Comment must be at least 2 characters long")
         ]
     )
-    image = models.ImageField(
-        verbose_name="Image",
-        help_text="Image for your advertisement",
-        upload_to="ads",
-        null=True,
-        blank=True,
-        validators=[
-            MaxLengthValidator(
-                settings.AD_IMAGE_MAX_SIZE,
-                f"Image must be less than {human_readable_size(settings.AD_IMAGE_MAX_SIZE)} MB"
-            )
-        ]
-    )
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name="Created at",
@@ -114,6 +102,19 @@ class Ad(models.Model):
         verbose_name="Description",
         help_text="Description for your advertisement"
     )
+    image = models.ImageField(
+        verbose_name="Image",
+        help_text="Image for your advertisement",
+        upload_to="ads",
+        null=True,
+        blank=True,
+        validators=[
+            MaxLengthValidator(
+                settings.AD_IMAGE_MAX_SIZE,
+                f"Image must be less than {human_readable_size(settings.AD_IMAGE_MAX_SIZE)} MB"
+            )
+        ]
+    )
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name="Created at",
@@ -125,6 +126,12 @@ class Ad(models.Model):
         help_text="Last time the advertisement was updated"
     )
     history = HistoricalRecords()
+
+    def get_absolute_url(self):
+        return reverse_lazy(
+            "ads:ad_details",
+            kwargs={"pk": self.id}
+        )
 
     def __str__(self):
         return self.title

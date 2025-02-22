@@ -12,7 +12,7 @@
         <p class="lead text-center mb-5">Fill out the form below to advertise with us.</p>
 
         <!-- Form -->
-        <form action="{% url 'ads:ad_create' %}" method="post" class="needs-validation" id="ad-form">
+        <form action="{% url 'ads:ad_create' %}" method="post" class="needs-validation" id="ad-form" enctype="multipart/form-data">
           {% csrf_token %}
           <fieldset>
             <!-- Dynamically render form fields with Bootstrap styling -->

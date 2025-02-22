@@ -48,6 +48,54 @@
     }
 }
 
+
+.ad-card-buttons {
+    display: flex;
+    gap: var(--space-sm);
+    width: 100%;
+    justify-content: flex-end; /* This aligns items to the right */
+}
+
+.ad-card-author-actions {
+    display: flex;
+    gap: var(--space-sm);
+    margin-right: auto; /* This pushes the edit/delete buttons to the left */
+}
+
+.view-details-btn {
+    order: 2; /* This ensures the view details button stays on the right */
+}
+
+@media (max-width: 768px) {
+    .ad-card-buttons {
+        flex-direction: column;
+        justify-content: center;
+        gap: var(--space-sm);
+        margin-bottom: var(--space-sm);
+    }
+
+    .ad-card-author-actions {
+        display: flex;
+        gap: var(--space-sm);
+        margin-right: 0; /* Reset margin for mobile view */
+        width: 100%;
+    }
+
+    .ad-card-author-actions .btn {
+        flex: 1; /* Make buttons take equal width */
+    }
+
+    .ad-card-buttons .btn {
+        margin-bottom: var(--space-sm);
+        width: 100%;
+    }
+
+    .view-details-btn {
+        order: 0; /* Reset order for mobile view if you want it to appear last */
+    }
+}
+
+
 /*****************************************
  * styles for ad details
  *****************************************/
@@ -68,9 +116,12 @@
     margin-bottom: var(--space-md);
 }
 
-.ad-images img {
+.ad-image img {
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
+    margin-bottom: var(--space-md);
+    max-width: 100%;
+    height: auto;
 }
 
 /* Responsive Design */
@@ -197,48 +248,3 @@
     }
 }
 
-.ad-card-buttons {
-    display: flex;
-    gap: var(--space-sm);
-    width: 100%;
-    justify-content: flex-end; /* This aligns items to the right */
-}
-
-.ad-card-author-actions {
-    display: flex;
-    gap: var(--space-sm);
-    margin-right: auto; /* This pushes the edit/delete buttons to the left */
-}
-
-.view-details-btn {
-    order: 2; /* This ensures the view details button stays on the right */
-}
-
-@media (max-width: 768px) {
-    .ad-card-buttons {
-        flex-direction: column;
-        justify-content: center;
-        gap: var(--space-sm);
-        margin-bottom: var(--space-sm);
-    }
-
-    .ad-card-author-actions {
-        display: flex;
-        gap: var(--space-sm);
-        margin-right: 0; /* Reset margin for mobile view */
-        width: 100%;
-    }
-
-    .ad-card-author-actions .btn {
-        flex: 1; /* Make buttons take equal width */
-    }
-
-    .ad-card-buttons .btn {
-        margin-bottom: var(--space-sm);
-        width: 100%;
-    }
-
-    .view-details-btn {
-        order: 0; /* Reset order for mobile view if you want it to appear last */
-    }
-}
