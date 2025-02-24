@@ -35,6 +35,7 @@
     <form method="POST" action="{% url 'account_login' %}" class="auth-form">
       {% csrf_token %}
       <!-- Form Fields -->
+
       {{ form|crispy }}
       <input type="hidden" name="next" value="{{ next }}">
 

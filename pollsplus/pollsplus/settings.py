@@ -236,18 +236,7 @@ AD_PICTURE_MAX_SIZE: int = (2 * 1024 * 1024)
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-# allauth
-# SOCIALACCOUNT_PROVIDERS = {
-#     'github': {
-#         # "VERIFIED_EMAIL": True,
-#         'APP'  : {
-#             'client_id': 'Ov23lisxI2vBWxWCGyLD',
-#             'secret'   : '5883698d9a4d96df9d66a2830f28328828709b49',
-#             'key'      : '',
-#
-#         },
-#         'SCOPE': [
-#             'user',
-#         ],
-#     }
-# }
+# all auth
+ACCOUNT_FORMS = {
+    "login": "accounts.forms.CustomLoginForm",
+}
