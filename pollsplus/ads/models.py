@@ -10,7 +10,6 @@ from django.core.validators import (
     MinLengthValidator,
 )
 from django.db import models
-from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from simple_history import register
 from simple_history.models import HistoricalRecords
@@ -90,7 +89,28 @@ class AdComment(models.Model):
     def __str__(self):
         return f"Comment for {self.ad.title}: {self.text}"
 
-# Create your models here.
+
+class AdFavorite(models.Model):
+    class Meta:
+        unique_together = ("ad", "user")
+
+    ad = models.ForeignKey(
+        "Ad",
+        on_delete=models.CASCADE,
+        verbose_name="Ad",
+        help_text=_("Ad that this favorite belongs to"),
+        related_name="+",
+        related_query_name="+",
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name="Created by",
+        help_text=_("User that created the favorite"),
+        related_name="+",
+    )
+
+
 class Ad(models.Model):
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -138,6 +158,16 @@ class Ad(models.Model):
             )
         ]
     )
+    favored_by = models.ManyToManyField(
+        settings.AUTH_USER_MODEL,
+        through="AdFavorite",
+        through_fields=("ad", "user"),
+        blank=True,
+        verbose_name="Favored by",
+        help_text=_("Users that favorited the advertisement"),
+        related_name="favorite_ads",
+        related_query_name="favorite_ad",
+    )
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name="Created at",
@@ -149,12 +179,6 @@ class Ad(models.Model):
         help_text=_("Last time the advertisement was updated")
     )
     history = HistoricalRecords()
-
-    def get_absolute_url(self):
-        return reverse_lazy(
-            "ads:ad_details",
-            kwargs={"pk": self.id}
-        )
 
     def delete(self, *args, **kwargs):
         if self.picture:

@@ -1,20 +1,24 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+import json
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.http import (
     HttpRequest,
-    HttpResponseRedirect
+    HttpResponseRedirect,
+    JsonResponse,
 )
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.utils import timezone
 from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from django.views.generic import View
 
 from ads.forms import AdCommentForm, AdForm
-from ads.models import Ad, AdComment
+from ads.models import Ad, AdComment, AdFavorite
 from utils.views import (
     UserListView,
     UserDetailView,
@@ -27,6 +31,15 @@ from utils.views import (
 # Create your views here.
 class HomePageView(UserListView):
     model = Ad
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        user = self.request.user
+        if user.is_authenticated:
+            context["fav_ads"] = Ad.objects.filter(
+                favored_by=user
+            ).values_list("id", flat=True)
+        return context
 
 
 class AdDetailView(UserDetailView):
@@ -145,3 +158,34 @@ class AdCommentDeleteView(AuthorDeleteView):
             "ads:ad_details",
             kwargs={"pk": self.object.ad.id}
         )
+
+
+@method_decorator(csrf_exempt, name="dispatch")
+class AdFavoriteToggleView(LoginRequiredMixin, UserListView):
+    model = AdFavorite
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(user=self.request.user)
+
+    def render_to_response(self, context, **response_kwargs):
+        rsp = {"favorites": []}
+        for fav in context["object_list"]:
+            rsp["favorites"].append(fav.ad.id)
+        return JsonResponse(rsp)
+
+    def post(self, request: HttpRequest, *args, **kwargs) -> JsonResponse:
+        post_data: dict = json.loads(request.body)
+
+        ad_id: int = post_data["ad_id"]
+        add_fav: bool = post_data["fav"]
+
+        ad: Ad = get_object_or_404(Ad, pk=ad_id)
+        user: User = self.request.user
+        if add_fav:
+            ad.favored_by.add(user)
+            ad.save()
+        else:
+            fav: AdFavorite = get_object_or_404(AdFavorite, ad=ad, user=user)
+            fav.delete()
+        return JsonResponse({"status": 200})

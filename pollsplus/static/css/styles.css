@@ -414,8 +414,6 @@ textarea.form-control:focus, input.form-control:focus {
     gap: var(--space-md);
 }
 
-
-
 /* Buttons */
 .btn {
     --btn-padding: var(--space-sm) var(--space-lg);

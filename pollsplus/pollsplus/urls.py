@@ -19,6 +19,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.views.static import serve
+
 from accounts.views import CustomLogoutView
 
 from pollsplus.views import contact_view, about_view
@@ -42,9 +44,14 @@ urlpatterns.extend(
     static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
 )
 
-# urlpatterns.append(
-#     path('favicon.ico',
-# )
+# serve favicon from static/favico/favicon.ico
+urlpatterns.append(
+    path(
+        "favicon.ico",
+        serve,
+        {"document_root": settings.STATIC_ROOT, "path": "favicon/favicon.ico"},
+    )
+)
 
 urlpatterns.append(
     path("__debug__", include("debug_toolbar.urls")),

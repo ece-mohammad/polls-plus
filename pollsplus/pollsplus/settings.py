@@ -50,7 +50,7 @@ INSTALLED_APPS = [
 
     "django_werkzeug",
     "django_extensions",
-    "debug_toolbar",
+    # "debug_toolbar",
     "simple_history",
     "home.apps.HomeConfig",
     "reloadinator.apps.ReloadinatorConfig",
@@ -76,7 +76,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    # "debug_toolbar.middleware.DebugToolbarMiddleware",
     'simple_history.middleware.HistoryRequestMiddleware',
 
     "allauth.account.middleware.AccountMiddleware",
@@ -198,9 +198,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = str(BASE_DIR / "static")
 
 STATICFILES_DIRS = [
-    str(BASE_DIR / 'static'),
+    STATIC_ROOT,
 ]
 
 MEDIA_URL = "/media/"
