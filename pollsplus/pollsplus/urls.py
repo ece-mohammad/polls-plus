@@ -49,7 +49,7 @@ urlpatterns.append(
     path(
         "favicon.ico",
         serve,
-        {"document_root": settings.STATIC_ROOT, "path": "favicon/favicon.ico"},
+        {"document_root": settings.STATICFILES_DIRS[0], "path": "favicon/favicon.ico"},
     )
 )
 
