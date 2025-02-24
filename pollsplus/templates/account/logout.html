@@ -1,0 +1,21 @@
+{% extends "allauth/layouts/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% spaceless %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h2>Logout</h2>
+      <form method="post" action="{% url 'account_logout' %}">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" class="btn btn-primary" value="Logout">
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+{% endspaceless %}
+

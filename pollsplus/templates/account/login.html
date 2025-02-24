@@ -1,0 +1,77 @@
+{% extends "allauth/layouts/base.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% load allauth %}
+{% load socialaccount %}
+
+{% block head_title %}Login{% endblock head_title %}
+
+{% block content %}
+<div class="auth-container mt-5">
+  <div class="auth-card p-4 rounded shadow-sm">
+    <!-- Card Header -->
+    <div class="auth-header text-center mb-4">
+      <h2 class="auth-title">
+        <i class="fas fa-sign-in-alt"></i> Login
+      </h2>
+    </div>
+
+    <!-- Information Messages -->
+    {% if next %}
+    {% if user.is_authenticated %}
+    <div class="alert alert-danger">
+      Your account doesn't have access to this page.
+      Please login with an account that has access.
+    </div>
+    {% else %}
+    <div class="alert alert-info">
+      Please login to continue.
+    </div>
+    {% endif %}
+    {% endif %}
+
+    <!-- Login Form -->
+    <form method="POST" action="{% url 'account_login' %}" class="auth-form">
+      {% csrf_token %}
+      <!-- Form Fields -->
+      {{ form|crispy }}
+      <input type="hidden" name="next" value="{{ next }}">
+
+      <!-- Submit Button -->
+      <div class="d-flex justify-content-center mt-4">
+        <button type="submit" class="btn btn-primary auth-submit">
+          <i class="fas fa-sign-in-alt"></i> Login
+        </button>
+      </div>
+
+      <!-- Links -->
+      <div class="auth-links text-center d-flex flex-wrap justify-content-center mt-4">
+        <a href="{% url 'account_reset_password' %}" class="auth-link">
+          <i class="fas fa-key"></i> Forgot Password?
+        </a>
+        <a href="{% url 'account_signup' %}" class="auth-link">
+          <i class="fas fa-user-plus"></i> Register
+        </a>
+      </div>
+    </form>
+
+    <!-- Social Login -->
+    <section class="social-login-section mt-4">
+      <div class="social-login d-flex justify-content-center">
+        <a href="{% provider_login_url 'google' %}" class="social-login-link btn btn-outline-primary">
+          <i class="fab fa-google"></i> Login with Google
+        </a>
+      </div>
+      <div class="social-login d-flex justify-content-center">
+        <a href="{% provider_login_url 'github' %}" class="social-login-link btn btn-outline-dark">
+          <i class="fab fa-github"></i> Login with GitHub
+        </a>
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock content %}
+
+{% block extra_body_scripts %}
+{% endblock extra_body_scripts %}

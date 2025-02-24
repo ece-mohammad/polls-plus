@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block app_name %}Ads{% endblock %}
-{% block app_url %}{% url 'ads:home' %}{% endblock %}
+{% block head_title %}Ads{% endblock head_title %}
+{% block app_name %}Ads{% endblock app_name %}
+{% block app_url %}{% url 'ads:home' %}{% endblock app_url %}
 
-{% block title %}Ads{% endblock %}
 
-{% block custom_styles %}
+{% block extra_head %}
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- Custom CSS -->
 <link rel="stylesheet" href="{% static 'css/ads.css' %}" type="text/css"/>
-{% endblock %}
+{% endblock extra_head %}

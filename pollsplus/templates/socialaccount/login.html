@@ -1,0 +1,24 @@
+{% extends "allauth/layouts/base.html" %}
+
+{% block content %}
+<div class="container text-center">
+  {% if process == "connect" %}
+  <!--centered-->
+  <h2 class="display-4">Connect {{ provider.name }}</h2>
+  <p class="lead">
+    You are about to connect a new third-party account from {{ provider.name }}
+  </p>
+  {% else %}
+
+  <h2 class="display-4">Sign In with {{ provider.name }}</h2>
+  <p class="lead">
+    You are about to sign in using a third-party account from {{ provider.name }}.
+  </p>
+  {% endif %}
+
+  <form class="mt-5" method="post" action="">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary">Continue</button>
+  </form>
+</div>
+{% endblock content %}

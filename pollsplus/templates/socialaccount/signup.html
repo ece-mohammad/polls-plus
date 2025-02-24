@@ -1,0 +1,42 @@
+{% extends "allauth/layouts/base.html" %}
+
+{% load allauth %}
+{% load socialaccount %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}
+Sign Up
+{% endblock head_title %}
+
+{% block content %}
+<section class="signup-section mt-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <!-- Page Heading -->
+        <header class="text-center mb-4">
+          <h1 class="display-5">Sign Up</h1>
+          <p class="lead">
+            {% with provider_name=account.get_provider.name site_name=site.name %}
+            You are about to use your {{ provider_name }} account to log in to
+            {{ site_name }}. As a final step, please complete the following form:
+            {% endwith %}
+          </p>
+        </header>
+
+        <!-- Signup Form -->
+        <form method="post" action="{% url 'socialaccount_signup' %}" class="p-4 rounded shadow-sm">
+          {% csrf_token %}
+          {{ form|crispy }}
+          {{ redirect_field }}
+          <div class="d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-user-plus"></i> Sign Up
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-from typing import Type
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -44,6 +42,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.google',
+
     "django_werkzeug",
     "django_extensions",
     "debug_toolbar",
@@ -60,6 +64,8 @@ INSTALLED_APPS = [
     # "pomodoro.apps.PomodoroConfig",
     # "tahajjod.apps.TahajjodConfig",
     "widget_tweaks",
+    "crispy_forms",
+    "crispy_bootstrap5",
 ]
 
 MIDDLEWARE = [
@@ -72,6 +78,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     'simple_history.middleware.HistoryRequestMiddleware',
+
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "pollsplus.urls"
@@ -90,6 +98,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "django.template.context_processors.media",
+                'django.template.context_processors.request',
             ],
             "libraries": {
                 "app_tags": "ads.templatetags.app_tags",
@@ -122,6 +131,14 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -197,13 +214,40 @@ SITE_ROOT = str(BASE_DIR / "site")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = ("/"
+                       "")
+# polls
 RECENT_POLLS_SIZE: int = 5
 
+# dj4e
 DJ4E_USER_ID = "c3d67032"
 
-LOGIN_REDIRECT_URL = "/"
-LOGOUT_REDIRECT_URL = "/"
-
+# short url
 MAX_SHORT_URL: int = 10
+
+# home -> projects
 PROJECTS_RECENT_COUNT: int = 5
+
+# ads
 AD_PICTURE_MAX_SIZE: int = (2 * 1024 * 1024)
+
+# crispy bootstrap5
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+# allauth
+# SOCIALACCOUNT_PROVIDERS = {
+#     'github': {
+#         # "VERIFIED_EMAIL": True,
+#         'APP'  : {
+#             'client_id': 'Ov23lisxI2vBWxWCGyLD',
+#             'secret'   : '5883698d9a4d96df9d66a2830f28328828709b49',
+#             'key'      : '',
+#
+#         },
+#         'SCOPE': [
+#             'user',
+#         ],
+#     }
+# }

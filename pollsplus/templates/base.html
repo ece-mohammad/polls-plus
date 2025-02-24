@@ -1,11 +1,21 @@
 {% load static %}
 {% load widget_tweaks %}
 {% load app_tags %}
+{% load account %}
+
+{% user_display user as user_display %}
+
 {% spaceless %}
+
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 <head>
+  <!-- common headers -->
+  <!-- charset -->
   <meta charset="UTF-8">
+
+  <!-- meta tags -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Django Developer Portfolio - Showcasing Backend Development Projects">
   <meta name="keywords" content="Django, Python, Backend Development, Web Development, Portfolio">
@@ -17,6 +27,7 @@
 
   <!-- Bootstrap 5 JS -->
   <script type="application/json" src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+  <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
@@ -34,30 +45,38 @@
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json" src="{% static 'schema.json' %}"></script>
 
-  <title>{% block title %}Home{% endblock %}</title>
+  <!-- title -->
+  <title>
+    {% filter suffix:' | ' %}{% block head_title %}{% endblock head_title %}{% endfilter %}
+    Spaghetti Chef | Untangling Code, One Project at a Time
+  </title>
 
-  {% block custom_styles %}{% endblock %}
+  <!-- extra headers -->
+  {% block extra_head %}{% endblock extra_head %}
 </head>
 
 <body>
+{% block body %}
+
 <!-- Navbar -->
+{% block navbar %}
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
   <div class="container-fluid">
     <!-- Brand -->
     <a class="navbar-brand" href="/">
-      <i class="fas fa-project-diagram"></i>Spaghetti Chef
+      {%  block brand_icon %}<i class="fas fa-project-diagram"></i>{% endblock brand_icon %}
+      {% block brand_name %}Spaghetti Chef{% endblock brand_name %}
     </a>
 
     <!-- Mobile Toggle Button -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarNav" aria-controls="navbarNav"
-            aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <!-- Navbar Content -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <!-- Left Side Navigation -->
+      {% block nav_left %}
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">
@@ -66,14 +85,18 @@
         </li>
         {% if app_name and app_url %}
         <li class="nav-item">
-          <a class="nav-link" href="{% block app_url %}{% endblock %}">
-            {% block app_name %}{% endblock %}
+          <a class="nav-link" href="{% block app_url %}{% endblock app_url %}">
+            {% block app_name %}{% endblock app_name %}
           </a>
         </li>
         {% endif %}
       </ul>
+      {% endblock nav_left %}
+
 
       <!-- Center Navigation -->
+      {% comment %}
+      {% block nav_center %}
       <ul class="navbar-nav mx-auto nav-center">
         <li class="nav-item">
           <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url 'about' %}">
@@ -91,8 +114,11 @@
           </a>
         </li>
       </ul>
+      {% endblock nav_center %}
+      {% endcomment %}
 
       <!-- Right Side Navigation -->
+      {% block nav_right %}
       <ul class="navbar-nav">
         <!-- Dark Mode Toggle -->
         <li class="nav-item me-3">
@@ -106,60 +132,66 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <img class="user-avatar me-2" src="{{ user|gravatar:60 }}" alt="User avatar">
-            <span>{{ user.username }}</span>
+            <span>{{ user_display }}</span>
           </a>
-          <ul class="dropdown-menu dropdown-menu-end"
-              aria-labelledby="userDropdown">
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
             <li>
-              <a class="dropdown-item" href="{% url 'accounts:logout' %}">
-                <i class="fas fa-sign-out-alt"></i>Logout
+              <a class="dropdown-item" href="{% url 'account_logout' %}">
+                <i class="fas fa-sign-out-alt"></i> Logout
               </a>
             </li>
           </ul>
         </li>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'accounts:login' %}?next={{ request.get_full_path }}">
-            <i class="fas fa-sign-in-alt"></i>Login
+          <a class="nav-link" href="{% url 'account_login' %}">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'account_signup' %}">
+            <i class="fas fa-user-plus"></i> Sign Up
           </a>
         </li>
         {% endif %}
       </ul>
+      {% endblock nav_right %}
+
     </div>
   </div>
 </nav>
+{% endblock navbar %}
 
 <!-- Main Content Wrapper -->
 <main class="main-content-wrapper">
   <div class="main-content">
     <!-- Breadcrumbs -->
     <div class="breadcrumbs-wrapper">
-      {% block breadcrumbs %}{% endblock %}
+      {% block breadcrumbs %}{% endblock breadcrumbs %}
     </div>
 
     <!-- Messages -->
     <div class="messages-wrapper">
       {% block messages %}
-        {% if messages %}
-          {% for message in messages %}
-          <div class="alert alert-{{ message.tags }} alert-dismissible fade show"
-              role="alert">
-            {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-            </button>
-          </div>
-          {% endfor %}
-        {% endif %}
-      {% endblock %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show"
+            role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+          </button>
+        </div>
+        {% endfor %}
+      {% endblock messages %}
     </div>
     <!-- Main Content -->
     <div class="content-wrapper">
-      {% block content %}{% endblock %}
+      {% block content %}{% endblock content %}
     </div>
   </div>
 </main>
 
 <!-- Footer -->
+{% block footer %}
 <footer class="text-center">
   <div class="container">
     <p>&copy; {% now "Y" %} | All rights reserved.</p>
@@ -173,38 +205,39 @@
     </div>
   </div>
 </footer>
-
-<!-- Bootstrap 5 JS Bundle -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{%  endblock footer %}
 
 <!-- Theme Toggle Script -->
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-      const themeToggle = document.getElementById('theme-toggle');
-      const themeIcon = document.getElementById('theme-icon');
-      const themeLabel = document.getElementById('theme-text');
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const themeLabel = document.getElementById('theme-text');
 
-      // Check for saved theme preference or default to 'light'
-      const savedTheme = localStorage.getItem('theme') || 'light';
-      document.documentElement.setAttribute('data-theme', savedTheme);
-      updateTheme(savedTheme);
+    // Check for saved theme preference or default to 'light'
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateTheme(savedTheme);
 
-      themeToggle.addEventListener('click', () => {
-          const currentTheme = document.documentElement.getAttribute('data-theme');
-          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
 
-          document.documentElement.setAttribute('data-theme', newTheme);
-          localStorage.setItem('theme', newTheme);
-          updateTheme(newTheme);
-      });
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateTheme(newTheme);
+    });
 
-      function updateTheme(theme) {
-          themeIcon.classList.remove('fa-sun', 'fa-moon');
-          themeIcon.classList.add(theme === 'light' ? 'fa-moon' : 'fa-sun');
-          themeLabel.textContent = theme === 'light' ? 'Light' : 'Dark';
-      }
-  });
+    function updateTheme(theme) {
+        themeIcon.classList.remove('fa-sun', 'fa-moon');
+        themeIcon.classList.add(theme === 'light' ? 'fa-moon' : 'fa-sun');
+        themeLabel.textContent = theme === 'light' ? 'Light' : 'Dark';
+    }
+});
+{% block extra_body_scripts %}{% endblock extra_body_scripts %}
 </script>
+{% endblock body %}
+{% block extra_body %}{% endblock extra_body %}
 </body>
 </html>
 {% endspaceless %}
