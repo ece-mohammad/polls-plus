@@ -1,22 +1,42 @@
 {% extends "allauth/layouts/base.html" %}
 
 {% load crispy_forms_tags %}
-
-{% spaceless %}
+{% load allauth %}
+{% load socialaccount %}
 
 {% block content %}
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <h2>Sign Up</h2>
-      <form method="post" action="{% url 'account_signup' %}">
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <!-- Page Heading -->
+      <header class="text-center mb-4">
+        <h2 class="display-5">Sign Up</h2>
+        <p class="lead">Create an account to enjoy all the features.</p>
+      </header>
+
+      <!-- Signup Form -->
+      <form method="post" action="{% url 'account_signup' %}" class="p-4 rounded shadow-sm">
         {% csrf_token %}
         {{ form|crispy }}
-        <input type="submit" class="btn btn-primary" value="Sign Up">
+        <div class="d-flex justify-content-center mt-4">
+          <input type="submit" class="btn btn-primary" value="Sign Up">
+        </div>
       </form>
+
+      <!-- Social Login -->
+      <section class="social-login-section mt-4">
+        <div class="social-login d-flex justify-content-center mb-2">
+          <a href="{% provider_login_url 'google' %}" class="social-login-link btn btn-outline-primary">
+            <i class="fab fa-google"></i> Log In with Google
+          </a>
+        </div>
+        <div class="social-login d-flex justify-content-center">
+          <a href="{% provider_login_url 'github' %}" class="social-login-link btn btn-outline-dark">
+            <i class="fab fa-github"></i> Log In with GitHub
+          </a>
+        </div>
+      </section>
     </div>
   </div>
 </div>
 {% endblock content %}
-
-{% endspaceless %}
