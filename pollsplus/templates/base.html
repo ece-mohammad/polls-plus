@@ -1,5 +1,4 @@
 {% load static %}
-{% load widget_tweaks %}
 {% load app_tags %}
 {% load account %}
 
@@ -56,6 +55,9 @@
 </head>
 
 <body>
+{% block extra_body_head %}
+{% endblock extra_body_head %}
+
 {% block body %}
 
 <!-- Navbar -->
@@ -64,7 +66,7 @@
   <div class="container-fluid">
     <!-- Brand -->
     <a class="navbar-brand" href="/">
-      {%  block brand_icon %}<i class="fas fa-project-diagram"></i>{% endblock brand_icon %}
+      {% block brand_icon %}<i class="fas fa-project-diagram"></i>{% endblock brand_icon %}
       {% block brand_name %}Spaghetti Chef{% endblock brand_name %}
     </a>
 
@@ -93,29 +95,13 @@
       </ul>
       {% endblock nav_left %}
 
-
       <!-- Center Navigation -->
-      {% comment %}
       {% block nav_center %}
-      <ul class="navbar-nav mx-auto nav-center">
-        <li class="nav-item">
-          <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url 'about' %}">
-            <i class="fas fa-user"></i>About
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {% if request.path == '/contact/' %}active{% endif %}" href="{% url 'contact' %}">
-            <i class="fas fa-envelope"></i>Contact
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% static 'resume.pdf' %}" target="_blank" rel="noopener noreferrer">
-            <i class="fas fa-file-alt"></i>Resume
-          </a>
-        </li>
-      </ul>
+      <!-- Search Bar Placeholder -->
+      <div class="navbar-search">
+        {% block search_bar %}{% endblock search_bar %}
+      </div>
       {% endblock nav_center %}
-      {% endcomment %}
 
       <!-- Right Side Navigation -->
       {% block nav_right %}
@@ -156,7 +142,6 @@
         {% endif %}
       </ul>
       {% endblock nav_right %}
-
     </div>
   </div>
 </nav>
@@ -192,14 +177,25 @@
 
 <!-- Footer -->
 {% block footer %}
-<footer class="text-center">
-  <div class="container">
+<footer>
+  <div class="footer-wrapper text-center">
     <p>&copy; {% now "Y" %} | All rights reserved.</p>
+    <div class="footer-links">
+      <a class="footer-link" href="{% url 'about' %}" aria-label="About">
+        <i class="fas fa-user"></i> About
+      </a>
+      <a class="footer-link" href="{% url 'contact' %}" aria-label="Contact">
+          <i class="fas fa-envelope"></i> Contact
+      </a>
+      <a class="footer-link" href="{% static 'resume.pdf' %}" target="_blank" rel="noopener noreferrer" aria-label="Resume">
+        <i class="fas fa-file-alt"></i> Resume
+        </a>
+    </div>
     <div class="footer-social-icons">
-      <a href="github.com/ece-mohammad/" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+      <a class="footer-social-link" href="https://github.com/ece-mohammad/" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
         <i class="fab fa-github"></i>
       </a>
-      <a href="https://www.linkedin.com/in/mohammadtolba/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+      <a class="footer-social-link" href="https://www.linkedin.com/in/mohammadtolba/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
         <i class="fab fa-linkedin"></i>
       </a>
     </div>

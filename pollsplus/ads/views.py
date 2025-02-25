@@ -4,6 +4,7 @@ import json
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
+from django.db.models import Q
 from django.http import (
     HttpRequest,
     HttpResponseRedirect,
@@ -32,6 +33,16 @@ from utils.views import (
 class HomePageView(UserListView):
     model = Ad
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+        search_query = self.request.GET.get("q", None)
+        if search_query:
+            qs = qs.filter(
+                Q(title__icontains=search_query) |
+                Q(text__icontains=search_query)
+            )
+        return qs
+
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
         user = self.request.user
@@ -40,6 +51,7 @@ class HomePageView(UserListView):
                 favored_by=user
             ).values_list("id", flat=True)
         return context
+
 
 
 class AdDetailView(UserDetailView):

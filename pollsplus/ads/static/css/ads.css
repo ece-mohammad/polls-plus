@@ -115,6 +115,36 @@
     color: var(--yellow);
 }
 
+/* Search bar */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+.search-text {
+    margin: var(--space-md) 0;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    transition: border-color var(--duration) var(--ease);
+}
+
+.search-text:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+.search-btn {
+    background: none;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+    margin-left: var(--space-sm);
+}
+
 /*****************************************
  * styles for ad details
  *****************************************/

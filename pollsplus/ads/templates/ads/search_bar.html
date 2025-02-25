@@ -1,0 +1,6 @@
+<div class="search-bar">
+  <form id="search-form" action="{% url 'ads:home' %}" method="get">
+    <input class="search-text" type="search" name="q" placeholder="Search Ads..." aria-label="Search" {% if request.GET.q %} value="{{ request.GET.q }}" {% endif %}>
+    <button class="search-btn" type="submit"><i class="search-icon fas fa-search"></i></button>
+  </form>
+</div>

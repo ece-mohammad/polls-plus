@@ -21,46 +21,38 @@
     --accent: #22C55E;
     --white: #FFFFFF;
     --black: #000000;
-
     /* Colors - Theme */
     --bg-light: #F8FAFC;
     --bg-dark: #0F172A;
     --text-light: #334155;
     --text-dark: #E2E8F0;
-
     /* Colors - Opacity */
     --white-05: rgba(255, 255, 255, 0.05);
     --white-10: rgba(255, 255, 255, 0.1);
     --white-85: rgba(255, 255, 255, 0.85);
     --black-10: rgba(0, 0, 0, 0.1);
     --black-85: rgba(0, 0, 0, 0.85);
-
     /* Dimensions */
     --navbar-height: 70px;
-
     /* Effects */
     --shadow-sm: 0 1px 3px var(--shadow-color);
     --shadow-md: 0 4px 6px -1px var(--shadow-color);
     --shadow-lg: 0 10px 15px -3px var(--shadow-color);
-
     /* Transitions */
     --duration: 0.2s;
     --ease: ease-in-out;
     --transition: all var(--duration) var(--ease);
-
     /* Borders */
     --radius-sm: 6px;
     --radius-md: 8px;
     --radius-lg: 12px;
     --radius-pill: 9999px;
-
     /* Spacing */
     --space-xs: 0.25rem;
     --space-sm: 0.5rem;
     --space-md: 1rem;
     --space-lg: 1.5rem;
     --space-xl: 2rem;
-
     /* Z-index */
     --z-nav: 1000;
     --z-dropdown: 1010;
@@ -103,20 +95,47 @@
     justify-content: space-between;
 }
 
-.text-primary { color: var(--primary); }
-.text-white { color: var(--white); }
-.bg-primary { background-color: var(--primary); }
-.bg-secondary { background-color: var(--secondary); }
+.text-primary {
+    color: var(--primary);
+}
+
+.text-white {
+    color: var(--white);
+}
+
+.bg-primary {
+    background-color: var(--primary);
+}
+
+.bg-secondary {
+    background-color: var(--secondary);
+}
 
 /* Common Transitions */
-.transition-all { transition: var(--transition); }
-.transition-transform { transition: transform var(--duration) var(--ease); }
-.transition-colors { transition: color var(--duration) var(--ease); }
+.transition-all {
+    transition: var(--transition);
+}
+
+.transition-transform {
+    transition: transform var(--duration) var(--ease);
+}
+
+.transition-colors {
+    transition: color var(--duration) var(--ease);
+}
 
 /* Common Shadows */
-.shadow-sm { box-shadow: var(--shadow-sm); }
-.shadow-md { box-shadow: var(--shadow-md); }
-.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-sm {
+    box-shadow: var(--shadow-sm);
+}
+
+.shadow-md {
+    box-shadow: var(--shadow-md);
+}
+
+.shadow-lg {
+    box-shadow: var(--shadow-lg);
+}
 
 /***************************************
  * 2. Base Styles
@@ -199,27 +218,16 @@ body {
 
 /* User Dropdown Toggle */
 .nav-link.dropdown-toggle {
-    height: 100%; /* Ensure full height */
+    /* Ensure full height */
+    height: 100%;
     gap: var(--space-sm);
 }
 
-/* Center Navigation */
-.nav-center {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: var(--space-md);
-}
-
-.nav-center .nav-link::after {
+.nav-link::after {
     content: '';
-    position: absolute;
-    bottom: -3px;
     left: 50%;
     width: 0;
     height: 2px;
-    background-color: var(--primary);
     transform: translateX(-50%);
     transition: width var(--duration) var(--ease);
 }
@@ -252,7 +260,8 @@ body {
     display: flex;
     align-items: center;
     gap: var(--space-sm);
-    height: 100%; /* Ensure full height */
+    height: 100%;
+ /* Ensure full height */
 }
 
 #theme-toggle:hover {
@@ -306,7 +315,6 @@ body {
     --dropdown-color: var(--text-dark);
     --dropdown-hover-bg: var(--primary);
     --dropdown-active-bg: var(--accent);
-
     color: var(--dropdown-color);
     padding: var(--space-md) var(--space-lg);
     transition: var(--transition);
@@ -386,6 +394,7 @@ textarea.form-control:focus, input.form-control:focus {
         align-items: center;
         gap: var(--space-sm);
     }
+
     .form-buttons .btn {
         width: 100%;
     }
@@ -403,6 +412,7 @@ textarea.form-control:focus, input.form-control:focus {
         flex-direction: column;
         gap: var(--space-sm);
     }
+
     .form-buttons-centered .btn {
         width: 100%;
     }
@@ -418,7 +428,6 @@ textarea.form-control:focus, input.form-control:focus {
 .btn {
     --btn-padding: var(--space-sm) var(--space-lg);
     --btn-radius: var(--radius-sm);
-
     padding: var(--btn-padding);
     border-radius: var(--btn-radius);
     font-weight: 500;
@@ -497,9 +506,21 @@ pre {
  ***************************************/
 footer {
     background-color: var(--secondary);
-    color: var(--white);
+    color: var(--white-85);
     padding: var(--space-xl) 0;
     margin-top: auto;
+}
+
+.footer-link, .footer-social-link {
+    color: var(--white-85);
+    margin: 0 var(--space-sm);
+    transition: color var(--duration) var(--ease);
+    gap: var(--space-md);
+    margin-top: var(--space-sm);
+}
+
+.footer-link:hover, .footer-social-link:hover {
+    color: var(--accent);
 }
 
 .footer-social-icons {
@@ -515,6 +536,13 @@ footer {
 
 .footer-social-icons a:hover {
     color: var(--accent);
+}
+
+@media (max-width: 768px) {
+    .footer-links, .footer-social-icons {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
 }
 
 /***************************************
@@ -536,6 +564,7 @@ footer {
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -545,7 +574,12 @@ footer {
 /***************************************
  * 8. Responsive Design
  ***************************************/
-@media (max-width: 991.98px) {
+.navbar-toggler {
+  margin-left: auto;
+  margin-right: var(--space-sm);
+}
+
+@media (max-width: 768px) {
     /* Navbar Mobile */
     .navbar-collapse {
         --mobile-padding: var(--space-md);
@@ -556,17 +590,6 @@ footer {
         animation: fadeInDown 0.3s var(--ease);
         flex-direction: column;
         align-items: stretch;
-    }
-
-    /* Navigation Layout */
-    .nav-center {
-        position: static;
-        transform: none;
-        flex-direction: column;
-        gap: 0;
-        padding: 0;
-        margin: 0;
-        width: 100%;
     }
 
     /* Nav Links */
@@ -586,7 +609,7 @@ footer {
     }
 
     /* Remove desktop-only effects */
-    .nav-center .nav-link::after {
+    .nav-link::after {
         display: none;
     }
 
@@ -647,4 +670,3 @@ footer {
         padding: var(--space-md);
     }
 }
-
