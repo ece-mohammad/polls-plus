@@ -36,7 +36,7 @@ class HomePageView(UserListView):
         context = super().get_context_data(object_list=object_list, **kwargs)
         user = self.request.user
         if user.is_authenticated:
-            context["fav_ads"] = Ad.objects.filter(
+            context["fav_list"] = Ad.objects.filter(
                 favored_by=user
             ).values_list("id", flat=True)
         return context
@@ -189,3 +189,43 @@ class AdFavoriteToggleView(LoginRequiredMixin, UserListView):
             fav: AdFavorite = get_object_or_404(AdFavorite, ad=ad, user=user)
             fav.delete()
         return JsonResponse({"status": 200})
+
+
+@method_decorator(csrf_exempt, name="dispatch")
+@method_decorator(require_http_methods(["POST"]), name="dispatch")
+class AdFavoriteAddView(LoginRequiredMixin, View):
+
+    def post(self, request: HttpRequest, *args, **kwargs):
+        ad: Ad = get_object_or_404(Ad, pk=kwargs["pk"])
+        ad.favored_by.add(request.user)
+        ad.save()
+        return JsonResponse({"status": 200})
+
+
+@method_decorator(csrf_exempt, name="dispatch")
+@method_decorator(require_http_methods(["POST"]), name="dispatch")
+class AdFavoriteRemoveView(LoginRequiredMixin, View):
+
+    def post(self, request, *args, **kwargs):
+        fav: AdFavorite = get_object_or_404(
+            AdFavorite,
+            user=request.user,
+            ad__pk=kwargs["pk"]
+        )
+        fav.delete()
+        return JsonResponse({"status": 200})
+
+
+class AdFavoriteListView(LoginRequiredMixin, UserListView):
+    model = AdFavorite
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        qs.filter(user=self.request.user)
+        return qs
+
+    def render_to_response(self, context, **response_kwargs):
+        rsp = {"favorites": []}
+        for fav in context["object_list"]:
+            rsp["favorites"].append(fav.ad.id)
+        return JsonResponse(rsp)

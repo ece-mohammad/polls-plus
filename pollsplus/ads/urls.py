@@ -9,7 +9,9 @@ from ads.views import (
     AdCommentCreateView,
     AdCommentUpdateView,
     AdCommentDeleteView,
-    AdFavoriteToggleView,
+    AdFavoriteAddView,
+    AdFavoriteRemoveView,
+    AdFavoriteListView,
 )
 
 app_name = "ads"
@@ -23,5 +25,7 @@ urlpatterns = [
     path("<int:pk>/comment/", AdCommentCreateView.as_view(), name="ad_comment_create"),
     path("<int:pk>/comment/<int:comment_pk>/update/", AdCommentUpdateView.as_view(), name="ad_comment_update"),
     path("<int:pk>/comment/<int:comment_pk>/delete/", AdCommentDeleteView.as_view(), name="ad_comment_delete"),
-    path("favorites/", AdFavoriteToggleView.as_view(), name="toggle_favorite"),
+    path("<int:pk>/favorite/", AdFavoriteAddView.as_view(), name="add_favorite"),
+    path("<int:pk>/unfavorite/", AdFavoriteRemoveView.as_view(), name="remove_favorite"),
+    path("favorites/", AdFavoriteListView.as_view(), name="favorites_list"),
 ]
