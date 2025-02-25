@@ -144,7 +144,7 @@
         </li>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'account_login' %}">
+            <a class="nav-link" href="{% url 'account_login' %}?next={{ request.get_full_path }}">
             <i class="fas fa-sign-in-alt"></i> Login
           </a>
         </li>

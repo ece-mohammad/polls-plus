@@ -32,12 +32,19 @@
     {% endif %}
 
     <!-- Login Form -->
-    <form method="POST" action="{% url 'account_login' %}" class="auth-form">
+    <form method="POST" 
+          {% with request.GET.next as next_url %}
+          {% if next_url %}
+            action="{% url 'account_login' %}?next={{ request.GET.next }}" 
+          {% else %}
+            action="{% url 'account_login' %}"
+          {% endif %}
+          {% endwith %}
+        class="auth-form">
       {% csrf_token %}
       <!-- Form Fields -->
 
       {{ form|crispy }}
-      <input type="hidden" name="next" value="{{ next }}">
 
       <!-- Submit Button -->
       <div class="d-flex justify-content-center mt-4">
