@@ -1,4 +1,5 @@
 {% extends "ads/base.html" %}
+{% load app_tags %}
 
 {% block search_bar %}{% include 'ads/search_bar.html' %}{% endblock search_bar %}
 
@@ -55,7 +56,7 @@
             </p>
 
             <!-- Price -->
-            <p class="text-success fw-bold mb-2">
+            <p class="card-price text-success fw-bold mb-2">
               ${{ ad.price }}
             </p>
 
@@ -63,7 +64,16 @@
             <small class="text-muted">
               Posted by <strong>{{ ad.author.username }}</strong> on {{ ad.created_at|date:"F j, Y" }}
             </small>
-          </div>
+
+            <!-- Ad tags -->
+            <p class="text-muted">
+              {% for tag in ad.tags.all %}
+              <span class="badge bg-success mx-1">{{ tag.name }}</span>
+
+              {% endfor %}
+            </p>
+
+            </div>
 
           <!-- Action Buttons for Author -->
           <div class="card-footer d-flex flex-column flex-md-row justify-content-between align-items-center">

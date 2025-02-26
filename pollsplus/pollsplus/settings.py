@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     "widget_tweaks",
     "crispy_forms",
     "crispy_bootstrap5",
+    "taggit",
 ]
 
 MIDDLEWARE = [
@@ -240,3 +241,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 ACCOUNT_FORMS = {
     "login": "accounts.forms.CustomLoginForm",
 }
+
+
+# taggit
+TAGGIT_CASE_INSENSITIVE: bool = True

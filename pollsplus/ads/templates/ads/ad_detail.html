@@ -27,7 +27,15 @@
               <strong>By:</strong> {{ ad.author.username }}
             </li>
             <li class="text-muted mb-1">
-              <strong>Price:</strong> <span class="text-success fw-bold">${{ ad.price }}</span>
+              <strong>Price:</strong> <span class="text-success fw-bold mx-1">${{ ad.price }}</span>
+            </li>
+            <li class="text-muted mb-1">
+              <strong>Tags:</strong>
+              {% for tag in ad.tags.all %}
+              <span class="badge bg-primary mx-1">{{ tag.name }}</span>
+              {% empty %}
+              <span class="badge bg-primary mx-1">No tags</span>
+              {% endfor %}
             </li>
           </ul>
         </div>

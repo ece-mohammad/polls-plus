@@ -30,4 +30,4 @@ class AdForm(ModelForm):
 
     class Meta:
         model = Ad
-        fields = ('title', 'price', 'text', 'picture',)
+        fields = ('title', 'price', 'text', 'picture', 'tags')

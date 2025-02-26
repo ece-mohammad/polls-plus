@@ -547,6 +547,21 @@ files = [
 django = ">=4.2"
 
 [[package]]
+name = "django-taggit"
+version = "6.1.0"
+description = "django-taggit is a reusable Django application for simple tagging."
+optional = false
+python-versions = ">=3.8"
+groups = ["main"]
+files = [
+    {file = "django_taggit-6.1.0-py3-none-any.whl", hash = "sha256:ab776264bbc76cb3d7e49e1bf9054962457831bd21c3a42db9138b41956e4cf0"},
+    {file = "django_taggit-6.1.0.tar.gz", hash = "sha256:c4d1199e6df34125dd36db5eb0efe545b254dec3980ce5dd80e6bab3e78757c3"},
+]
+
+[package.dependencies]
+Django = ">=4.1"
+
+[[package]]
 name = "django-test-plus"
 version = "2.2.4"
 description = "\"django-test-plus provides useful additions to Django's default TestCase\""
@@ -1482,4 +1497,4 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.10"
-content-hash = "ce733420e47605a97cf54dac3dc1fcf5536a50767cee005547aed18ca2d1a801"
+content-hash = "7aeec69f7f7c81d83ca890dbc9eeff78784da284c0d87cc5695b07992fed8416"

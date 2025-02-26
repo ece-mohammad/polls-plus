@@ -21,6 +21,7 @@ pillow = "^11.1.0"
 django-allauth = {extras = ["socialaccount"], version = "^65.4.1"}
 crispy-bootstrap5 = "^2024.10"
 django-crispy-forms = "^2.3"
+django-taggit = "^6.1.0"
 
 
 

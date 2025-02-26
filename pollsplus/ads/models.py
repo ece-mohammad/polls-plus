@@ -15,6 +15,7 @@ from simple_history import register
 from simple_history.models import HistoricalRecords
 
 from utils.helpers import human_readable_size
+from taggit.managers import TaggableManager
 
 register(User)
 
@@ -111,6 +112,26 @@ class AdFavorite(models.Model):
     )
 
 
+# class TaggedAds(models.Model):
+#     ad = models.ForeignKey(
+#         "Ad",
+#         on_delete=models.CASCADE,
+#         verbose_name="Ad",
+#         help_text=_("Ad that this tag belongs to"),
+#         related_name="+",
+#         related_query_name="+",
+#     )
+#     tag = models.ForeignKey(
+#         "TaggedItem",
+#         on_delete=models.CASCADE,
+#         verbose_name="Tag",
+#         help_text=_("Tag that this ad belongs to"),
+#         related_name="+",
+#         related_query_name="+",
+#     )
+
+
+
 class Ad(models.Model):
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -176,9 +197,10 @@ class Ad(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True,
         verbose_name="Updated at",
-        help_text=_("Last time the advertisement was updated")
+        help_text=_("Last time the advertisement was updated"),
     )
     history = HistoricalRecords()
+    tags = TaggableManager(blank=True)
 
     def delete(self, *args, **kwargs):
         if self.picture:

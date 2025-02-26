@@ -15,6 +15,7 @@
       <sourceFolder url="file://$MODULE_DIR$/pollsplus/short_url" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/pollsplus/ads" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/pollsplus/reloadinator" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pollsplus/library" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.11 virtualenv at ~/Projects/PythonProject/PollsPlus/.venv" jdkType="Python SDK" />
