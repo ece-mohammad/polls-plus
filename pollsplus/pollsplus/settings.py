@@ -238,10 +238,6 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # all auth
-ACCOUNT_FORMS = {
-    "login": "accounts.forms.CustomLoginForm",
-}
-
 
 # taggit
 TAGGIT_CASE_INSENSITIVE: bool = True

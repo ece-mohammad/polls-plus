@@ -21,8 +21,6 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.static import serve
 
-from accounts.views import CustomLogoutView
-
 from pollsplus.views import contact_view, about_view
 
 urlpatterns = [
@@ -36,7 +34,6 @@ urlpatterns = [
     path("cats/", include("cats.urls")),
     path("ads/", include("ads.urls")),
     path("shrt/", include("short_url.urls")),
-    path("accounts/logout/", CustomLogoutView.as_view(), name="logout"),
     path('accounts/', include('allauth.urls')),
 ]
 
